@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "build:client:dev": "webpack --env=client.dev",
+    "build:client:devserver": "webpack-dev-server --env=client.dev",
     "build:client:prod": "webpack --env=client.prod"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "eslint-plugin-react": "^7.18.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
