@@ -4,7 +4,8 @@
   "description": "Mentor driven open source transformation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/jsDrome/jsdrome.com/issues"
   },
-  "homepage": "https://github.com/jsDrome/jsdrome.com#readme"
+  "homepage": "https://github.com/jsDrome/jsdrome.com#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0"
+  }
 }
