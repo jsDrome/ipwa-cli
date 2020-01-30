@@ -1,0 +1,28 @@
+{
+  "name": "jsdrome.com",
+  "version": "1.0.0",
+  "description": "Mentor driven open source transformation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsDrome/jsdrome.com.git"
+  },
+  "keywords": [
+    "jsdrome",
+    "jsdrome.com",
+    "mentor",
+    "driven",
+    "open",
+    "source",
+    "transformation"
+  ],
+  "author": "Sreeram Padmanabhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsDrome/jsdrome.com/issues"
+  },
+  "homepage": "https://github.com/jsDrome/jsdrome.com#readme"
+}
