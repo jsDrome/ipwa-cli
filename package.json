@@ -11,7 +11,8 @@
     "build:client:prod": "webpack --env=client.prod",
     "build:server:dev": "webpack --env=server.dev",
     "build:server:prod": "webpack --env=server.prod",
-    "start": "node _dist"
+    "start": "node _dist",
+    "docker": "docker-compose up --build"
   },
   "repository": {
     "type": "git",
