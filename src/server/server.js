@@ -1,8 +1,8 @@
 import express from 'express';
 import rc from 'rc';
 
-const config = rc('jsdrome');
-const port = process.env.PORT || config.server.port;
+const jsdromeConfig = rc('jsdrome');
+const port = process.env.PORT || jsdromeConfig.build.server.port;
 const app = express();
 
 app.use(express.static('_dist'));

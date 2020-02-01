@@ -1,8 +1,12 @@
 {
-  "client": {
-    "port": "5000"
-  },
-  "server": {
-    "port": "5001"
+  "build": {
+    "client": {
+      "dist": "_dist",
+      "port": 5000
+    },
+    "server": {
+      "dist": "_dist",
+    "port": 5001
+    }
   }
 }

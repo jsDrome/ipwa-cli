@@ -32,7 +32,7 @@ build:server:devserver
 
 - heroku container:login
 - git remote add heroku git@heroku.com:jsdrome.git
-- heroku container:push web --app jsdrom
+- heroku container:push web --app jsdrome
 - heroku container:release web --app jsdrome
 - heroku logs --tail --app jsdrome
 

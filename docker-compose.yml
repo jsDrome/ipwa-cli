@@ -4,4 +4,4 @@ services:
     build: .
     image: jsdrome/jsdrome
     ports:
-    - 9000:5000
+    - 9000:5001

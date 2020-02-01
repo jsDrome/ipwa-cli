@@ -7,14 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "build:client:dev": "webpack --env=client.dev --config=build",
-    "build:client:watch": "webpack-dev-server --env=client.dev --config=build",
+    "build:client:watch": "webpack --env=client.dev --config=build --watch",
+    "build:client:devserver": "webpack-dev-server --env=client.dev --config=build",
     "build:client:prod": "webpack --env=client.prod --config=build",
     "build:server:dev": "webpack --env=server.dev --config=build",
-    "build:server:watch": "webpack --env=server.dev --config=build",
+    "build:server:watch": "webpack --env=server.dev --config=build --watch",
     "build:server:prod": "webpack --env=server.prod --config=build",
     "start": "nodemon _dist",
     "docker": "docker-compose up --build",
-    "dev": "concurrently --kill-others 'npm run build:client:watch' 'npm run build:server:watch' 'npm start' -n client,server,nodemon -c blue,yellow,green"
+    "dev": "concurrently --kill-others 'npm run build:client:devserver' 'npm run build:server:watch' 'npm start' -n client,server,nodemon -c blue,yellow,green"
   },
   "repository": {
     "type": "git",
@@ -60,5 +61,115 @@
     "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
-  }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "chrome": "41",
+            "ie": "10"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true
+    },
+    "globals": {
+      "shallow": true
+    },
+    "rules": {
+      "react/prop-types": 0,
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1,
+          "maxEOF": 1
+        }
+      ],
+      "no-extra-parens": [
+        "error",
+        "all",
+        {
+          "nestedBinaryExpressions": false
+        }
+      ],
+      "eqeqeq": "error",
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "block-scoped-var": "error",
+      "no-alert": "error",
+      "no-else-return": "error",
+      "no-empty-function": "error",
+      "no-empty-pattern": "error",
+      "no-magic-numbers": "error",
+      "no-multi-spaces": "error",
+      "global-require": "error",
+      "handle-callback-err": "error",
+      "no-mixed-requires": "error",
+      "array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "block-spacing": "error",
+      "camelcase": "error",
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "implicit-arrow-linebreak": [
+        "error",
+        "beside"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
+      "react/jsx-closing-bracket-location": ["error", "after-props"]
+    },
+    "settings": {
+      "react": {
+        "version": "16.0"
+      }
+    }
+  },
+  "eslintIgnore": [
+    "_dist"
+  ]
 }

@@ -5,7 +5,6 @@ WORKDIR /opt/app
 ADD src /opt/app/src
 ADD build /opt/app/build
 ADD .jsdromerc /opt/app/.jsdromerc
-ADD .babelrc.js /opt/app/.babelrc.js
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
@@ -14,8 +13,8 @@ RUN npm run build:client:prod
 RUN npm run build:server:prod
 
 RUN rm -r src build
-RUN rm package.json package-lock.json .babelrc.js
+RUN rm package.json package-lock.json
 
-EXPOSE 5000
+EXPOSE 5001
 
 CMD [ "node", "_dist" ]
