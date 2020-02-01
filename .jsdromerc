@@ -1,5 +1,8 @@
 {
-  "server": {
+  "client": {
     "port": "5000"
+  },
+  "server": {
+    "port": "5001"
   }
 }
