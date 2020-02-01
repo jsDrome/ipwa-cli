@@ -81,7 +81,7 @@
  - kubectl describe deployments
  - kubectl describe secrets/jsdrome-secrets
 
-## Helm
+## helm
 
  - helm ls
  - helm install jsdrome .
@@ -92,7 +92,7 @@
  - helm rollback jsdrome 1
 
 
-## Terraform
+## terraform
 
  - terraform init
  - terraform plan -out jsdrome.com
