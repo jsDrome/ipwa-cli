@@ -14,7 +14,7 @@
     "build:server:watch": "webpack --env=server.dev --config=build --watch",
     "build:server:prod": "webpack --env=server.prod --config=build",
     "start": "nodemon _dist",
-    "docker": "docker-compose up --build",
+    "docker": "docker-compose -f docker.yml up --build",
     "dev": "concurrently --kill-others 'npm run build:client:devserver' 'npm run build:server:watch' 'npm start' -n client,server,nodemon -c blue,yellow,green"
   },
   "repository": {
