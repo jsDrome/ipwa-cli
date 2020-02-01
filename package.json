@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "build:client:dev": "webpack --env=client.dev",
-    "build:client:devserver": "webpack-dev-server --env=client.dev",
-    "build:client:prod": "webpack --env=client.prod",
-    "build:server:dev": "webpack --env=server.dev",
-    "build:server:prod": "webpack --env=server.prod",
+    "build:client:dev": "webpack --env=client.dev --config=build",
+    "build:client:devserver": "webpack-dev-server --env=client.dev --config=build",
+    "build:client:prod": "webpack --env=client.prod --config=build",
+    "build:server:dev": "webpack --env=server.dev --config=build",
+    "build:server:prod": "webpack --env=server.prod --config=build",
     "start": "node _dist",
     "docker": "docker-compose up --build"
   },

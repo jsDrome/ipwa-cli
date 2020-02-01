@@ -23,7 +23,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'My website',
-      template: path.resolve(__dirname, '../../templates/client.html'),
+      template: path.resolve(__dirname, '../templates/client.html'),
     }),
   ],
 };
