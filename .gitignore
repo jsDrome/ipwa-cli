@@ -1,2 +1,17 @@
+.DS_Store
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/
+# Project specific
 node_modules
 _dist
+infra/terra/creds
+infra/terra/.terraform
+infra/terra/jsdrome.com
