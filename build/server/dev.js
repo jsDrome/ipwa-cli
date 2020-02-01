@@ -3,4 +3,5 @@ const commonConfig = require('./common');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
+  watch: true,
 });

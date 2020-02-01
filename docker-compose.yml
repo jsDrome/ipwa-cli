@@ -2,6 +2,6 @@ version: '3'
 services:
   web:
     build: .
-    image: jsdrome/jsdrome.com
+    image: jsdrome/jsdrome
     ports:
     - 9000:5000

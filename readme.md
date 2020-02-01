@@ -1,4 +1,13 @@
+# npm scripts
+
 # Some important commands
+
+build:client:dev
+build:client:prod
+build:client:devserver
+build:server:dev
+build:server:prod
+build:server:devserver
 
 ## docker
 
@@ -6,6 +15,7 @@
 - docker ps -a
 - docker stop $(docker ps -aq)
 - docker rm $(docker ps -aq)
+- docker rmi -f $(docker images -aq)
 - docker images
 - docker pull jsdrome/jsdrome.com
 - docker build
