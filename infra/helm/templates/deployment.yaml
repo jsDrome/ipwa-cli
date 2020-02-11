@@ -17,7 +17,7 @@ spec:
       containers:
       - name: {{ .Release.Name }}-container
         image: {{ .Values.containerName }}
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - name: http-server
-          containerPort: 5000
+          containerPort: {{ .Values.containerPort }}

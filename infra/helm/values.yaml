@@ -1,2 +1,3 @@
 replicaCount: 1
 containerName: jsdrome/jsdrome
+containerPort: 5002
