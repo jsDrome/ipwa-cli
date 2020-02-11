@@ -15,6 +15,4 @@ RUN npm run build:server:prod
 RUN rm -r src build
 RUN rm package.json package-lock.json
 
-EXPOSE 5001
-
 CMD [ "node", "_dist" ]
