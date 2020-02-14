@@ -1,0 +1,8 @@
+version: '3'
+services:
+  heroku:
+    container_name: jsdrome
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
+    image: registry.heroku.com/jsdrome

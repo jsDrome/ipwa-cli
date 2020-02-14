@@ -17,7 +17,7 @@
     "build:helm": "helm install jsdrome infra/helm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:scripts": "sh ./scripts/test-scripts.sh",
-    "deploy:docker": "docker-compose -f infra/docker/docker.yml push",
+    "deploy:docker": "sh ./scripts/deploy-docker.sh",
     "deploy:heroku": "sh ./scripts/deploy-heroku.sh",
     "lint": "eslint .",
     "start": "node _dist",
