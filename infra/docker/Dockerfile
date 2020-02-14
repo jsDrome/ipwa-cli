@@ -8,7 +8,7 @@ ADD .jsdromerc /opt/app/.jsdromerc
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
-RUN npm i --no-optional
+RUN npm ci --no-optional
 RUN npm run build:client:prod
 RUN npm run build:server:prod
 

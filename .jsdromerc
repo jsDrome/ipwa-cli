@@ -6,7 +6,7 @@
     },
     "server": {
       "dist": "_dist",
-    "port": 5001
+      "port": 5001
     }
   }
 }

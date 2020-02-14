@@ -10,8 +10,9 @@
 *.tmproj
 .vscode/
 # Project specific
+.env
 node_modules
 _dist
-infra/terra/creds
-infra/terra/.terraform
-infra/terra/jsdrome.com
+infra/gcp/creds
+infra/gcp/.terraform
+infra/gcp/jsdrome
