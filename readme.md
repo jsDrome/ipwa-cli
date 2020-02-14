@@ -1,3 +1,5 @@
+![jsDrome CI](https://github.com/jsDrome/jsdrome-site-new/workflows/jsDrome%20CI/badge.svg?branch=master)
+
 # Npm scripts
 
 ## build scripts
