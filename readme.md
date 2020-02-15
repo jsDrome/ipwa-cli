@@ -1,4 +1,8 @@
-![jsDrome CI](https://github.com/jsDrome/jsdrome-site-new/workflows/jsDrome%20CI/badge.svg?branch=master)
+# Status
+
+![Basic Checks](https://github.com/jsDrome/jsdrome-site-new/workflows/Basic%20Checks/badge.svg)
+![Github Image Push](https://github.com/jsDrome/jsdrome-site-new/workflows/Github%20Docker%20Push/badge.svg)
+![Heroku Container Release](https://github.com/jsDrome/jsdrome-site-new/workflows/Heroku%20Container%20Release/badge.svg)
 
 # Npm scripts
 
