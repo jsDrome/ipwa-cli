@@ -98,4 +98,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test
-        run: node puppeteer/
+        run: test:puppeteer
+
+  Percy:
+    needs: stage_in_heroku
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test
+        run: test:percy

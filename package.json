@@ -24,6 +24,8 @@
     "test:codecov": "codecov -t $CODECOV_TOKEN",
     "test:cypress:open": "cypress open",
     "test:cypress:run": "cypress run --record --key $CYPRESS_TOKEN",
+    "test:puppeteer": "node puppeteer/",
+    "test:percy": "percy exec -- node percy/snapshots.js",
     "test:scripts": "sh ./scripts/test-scripts.sh",
     "lint": "eslint .",
     "start": "node _dist",
