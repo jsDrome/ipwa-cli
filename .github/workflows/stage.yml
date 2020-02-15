@@ -12,6 +12,7 @@ env:
   PROJECT_NAME: jsdrome
   DOCKER_IMAGE_NAME: jsdrome/jsdrome
   HEROKU_APP_NAME: jsdrome
+  PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
 jobs:
   test_image:
