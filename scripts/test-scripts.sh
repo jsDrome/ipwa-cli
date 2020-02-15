@@ -1,12 +1,19 @@
 # Set env vars
 source ./.env/env.sh
 
-# clean up dist
+# clean up
 npm run clean
 
-# basic checks
+# lint
 npm run lint
+
+# tests
+
 npm test
+npm run test:codecov
+npm run test:cypress:run
+
+# build
 npm run build:client:dev
 npm run build:client:prod
 npm run build:server:dev

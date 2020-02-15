@@ -22,6 +22,8 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:codecov": "codecov -t $CODECOV_TOKEN",
+    "test:cypress:open": "cypress open",
+    "test:cypress:run": "cypress run --record --key $CYPRESS_TOKEN",
     "test:scripts": "sh ./scripts/test-scripts.sh",
     "lint": "eslint .",
     "start": "node _dist",
@@ -46,7 +48,9 @@
     "babel-loader": "^8.0.6",
     "codecov": "^3.6.5",
     "concurrently": "^5.1.0",
+    "cypress": "^4.0.2",
     "eslint": "^6.8.0",
+    "eslint-plugin-cypress": "^2.10.1",
     "eslint-plugin-react": "^7.18.0",
     "esm": "^3.2.25",
     "html-webpack-plugin": "^3.2.0",
@@ -111,7 +115,8 @@
       "browser": true,
       "node": true,
       "jasmine": true,
-      "jest": true
+      "jest": true,
+      "cypress/globals": true
     },
     "rules": {
       "react/prop-types": 0,
@@ -182,7 +187,10 @@
       "react": {
         "version": "16.0"
       }
-    }
+    },
+    "plugins": [
+      "cypress"
+    ]
   },
   "eslintIgnore": [
     "_dist",
@@ -194,6 +202,9 @@
       "src/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**"
+    ],
+    "modulePathIgnorePatterns": [
+      "cypress"
     ]
   },
   "commitlint": {
