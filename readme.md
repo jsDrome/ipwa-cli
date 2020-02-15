@@ -1,3 +1,21 @@
+# Configurables
+
+### ./.env/env.sh
+
+  - `PROJECT_NAME` used in `npm run build:helm`, `npm run uninstall:helm` and `Chart.yaml`
+  - `DOCKER_USER`, `DOCKER_PASS`, `DOCKER_IMAGE_NAME` for pushing to docker hub and in `values.yaml`
+  - `HEROKU_APP_NAME` and `HEROKU_API_KEY` for deploying in heroku
+  - `CODECOV_TOKEN` for uploading reports to Codecov.
+
+### .github/workflows/stage.yml
+
+  - Set environment variables
+
+### CI Environment Variables
+
+  - `HEROKU_API_KEY`
+  - `CODECOV_TOKEN`
+
 # Npm scripts
 
 ## build scripts
@@ -156,13 +174,3 @@ terraform plan -out myplan
 terraform apply "myplan"
 terraform destroy
  ```
-
-# Configurables
-
-./.env/env.sh
-  - `PROJECT_NAME` used in `npm run build:helm`, `npm run uninstall:helm` and `Chart.yaml`
-  - `DOCKER_USER`, `DOCKER_PASS`, `DOCKER_IMAGE_NAME` for pushing to docker hub and in `values.yaml`
-  - `HEROKU_APP_NAME` and `HEROKU_API_KEY` for deploying in heroku
-
-.github/workflows/stage.yml
-  - Set environment variables
