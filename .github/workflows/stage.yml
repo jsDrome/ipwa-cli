@@ -12,6 +12,7 @@ env:
   PROJECT_NAME: jsdrome
   DOCKER_IMAGE_NAME: jsdrome/jsdrome
   HEROKU_APP_NAME: jsdrome
+
 jobs:
   test_image:
     runs-on: ubuntu-latest
@@ -82,29 +83,15 @@ jobs:
           -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
           -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"
 
-  Cypress:
+  tests:
     needs: stage_in_heroku
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
-      - name: Test
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
-
-  Puppeteer:
-    needs: stage_in_heroku
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Test
-        run: npm run test:puppeteer
-
-  Percy:
-    needs: stage_in_heroku
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Test
-        run: npm run test:percy
+      - name: tests
+        run: |
+          npm i cypress puppeteer @percy/script
+          npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+          npm run test:puppeteer
+          npm run test:percy
