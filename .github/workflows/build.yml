@@ -2,8 +2,14 @@ name: Build
 
 on: [push]
 
+env:
+  PROJECT_NAME: jsdrome
+  DOCKER_IMAGE_NAME: jsdrome/jsdrome
+  HEROKU_APP_NAME: jsdrome
+  PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
 jobs:
-  production_builds:
+  production_build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,3 +26,69 @@ jobs:
     - run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
     - run: npm run build:client:prod
     - run: npm run build:server:prod
+
+  stage_in_heroku:
+    needs: production_build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: |
+          docker-compose -f infra/docker/docker-compose.yml build
+      - name: Log into heroku registry
+        run: echo "${{ secrets.HEROKU_API_KEY }}" | docker login registry.heroku.com -u _ --password-stdin
+      - name: Push image
+        run: |
+          docker tag ${DOCKER_IMAGE_NAME} registry.heroku.com/${HEROKU_APP_NAME}/web
+          docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+      - name: Release
+        run: |
+          curl -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_NAME}/formation \
+          -d "{ \"updates\": [{ \"type\": \"web\", \"docker_image\": \"$(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})\" }]}" \
+          -H "Content-Type: application/json" \
+          -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+          -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"
+
+  regression_tests:
+    needs: stage_in_heroku
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: tests
+        run: |
+          npm i cypress puppeteer @percy/script
+          npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+          npm run test:puppeteer
+          npm run test:percy
+
+  push_to_registry:
+    needs: regression_tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker-compose -f infra/docker/docker-compose.yml build
+      - name: Log into github registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+      - name: Push image
+        run: |
+          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_ID=docker.pkg.github.com/$REPO/$PROJECT_NAME
+
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+
+          docker tag $DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
