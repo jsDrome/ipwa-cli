@@ -6,6 +6,7 @@ rm -rf _dist
 
 # basic checks
 npm run lint
+npm test
 npm run build:client:dev
 npm run build:client:prod
 npm run build:server:dev
