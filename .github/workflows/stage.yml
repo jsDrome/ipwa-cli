@@ -98,7 +98,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test
-        run: test:puppeteer
+        run: npm run test:puppeteer
 
   Percy:
     needs: stage_in_heroku
@@ -107,4 +107,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test
-        run: test:percy
+        run: npm run test:percy
