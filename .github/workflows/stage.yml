@@ -82,11 +82,20 @@ jobs:
           -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
           -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"
 
-  cypress:
+  Cypress:
     needs: stage_in_heroku
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: Test
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }},
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+
+  Puppeteer:
+    needs: stage_in_heroku
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test
+        run: node puppeteer/
