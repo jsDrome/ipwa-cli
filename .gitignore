@@ -17,4 +17,4 @@ infra/gcp/creds
 infra/gcp/.terraform
 infra/gcp/myplan
 coverage
-puppeteer/screenshots
+puppeteer/screenshots/*.png
