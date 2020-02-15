@@ -1,4 +1,4 @@
-name: Github Image Push, Heroku Stage
+name: Stage
 
 on:
   push:
