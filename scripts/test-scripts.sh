@@ -2,7 +2,7 @@
 source ./.env/env.sh
 
 # clean up dist
-rm -rf _dist
+npm run clean
 
 # basic checks
 npm run lint
