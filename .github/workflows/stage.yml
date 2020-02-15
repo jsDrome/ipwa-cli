@@ -9,8 +9,9 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: jsdrome
-
+  PROJECT_NAME: jsdrome
+  DOCKER_IMAGE_NAME: jsdrome/jsdrome
+  HEROKU_APP_NAME: jsdrome
 jobs:
   test_image:
     runs-on: ubuntu-latest
@@ -18,8 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests
         run: |
-          if [ -f infra/docker/docker.yml ]; then
-            docker-compose -f infra/docker/docker.yml build
+          if [ -f infra/docker/docker-compose.yml ]; then
+            docker-compose -f infra/docker/docker-compose.yml build
           else
             docker build . -f infra/docker/Dockerfile
           fi
@@ -31,13 +32,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: docker-compose -f infra/docker/docker.yml build
+        run: docker-compose -f infra/docker/docker-compose.yml build
       - name: Log into github registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Push image
         run: |
           REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_ID=docker.pkg.github.com/$REPO/$IMAGE_NAME
+          IMAGE_ID=docker.pkg.github.com/$REPO/$PROJECT_NAME
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -51,7 +52,7 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          docker tag jsdrome/jsdrome $IMAGE_ID:$VERSION
+          docker tag $DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
   stage_in_heroku:
@@ -63,17 +64,20 @@ jobs:
       - name: Log into github registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Pull image
-        run: docker pull docker.pkg.github.com/jsdrome/jsdrome-site-new/jsdrome:latest
+        run: |
+          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          docker pull docker.pkg.github.com/$REPO/$PROJECT_NAME:latest
       - name: Log into heroku registry
         run: echo "${{ secrets.HEROKU_API_KEY }}" | docker login registry.heroku.com -u _ --password-stdin
       - name: Push image
         run: |
-          docker tag docker.pkg.github.com/jsdrome/jsdrome-site-new/jsdrome registry.heroku.com/jsdrome/web
-          docker push registry.heroku.com/jsdrome/web
+          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          docker tag docker.pkg.github.com/$REPO/$PROJECT_NAME registry.heroku.com/$HEROKU_APP_NAME/web
+          docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - name: Release
         run: |
-          curl -n -X PATCH https://api.heroku.com/apps/jsdrome/formation \
-          -d "{ \"updates\": [{ \"type\": \"web\", \"docker_image\": \"$(docker inspect registry.heroku.com/jsdrome/web --format={{.Id}})\" }]}" \
+          curl -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_NAME}/formation \
+          -d "{ \"updates\": [{ \"type\": \"web\", \"docker_image\": \"$(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})\" }]}" \
           -H "Content-Type: application/json" \
           -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
           -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"

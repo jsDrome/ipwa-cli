@@ -2,14 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rc = require('rc');
 
-const jsdromeConfig = rc('jsdrome');
+const config = rc('config');
 
 module.exports = {
   entry: {
-    app: './src/client/client.js',
+    app: './src/client/web/index.js',
   },
   output: {
-    path: path.resolve(__dirname, `../../${jsdromeConfig.build.client.dist}`),
+    path: path.resolve(__dirname, `../../${config.build.client.dist}`),
     filename: '[name].bundle.js',
   },
   module: {

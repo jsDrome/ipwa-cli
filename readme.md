@@ -1,9 +1,3 @@
-# Status
-
-![Basic Checks](https://github.com/jsDrome/jsdrome-site-new/workflows/Basic%20Checks/badge.svg)
-![Github Image Push](https://github.com/jsDrome/jsdrome-site-new/workflows/Github%20Docker%20Push/badge.svg)
-![Heroku Container Release](https://github.com/jsDrome/jsdrome-site-new/workflows/Heroku%20Container%20Release/badge.svg)
-
 # Npm scripts
 
 ## build scripts
@@ -29,13 +23,6 @@ test
 test:scripts
 ```
 
-## deploy scripts
-
-```shell
-deploy:docker
-deploy:heroku
-```
-
 ## other scripts
 
 ```shell
@@ -56,17 +43,17 @@ docker rm $(docker ps -aq)
 docker rmi -f $(docker images -aq)
 docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 docker images
-docker pull jsdrome/jsdrome.com
+docker pull jsdrome/jsdrome
 docker build
-docker run -p 9000:5000 jsdrome/jsdrome.com
+docker run -p 9000:5000 jsdrome/jsdrome
 docker push
 ```
 
 ## docker-compose
 
 ```shell
-docker-compose -f docker.yml up --build
-docker-compose -f docker.yml push
+docker-compose -f infra/docker/docker-compose.yml up --build
+docker-compose -f infra/docker/docker-compose.yml push
 ```
 
 ## heroku
@@ -165,7 +152,17 @@ helm rollback jsdrome 1
 
 ```shell
 terraform init
-terraform plan -out jsdrome
-terraform apply "jsdrome"
+terraform plan -out myplan
+terraform apply "myplan"
 terraform destroy
  ```
+
+# Configurables
+
+./.env/env.sh
+  - `PROJECT_NAME` used in `npm run build:helm`, `npm run uninstall:helm` and `Chart.yaml`
+  - `DOCKER_USER`, `DOCKER_PASS`, `DOCKER_IMAGE_NAME` for pushing to docker hub and in `values.yaml`
+  - `HEROKU_APP_NAME` and `HEROKU_API_KEY` for deploying in heroku
+
+.github/workflows/stage.yml
+  - Set environment variables

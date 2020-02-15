@@ -15,4 +15,4 @@ node_modules
 _dist
 infra/gcp/creds
 infra/gcp/.terraform
-infra/gcp/jsdrome
+infra/gcp/myplan

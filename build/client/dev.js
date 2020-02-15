@@ -3,14 +3,14 @@ const commonConfig = require('./common');
 const path = require('path');
 const rc = require('rc');
 
-const jsdromeConfig = rc('jsdrome');
+const config = rc('config');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
   devServer: {
-    contentBase: path.join(__dirname, `../../${jsdromeConfig.build.client.dist}`),
+    contentBase: path.join(__dirname, `../../${config.build.client.dist}`),
     compress: true,
-    port: jsdromeConfig.build.client.port,
+    port: config.build.client.port,
     writeToDisk: true,
     quiet: true,
   },

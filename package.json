@@ -1,5 +1,5 @@
 {
-  "name": "jsdrome.com",
+  "name": "jsdrome",
   "version": "1.0.0",
   "description": "Mentor driven open source transformation",
   "main": "index.js",
@@ -13,23 +13,20 @@
     "build:server:dev:watch": "webpack --env=server.dev --config=build --watch",
     "build:server:prod": "webpack --env=server.prod --config=build",
     "build:server:prod:watch": "webpack --env=server.prod --config=build --watch",
-    "build:docker": "docker-compose -f infra/docker/docker.yml up --build",
-    "build:helm": "helm install jsdrome infra/helm",
+    "build:docker": "docker-compose -f infra/docker/docker-compose.yml up --build",
+    "build:helm": "helm install $PROJECT_NAME infra/helm",
+    "uninstall:helm": "helm uninstall $PROJECT_NAME",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:scripts": "sh ./scripts/test-scripts.sh",
-    "deploy:docker": "sh ./scripts/deploy-docker.sh",
-    "deploy:heroku": "sh ./scripts/deploy-heroku.sh",
     "lint": "eslint .",
     "start": "node _dist",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" \"npm start\" -n client,server,nodemon -c blue,yellow,green"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsDrome/jsdrome.com.git"
+    "url": "git+https://github.com/jsDrome/jsdrome.git"
   },
   "keywords": [
-    "jsdrome",
-    "jsdrome.com",
     "mentor",
     "driven",
     "open",
@@ -39,9 +36,9 @@
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jsDrome/jsdrome.com/issues"
+    "url": "https://github.com/jsDrome/jsdrome/issues"
   },
-  "homepage": "https://github.com/jsDrome/jsdrome.com#readme",
+  "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

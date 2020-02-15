@@ -4,7 +4,7 @@ WORKDIR /opt/app
 
 ADD src /opt/app/src
 ADD build /opt/app/build
-ADD .jsdromerc /opt/app/.jsdromerc
+ADD .configrc /opt/app/.configrc
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
