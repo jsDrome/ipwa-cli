@@ -1,7 +1,10 @@
 {
   "name": "jsdrome",
   "version": "1.0.0",
+  "author": "Sreeram Padmanabhan",
+  "license": "ISC",
   "description": "Mentor driven open source transformation",
+  "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "main": "index.js",
   "scripts": {
     "build:client:dev": "webpack --env=client.dev --config=build",
@@ -23,23 +26,11 @@
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" \"npm start\" -n client,server,nodemon -c blue,yellow,green",
     "clean": "rimraf ./*.log _dist coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jsDrome/jsdrome.git"
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
-  "keywords": [
-    "mentor",
-    "driven",
-    "open",
-    "source",
-    "transformation"
-  ],
-  "author": "Sreeram Padmanabhan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jsDrome/jsdrome/issues"
-  },
-  "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -68,10 +59,19 @@
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsDrome/jsdrome.git"
+  },
+  "keywords": [
+    "mentor",
+    "driven",
+    "open",
+    "source",
+    "transformation"
+  ],
+  "bugs": {
+    "url": "https://github.com/jsDrome/jsdrome/issues"
   },
   "babel": {
     "presets": [
