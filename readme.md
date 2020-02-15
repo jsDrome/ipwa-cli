@@ -9,7 +9,7 @@
   - `CYPRESS_TOKEN` for uploading reports to Cypress.
   - `PERCY_TOKEN` for uploading reports to Percy.
 
-### .github/workflows/stage.yml
+### .github/workflows/build.yml
 
   - Set environment variables
 
