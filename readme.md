@@ -6,6 +6,8 @@
   - `DOCKER_USER`, `DOCKER_PASS`, `DOCKER_IMAGE_NAME` for pushing to docker hub and in `values.yaml`
   - `HEROKU_APP_NAME` and `HEROKU_API_KEY` for deploying in heroku
   - `CODECOV_TOKEN` for uploading reports to Codecov.
+  - `CYPRESS_TOKEN` for uploading reports to Cypress.
+  - `PERCY_TOKEN` for uploading reports to Percy.
 
 ### .github/workflows/stage.yml
 
@@ -15,6 +17,8 @@
 
   - `HEROKU_API_KEY`
   - `CODECOV_TOKEN`
+  - `CYPRESS_TOKEN`
+  - `PERCY_TOKEN`
 
 # Npm scripts
 
