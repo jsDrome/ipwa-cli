@@ -20,11 +20,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests
         run: |
-          if [ -f infra/docker/docker-compose.yml ]; then
-            docker-compose -f infra/docker/docker-compose.yml build
-          else
-            docker build . -f infra/docker/Dockerfile
-          fi
+          docker-compose -f infra/docker/docker-compose.yml build
 
   push_to_registry:
     needs: test_image
