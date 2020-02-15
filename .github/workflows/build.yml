@@ -1,4 +1,4 @@
-name: Basic Checks
+name: Build
 
 on: [push]
 
