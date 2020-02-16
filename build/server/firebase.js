@@ -8,7 +8,6 @@ module.exports = merge(prodConfig, {
   },
   plugins: [
     new CopyPlugin([
-      { from: 'package.json', to: 'package.json' },
       { from: '.configrc' },
     ]),
   ],

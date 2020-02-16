@@ -2,7 +2,7 @@
 
 # Configurables
 
-### ./.env/env.sh
+### Local environment variables
 
   - `PROJECT_NAME` used in `npm run build:helm`, `npm run uninstall:helm` and `Chart.yaml`
   - `DOCKER_USER`, `DOCKER_PASS`, `DOCKER_IMAGE_NAME` for pushing to docker hub and in `values.yaml`
@@ -12,17 +12,17 @@
   - `PERCY_TOKEN` for uploading reports to Percy.
   - `FIREBASE_TOKEN` for deploying to Firebase.
 
-### .github/workflows/build-master.yml
-
-  - Set environment variables
-
-### CI Environment Variables
+### CI Environment variables
 
   - `HEROKU_API_KEY`
   - `CODECOV_TOKEN`
   - `CYPRESS_TOKEN`
   - `PERCY_TOKEN`
   - `FIREBASE_TOKEN`
+
+### .github/workflows/build-master.yml
+
+  - Set environment variables
 
 # Npm scripts
 
