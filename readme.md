@@ -1,3 +1,5 @@
+![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
+
 # Configurables
 
 ### ./.env/env.sh
@@ -44,7 +46,32 @@ build:helm
 
 ```shell
 test
+test:watch
+test:codecov
+test:cypress:open
+test:cypress:run
+test:puppeteer
+test:percy
 test:scripts
+```
+
+## firebase scripts
+
+```shell
+firebase:serve
+firebase:shell
+firebase:start
+firebase:deploy
+```
+
+## expo scripts
+
+```shell
+expo:start
+expo:android
+expo:ios
+expo:web
+expo:eject
 ```
 
 ## other scripts
@@ -52,7 +79,9 @@ test:scripts
 ```shell
 start
 dev
+nodemon
 lint
+clean
 ```
 
 # Some common commands
