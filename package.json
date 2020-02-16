@@ -26,7 +26,7 @@
     "test:cypress:open": "cypress open --config-file=regression/cypress/cypress.json",
     "test:cypress:run": "cypress run --config-file=regression/cypress/cypress.json --record --key $CYPRESS_TOKEN",
     "test:puppeteer": "node regression/puppeteer/",
-    "test:percy": "percy exec -- node percy/",
+    "test:percy": "percy exec -- node regression/percy/",
     "test:scripts": "sh ./scripts/test-scripts.sh",
     "firebase:serve": "firebase serve",
     "firebase:shell": "firebase functions:shell",
