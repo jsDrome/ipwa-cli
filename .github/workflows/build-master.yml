@@ -33,7 +33,6 @@ jobs:
     - run: npm run build:server:prod
 
   stage_in_heroku:
-    needs: production_build
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
@@ -56,20 +55,20 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"
 
   regression_tests:
-    needs: stage_in_heroku
+    needs: [ production_build, stage_in_heroku ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: tests
         run: |
-          npm i cypress puppeteer @percy/script
+          npm i --optional
           npm run test:cypress:run
           npm run test:puppeteer
           npm run test:percy
 
   push_to_registry:
-    needs: regression_tests
+    needs: [ production_build, stage_in_heroku ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
@@ -99,10 +98,12 @@ jobs:
           docker push $IMAGE_ID:$VERSION
 
   activate_firebase:
-    needs: regression_tests
+    needs: [ production_build, stage_in_heroku ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: sh ./scripts/deploy-firebase.sh
+        run: |
+          npm ci --no-optional
+          sh ./scripts/deploy-firebase.sh

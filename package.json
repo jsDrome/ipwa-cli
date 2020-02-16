@@ -32,6 +32,7 @@
     "firebase:shell": "firebase functions:shell",
     "firebase:start": "npm run shell",
     "firebase:logs": "firebase functions:log",
+    "firebase:deploy": "firebase deploy --token $FIREBASE_TOKEN",
     "lint": "eslint .",
     "start": "cd _dist && node .",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
