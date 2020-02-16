@@ -42,7 +42,7 @@
     "start": "cd _dist && node .",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
     "nodemon": "cd _dist && nodemon index.js --watch _dist/index.js",
-    "clean": "rimraf ./*.log _dist coverage .firebase web-build"
+    "clean": "rimraf ./*.log _dist coverage .firebase .expo web-build"
   },
   "dependencies": {
     "expo": "^36.0.0",
