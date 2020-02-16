@@ -33,16 +33,16 @@
     "firebase:start": "npm run shell",
     "firebase:logs": "firebase functions:log",
     "firebase:deploy": "firebase deploy --token $FIREBASE_TOKEN",
-    "lint": "eslint .",
-    "start": "cd _dist && node .",
-    "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
-    "nodemon": "cd _dist && nodemon index.js --watch _dist/index.js",
-    "clean": "rimraf ./*.log _dist coverage .firebase",
     "expo:start": "expo start",
     "expo:android": "expo start --android",
     "expo:ios": "expo start --ios",
     "expo:web": "EXPO=true expo start --web",
-    "expo:eject": "expo eject"
+    "expo:eject": "expo eject",
+    "lint": "eslint .",
+    "start": "cd _dist && node .",
+    "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
+    "nodemon": "cd _dist && nodemon index.js --watch _dist/index.js",
+    "clean": "rimraf ./*.log _dist coverage .firebase web-build"
   },
   "dependencies": {
     "expo": "^36.0.0",
