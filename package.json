@@ -25,7 +25,7 @@
     "test:codecov": "codecov -t $CODECOV_TOKEN",
     "test:cypress:open": "cypress open --config-file=regression/cypress/cypress.json",
     "test:cypress:run": "cypress run --config-file=regression/cypress/cypress.json --record --key $CYPRESS_TOKEN",
-    "test:puppeteer": "node puppeteer/",
+    "test:puppeteer": "node regression/puppeteer/",
     "test:percy": "percy exec -- node percy/",
     "test:scripts": "sh ./scripts/test-scripts.sh",
     "firebase:serve": "firebase serve",
