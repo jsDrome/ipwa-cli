@@ -11,6 +11,7 @@ env:
   HEROKU_APP_NAME: jsdrome
   PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  CYPRESS_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
 
 jobs:
   production_build:
@@ -63,7 +64,7 @@ jobs:
       - name: tests
         run: |
           npm i cypress puppeteer @percy/script
-          npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+          npm run test:cypress:run
           npm run test:puppeteer
           npm run test:percy
 
