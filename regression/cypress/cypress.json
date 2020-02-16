@@ -1,0 +1,9 @@
+{
+  "projectId": "nuaag3",
+  "fixturesFolder": "regression/cypress/fixtures",
+  "integrationFolder": "regression/cypress/integration",
+  "pluginsFile": "regression/cypress/plugins/index.js",
+  "screenshotsFolder": "regression/cypress/screenshots",
+  "videosFolder": "regression/cypress/videos",
+  "supportFile": "regression/cypress/support/index.js"
+}
