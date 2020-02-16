@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - master
 
+env:
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
 jobs:
   production_build:
     runs-on: ubuntu-latest
@@ -20,6 +23,6 @@ jobs:
     - run: npm ci --no-optional
     - run: npm run lint
     - run: npm test
-    - run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
+    - run: npm run test:codedov
     - run: npm run build:client:prod
     - run: npm run build:server:prod
