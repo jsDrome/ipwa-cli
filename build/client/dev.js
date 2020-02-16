@@ -8,7 +8,7 @@ const config = rc('config');
 module.exports = merge(commonConfig, {
   mode: 'development',
   devServer: {
-    contentBase: path.join(__dirname, `../../${config.build.client.dist}`),
+    contentBase: path.join(__dirname, `../../_dist`),
     compress: true,
     port: config.build.client.port,
     writeToDisk: true,

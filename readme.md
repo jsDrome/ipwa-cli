@@ -10,7 +10,7 @@
   - `PERCY_TOKEN` for uploading reports to Percy.
   - `FIREBASE_TOKEN` for deploying to Firebase.
 
-### .github/workflows/build.yml
+### .github/workflows/build-master.yml
 
   - Set environment variables
 

@@ -1,15 +1,13 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const rc = require('rc');
-
-const config = rc('config');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
     index: './src/server/server.js',
   },
   output: {
-    path: path.resolve(__dirname, `../../${config.build.server.dist}`),
+    path: path.resolve(__dirname, `../../_dist`),
     libraryTarget: 'commonjs2',
   },
   module: {
@@ -23,6 +21,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin([
+      { from: 'build/templates/404.html' },
+    ]),
+  ],
   target: 'node',
   externals: nodeExternals(),
 };
