@@ -23,6 +23,6 @@ jobs:
     - run: npm ci --no-optional
     - run: npm run lint
     - run: npm test
-    - run: npm run test:codedov
+    - run: npm run test:codecov
     - run: npm run build:client:prod
     - run: npm run build:server:prod
