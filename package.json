@@ -185,7 +185,8 @@
       "react/jsx-closing-bracket-location": [
         "error",
         "after-props"
-      ]
+      ],
+      "eol-last": ["error", "always"]
     },
     "settings": {
       "react": {
