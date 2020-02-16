@@ -13,6 +13,6 @@ RUN npm run build:client:prod
 RUN npm run build:server:prod
 
 RUN rm -r src build
-RUN rm package.json package-lock.json
+RUN rm package-lock.json
 
-CMD [ "node", "_dist" ]
+CMD [ "npm", "start" ]

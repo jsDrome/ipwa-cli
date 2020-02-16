@@ -25,6 +25,9 @@ sh ./scripts/deploy-docker.sh
 # deploy to heroku
 sh ./scripts/deploy-heroku.sh
 
+# deploy to firebase
+sh ./scripts/deploy-firebase.sh
+
 # deploy in local kubernetes
 npm run build:helm
 npm run uninstall:helm

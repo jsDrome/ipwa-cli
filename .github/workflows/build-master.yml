@@ -10,6 +10,7 @@ env:
   DOCKER_IMAGE_NAME: jsdrome/jsdrome
   HEROKU_APP_NAME: jsdrome
   PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
 jobs:
   production_build:
@@ -95,3 +96,12 @@ jobs:
 
           docker tag $DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+
+  activate_firebase:
+    needs: regression_tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: sh ./scripts/deploy-firebase.sh

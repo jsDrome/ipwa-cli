@@ -5,10 +5,12 @@ const config = rc('config');
 const port = process.env.PORT || config.build.server.port;
 const app = express();
 
-app.use(express.static('_dist'));
-
 app.get('/server', (req, res) => {
-  res.send('Server Side');
+  res.send('Hello, from Server!');
 });
 
+app.use(express.static('.'));
+
 app.listen(port, () => console.log(`SERVER: Listening on port ${port}`));
+
+export default app;

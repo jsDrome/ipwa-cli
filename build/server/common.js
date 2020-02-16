@@ -9,7 +9,7 @@ module.exports = {
     index: './src/server/server.js',
   },
   output: {
-    path: path.resolve(__dirname, `../../${config.build.client.dist}`),
+    path: path.resolve(__dirname, `../../${config.build.server.dist}`),
     libraryTarget: 'commonjs2',
   },
   module: {

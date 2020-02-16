@@ -16,6 +16,7 @@
     "build:server:dev:watch": "webpack --env=server.dev --config=build --watch",
     "build:server:prod": "webpack --env=server.prod --config=build",
     "build:server:prod:watch": "webpack --env=server.prod --config=build --watch",
+    "build:server:firebase": "webpack --env=server.firebase --config=build",
     "build:docker": "docker-compose -f infra/docker/docker-compose.yml up --build",
     "build:helm": "helm install $PROJECT_NAME infra/helm",
     "uninstall:helm": "helm uninstall $PROJECT_NAME",
@@ -27,13 +28,20 @@
     "test:puppeteer": "node puppeteer/",
     "test:percy": "percy exec -- node percy/",
     "test:scripts": "sh ./scripts/test-scripts.sh",
+    "firebase:serve": "firebase serve",
+    "firebase:shell": "firebase functions:shell",
+    "firebase:start": "npm run shell",
+    "firebase:logs": "firebase functions:log",
     "lint": "eslint .",
-    "start": "node _dist",
-    "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" \"npm start\" -n client,server,nodemon -c blue,yellow,green",
-    "clean": "rimraf ./*.log _dist coverage"
+    "start": "cd _dist && node .",
+    "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" \"cd _dist && nodemon index.js\" -n client,server,nodemon -c blue,yellow,green",
+    "clean": "rimraf ./*.log _dist coverage .firebase"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "firebase-admin": "^8.9.2",
+    "firebase-functions": "^3.3.0",
+    "rc": "^1.2.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
@@ -45,30 +53,33 @@
     "@babel/preset-react": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@percy/script": "^1.0.3",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
-    "codecov": "^3.6.5",
     "concurrently": "^5.1.0",
-    "cypress": "^4.0.2",
+    "copy-webpack-plugin": "^5.1.1",
     "eslint": "^6.8.0",
     "eslint-plugin-cypress": "^2.10.1",
     "eslint-plugin-react": "^7.18.0",
     "esm": "^3.2.25",
+    "firebase-tools": "^7.13.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "nodemon": "^2.0.2",
-    "puppeteer": "^2.1.1",
-    "rc": "^1.2.8",
     "react-test-renderer": "^16.12.0",
-    "rimraf": "^3.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
+  },
+  "optionalDependencies": {
+    "@percy/script": "^1.0.3",
+    "codecov": "^3.6.5",
+    "cypress": "^4.0.2",
+    "nodemon": "^2.0.2",
+    "puppeteer": "^2.1.1",
+    "rimraf": "^3.0.2"
   },
   "repository": {
     "type": "git",
@@ -186,7 +197,10 @@
         "error",
         "after-props"
       ],
-      "eol-last": ["error", "always"]
+      "eol-last": [
+        "error",
+        "always"
+      ]
     },
     "settings": {
       "react": {
@@ -222,5 +236,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "engines": {
+    "node": "8"
   }
 }

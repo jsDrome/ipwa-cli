@@ -8,6 +8,7 @@
   - `CODECOV_TOKEN` for uploading reports to Codecov.
   - `CYPRESS_TOKEN` for uploading reports to Cypress.
   - `PERCY_TOKEN` for uploading reports to Percy.
+  - `FIREBASE_TOKEN` for deploying to Firebase.
 
 ### .github/workflows/build.yml
 
@@ -19,6 +20,7 @@
   - `CODECOV_TOKEN`
   - `CYPRESS_TOKEN`
   - `PERCY_TOKEN`
+  - `FIREBASE_TOKEN`
 
 # Npm scripts
 
