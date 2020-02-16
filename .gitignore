@@ -17,7 +17,7 @@ infra/gcp/creds
 infra/gcp/.terraform
 infra/gcp/myplan
 coverage
-regression/puppeteer/screenshots/*.png
-regression/cypress/videos
+tests/puppeteer/screenshots/*.png
+tests/cypress/videos
 # Firebase
 .firebase
