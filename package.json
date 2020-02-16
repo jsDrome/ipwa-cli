@@ -235,6 +235,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run clean && npm run lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
