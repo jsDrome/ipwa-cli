@@ -5,7 +5,7 @@
   "license": "ISC",
   "description": "Mentor driven open source transformation",
   "homepage": "https://github.com/jsDrome/jsdrome#readme",
-  "main": "index.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "build:client:dev": "webpack --env=client.dev --config=build",
     "build:client:dev:watch": "webpack --env=client.dev --config=build --watch",
@@ -37,15 +37,23 @@
     "start": "cd _dist && node .",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
     "nodemon": "cd _dist && nodemon index.js --watch _dist/index.js",
-    "clean": "rimraf ./*.log _dist coverage .firebase"
+    "clean": "rimraf ./*.log _dist coverage .firebase",
+    "expo:start": "expo start",
+    "expo:android": "expo start --android",
+    "expo:ios": "expo start --ios",
+    "expo:web": "EXPO=true expo start --web",
+    "expo:eject": "expo eject"
   },
   "dependencies": {
+    "expo": "^36.0.0",
     "express": "^4.17.1",
     "firebase-admin": "^8.9.2",
     "firebase-functions": "^3.3.0",
     "rc": "^1.2.8",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-web": "^0.11.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -58,6 +66,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-expo": "^8.0.0",
     "codecov": "^3.6.5",
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "^5.1.1",
