@@ -7,7 +7,7 @@ on:
 
 env:
 
-  PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+  PROJECT_NAME: jsdrome
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -149,6 +149,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: jsDrome
+          scope: jsdrome
       # - run: npm ci
       - run: npm publish
