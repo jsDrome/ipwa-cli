@@ -142,7 +142,7 @@ jobs:
           npm publish
 
   publish-gpr:
-    needs: [ publish ]
+    needs: [ publish-npm ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
