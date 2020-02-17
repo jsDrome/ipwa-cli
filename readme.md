@@ -2,7 +2,7 @@
 
 # Configuration
 
-1. Set environment secrets in CI
+Set the following secrets in Github and you are good to go.
 
   - `PROJECT_NAME`
   - `DOCKER_USER`
@@ -14,66 +14,67 @@
   - `CYPRESS_TOKEN`
   - `PERCY_TOKEN`
   - `FIREBASE_TOKEN`
-  - `GITHUB_TOKEN`
-
-2. Set environment variables in `.github/workflows/build-master.yml`
 
 # Npm scripts
 
-## build scripts
+## Build scripts
 
 ```shell
-build:client:dev
-build:client:dev:watch
-build:client:devserver
-build:client:prod
-build:client:prod:watch
-build:server:dev
-build:server:dev:watch
-build:server:prod
-build:server:prod:watch
-build:docker
-build:helm
+  build:client:dev
+  build:client:dev:watch
+  build:client:devserver
+  build:client:prod
+  build:client:prod:watch
+  build:server:dev
+  build:server:dev:watch
+  build:server:prod
+  build:server:prod:watch
+  build:server:firebase
+  build:docker
+  build:helm
+  build:helm:uninstall
 ```
 
-## test scripts
+## Test scripts
 
 ```shell
-test
-test:watch
-test:codecov
-test:cypress:open
-test:cypress:run
-test:puppeteer
-test:percy
-test:scripts
+  test
+  test:watch
+  test:codecov
+  test:cypress:open
+  test:cypress:run
+  test:puppeteer
+  test:percy
+  test:scripts
 ```
 
-## firebase scripts
+## Firebase scripts
 
 ```shell
-firebase:serve
-firebase:shell
-firebase:start
-firebase:deploy
+  firebase:serve
+  firebase:shell
+  firebase:start
+  firebase:logs
+  firebase:deploy
 ```
 
-## expo scripts
+## Expo scripts
 
 ```shell
-expo:start
-expo:android
-expo:ios
-expo:web
-expo:eject
+  expo:start
+  expo:android
+  expo:ios
+  expo:web
+  expo:eject
 ```
 
-## other scripts
+## Other scripts
 
 ```shell
-start
-dev
-nodemon
-lint
-clean
+  start
+  dev
+  nodemon
+  lint
+  clean
+  release
 ```

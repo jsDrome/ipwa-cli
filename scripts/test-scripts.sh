@@ -45,6 +45,6 @@ sh ./scripts/deploy-firebase.sh
 # deploy in local kubernetes
 printf "${GREEN} Deploying to minikube${NC}\n"
 npm run build:helm
-npm run uninstall:helm
+npm run build:helm:uninstall
 
 printf "${GREEN} Success!${NC}\n"
