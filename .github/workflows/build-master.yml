@@ -112,3 +112,16 @@ jobs:
         run: |
           npm ci --no-optional
           sh ./scripts/deploy-firebase.sh
+
+  release:
+    needs: [ activate_firebase ]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Git tag
+        run: |
+          git config user.email "hi@jsdrome.com"
+          git config user.name "jsDromeBot"
+          npm install --no-optional
+          npm run release -- --ci minor
