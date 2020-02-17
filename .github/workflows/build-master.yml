@@ -141,6 +141,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       # - run: npm ci
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${NPM_TOKEN}
 
   # publish-gpr:
   #   runs-on: ubuntu-latest
