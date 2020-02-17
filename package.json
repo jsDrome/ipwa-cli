@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
-  "description": "Mother of all boilerplates",
+  "description": "The mother of all boilerplates",
   "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -283,7 +283,7 @@
       "commitMessage": "release: ${version}",
       "commitArgs": "",
       "tag": true,
-      "tagName": "${version}",
+      "tagName": "v${version}",
       "tagAnnotation": "Release ${version}",
       "tagArgs": "",
       "push": true,
