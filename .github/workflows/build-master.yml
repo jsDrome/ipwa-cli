@@ -136,16 +136,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-        npm publish
+      - name: npm publish
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          npm publish
 
   publish-gpr:
     needs: [ publish ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - run: npm ci
-      - run: |
-        echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
-        npm publish
+      - name: github publish
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
+          npm publish
