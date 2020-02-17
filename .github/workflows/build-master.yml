@@ -136,24 +136,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      # - run: npm ci
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ${NPM_CONFIG_USERCONFIG}
-      - run: npm publish
+      - run: |
+        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        npm publish
 
   publish-gpr:
-    # needs: [ release_semver ]
+    needs: [ publish ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@jsdrome'
       # - run: npm ci
-      - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > ${NPM_CONFIG_USERCONFIG}
-      - run: npm publish
+      - run: |
+        echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
+        npm publish
