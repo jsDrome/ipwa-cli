@@ -131,23 +131,25 @@ jobs:
           npm install --no-optional
           npm run release -- --ci minor
 
-  publish-npm:
-    # needs: [ release_semver ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: npm publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          npm publish
+  # publish-npm:
+  #   # needs: [ release_semver ]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: npm publish
+  #       run: |
+  #         echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+  #         npm publish
 
   publish-gpr:
-    # needs: [ publish-npm ]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: github publish
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
-          cat .npmrc
-          npm publish
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: jsdrome
+      # - run: npm ci
+      - run: npm publish
