@@ -1,7 +1,0 @@
-version: '3'
-services:
-  heroku:
-    build:
-      context: ../..
-      dockerfile: infra/docker/Dockerfile
-    image: registry.heroku.com/${HEROKU_APP_NAME}/web

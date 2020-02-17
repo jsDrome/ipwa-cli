@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
-  "description": "Mentor driven open source transformation",
+  "description": "Mother of all boilerplates",
   "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
