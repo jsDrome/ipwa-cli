@@ -14,6 +14,7 @@ Set the following secrets in Github and you are good to go.
   - `CYPRESS_TOKEN`
   - `PERCY_TOKEN`
   - `FIREBASE_TOKEN`
+  - `NPM_TOKEN`
 
 # Npm scripts
 

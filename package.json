@@ -290,5 +290,11 @@
       "pushArgs": "--follow-tags",
       "pushRepo": "origin"
     }
-  }
+  },
+  "bin": {
+    "jsdrome": "./cli.js"
+  },
+  "files": [
+    "cli.js"
+  ]
 }
