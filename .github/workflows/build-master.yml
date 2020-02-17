@@ -132,7 +132,7 @@ jobs:
           npm run release -- --ci minor
 
   publish-npm:
-    needs: [ release_semver ]
+    # needs: [ release_semver ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -142,9 +142,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       # - run: npm ci
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${NPM_TOKEN}
 
   publish-gpr:
-    needs: [ release_semver ]
+    # needs: [ release_semver ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -155,3 +157,5 @@ jobs:
           scope: '@jsdrome'
       # - run: npm ci
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${GITHUB_TOKEN}

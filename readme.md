@@ -1,5 +1,11 @@
 ![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
 
+# Setup
+
+```shell
+npm i -g jsdrome
+```
+
 # Configuration
 
 Set the following secrets in Github and you are good to go.
