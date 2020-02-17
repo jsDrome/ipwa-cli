@@ -141,7 +141,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       # - run: npm ci
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ${NPM_CONFIG_USERCONFIG}
       - run: npm publish
 
   publish-gpr:
@@ -155,5 +155,5 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@jsdrome'
       # - run: npm ci
-      - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > ${NPM_CONFIG_USERCONFIG}
       - run: npm publish
