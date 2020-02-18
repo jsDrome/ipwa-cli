@@ -8,7 +8,7 @@ ADD .configrc /opt/app/.configrc
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
-RUN npm ci
+RUN npm i
 RUN npm run build:client:prod
 RUN npm run build:server:prod
 
