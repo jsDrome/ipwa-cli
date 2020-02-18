@@ -294,10 +294,10 @@
     }
   },
   "bin": {
-    "jsdrome": "./cli.sh"
+    "jsdrome": "./cli.js"
   },
   "files": [
-    "cli.sh"
+    "cli.js"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@jsDrome"
