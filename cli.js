@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env node
 /* eslint-disable no-magic-numbers */
 
 const { exec } = require('child_process');

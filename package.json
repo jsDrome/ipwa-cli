@@ -298,8 +298,5 @@
   },
   "files": [
     "cli.js"
-  ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@jsDrome"
-  }
+  ]
 }
