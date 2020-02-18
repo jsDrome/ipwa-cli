@@ -117,21 +117,21 @@ jobs:
           npm i
           sh ./scripts/deploy-firebase.sh
 
-  release_semver:
-    needs: [ production_build, stage_in_heroku, regression_tests ]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Git tag
-        run: |
-          git config user.email "hi@jsdrome.com"
-          git config user.name "jsDromeBot"
-          npm i
-          npm run release -- --ci minor
+  # release_semver:
+  #   needs: [ production_build, stage_in_heroku, regression_tests ]
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'push'
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Git tag
+  #       run: |
+  #         git config user.email "hi@jsdrome.com"
+  #         git config user.name "jsDromeBot"
+  #         npm i
+  #         npm run release -- --ci minor
 
   publish-npm:
-    needs: [ release_semver ]
+    needs: [ production_build, stage_in_heroku, regression_tests ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -146,6 +146,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           registry-url: 'https://npm.pkg.github.com'
-      - run: npm publish
+      - run: |
+          git config user.email "hi@jsdrome.com"
+          git config user.name "jsDromeBot"
+          npm i
+          npm run release -- --ci minor
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
