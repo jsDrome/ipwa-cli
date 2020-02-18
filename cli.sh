@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ARG=$1
-CURRENT_VERSION=$(npm run version --silent)
+CURRENT_VERSION=`node -p "require('./package.json').version"`
 
 if [ "$1" = "" ]; then
   echo 'No folder name provided!'

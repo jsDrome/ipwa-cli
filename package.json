@@ -288,6 +288,9 @@
       "push": true,
       "pushArgs": "--follow-tags",
       "pushRepo": "origin"
+    },
+    "hooks": {
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     }
   },
   "bin": {
