@@ -1,26 +1,17 @@
 #!/usr/bin/env node
 /* eslint-disable no-magic-numbers */
 
+/* eslint-disable global-require */
+
 const { exec } = require('child_process');
 const fs = require('fs');
+const ora = require('ora');
+const chalk = require('chalk');
 
+const spinner = ora('Initialising jsDrome').start();
 const folderName = process.argv.slice(2)[0] || 'jsdrome';
 
-exec(`mkdir ${folderName} && wget -c https://github.com/jsDrome/jsDrome/tarball/master -O - | tar -xz - -C ${folderName} --strip-components=1`, (err, stdout, stderr) => {
-  if (err) {
-    //some err occurred
-    console.error(err)
-  } else {
-    overWritePackage();
-    // the *entire* stdout and stderr (buffered)
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
-  }
-});
-
 const overWritePackage = () => {
-  // exec(`rm ${folderName}/package-lock.json`);
-  // eslint-disable-next-line global-require
   const packageJson = require(`./${folderName}/package.json`);
 
   packageJson.name = folderName;
@@ -30,3 +21,20 @@ const overWritePackage = () => {
 
   fs.writeFileSync(`${folderName}/package.json`, JSON.stringify(packageJson, null, "  "));
 };
+
+setTimeout(() => {
+  spinner.color = 'yellow';
+  spinner.text = 'Initializing jsDrome';
+}, 1000);
+
+exec(`tar xf jsdrome.tar.gz && mv jsDrome-master ${folderName}`, () => {
+  setTimeout(() => {
+    spinner.color = 'green';
+    spinner.text = 'Installing dependencies';
+  }, 1000);
+  overWritePackage();
+  exec(`npm ci --prefix ${folderName}`, () => {
+    spinner.stop();
+    console.log(chalk.blue('Done!'));
+  });
+});

@@ -51,7 +51,10 @@
     "start": "cd _dist && node .",
     "version": "echo $npm_package_version"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "ora": "^4.0.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -302,6 +305,7 @@
     "jsdrome": "./cli.js"
   },
   "files": [
-    "cli.js"
+    "cli.js",
+    "jsdrome.tar.gz"
   ]
 }
