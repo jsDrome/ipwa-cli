@@ -1,6 +1,33 @@
 ![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
 
-# Setup Project
+⭐️ Star us on GitHub — it helps!
+
+# jsDrome
+
+Create Web/Native Apps with:
+
+1. Frontend in React
+2. Backend in Node
+3. Native in Expo
+4. Isomorphic Web Apps
+5. Progressive Web Apps
+6. Unit testing using Jest
+7. Code coverage reports using Codecov
+8. Regression testing using Cypress, Puppeteer & Percy
+9. Docker containers
+10. Helm charts deployable in a Kubernetes Cluster
+11. Fully automated pipeline using Github actions
+12. Deployable in Dockerhub and Github Container Registry
+13. Deployable in Google Container Registry using Terraform(WIP)
+14. Publishable as an npm package
+15. Integrated with Google Analytics
+16. Integrated with Sentry
+
+## How this works
+
+All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is magic.
+
+## Setup Project
 
 1. Install jsDrome
 
@@ -14,7 +41,7 @@ npm i -g jsdrome
 jsdrome my-app
 ```
 
-# Run locally
+## Run locally
 
 Make sure npm dependencies are installed.
 
@@ -37,7 +64,7 @@ Make sure npm dependencies are installed.
   build:server:firebase
 ```
 
-# Run as docker container
+## Run as docker container
 
 - Set the following environment variables locally.
   - `DOCKER_IMAGE_NAME`
@@ -46,7 +73,7 @@ Make sure npm dependencies are installed.
 npm run build-docker
 ```
 
-# Run as Helm app
+## Run as Helm app
 
 Make sure minikube and helm are installed.
 
@@ -57,17 +84,17 @@ Run locally:
   build:helm:uninstall
 ```
 
-# Setup Jest
+## Setup Jest
 
 ```shell
 npm run test
 ```
 
-# Setup Github actions
+## Setup Github actions
 
 Set up the secrets given in the sections below and you're good to go.
 
-# Setup Codecov
+## Setup Codecov
 
 - Sign up in Codecov and integrate it with your project.
 - Set the following environment variables locally.
@@ -81,7 +108,7 @@ npm run test:codecov
 
 Run in CI: See workflow file.
 
-# Setup Cypress
+## Setup Cypress
 
 - Sign up in Cypress and integrate it with your project.
 - Set the following environment variables locally.
@@ -94,7 +121,7 @@ npm run test:cypress:run
 ```
 Run in CI: See workflow file.
 
-# Setup Percy
+## Setup Percy
 
 - Sign up in Percy and integrate it with your project.
 - Set the following environment variables locally.
@@ -107,7 +134,7 @@ npm run test:percy
 ```
 Run in CI: See workflow file.
 
-# Setup Puppeteer
+## Setup Puppeteer
 
 Run locally:
 
@@ -118,7 +145,7 @@ npm run test:puppeteer
 Run in CI: See workflow file.
 
 
-# Setup Heroku Deployment
+## Setup Heroku Deployment
 
 - Sign up in Heroku and create a new app.
 - Set the following environment variables locally as well as as a Github secret.
@@ -134,7 +161,7 @@ npm run deploy:heroku
 ```
 Run in CI: See workflow file.
 
-# Setup Firebase deployment
+## Setup Firebase deployment
 
 - Sign up in Firebase and integrate it with your project.
 - Set the following environment variables locally.
@@ -147,19 +174,19 @@ npm run deploy:firebase
 ```
 Run in CI: See workflow file.
 
-# Setup Github Container Registry release
+## Setup Github Container Registry release
 
 Run locally: -
 
 Run in CI: See workflow file.
 
-# Setup Dockerhub Container Registry release
+## Setup Dockerhub Container Registry release
 
 Run locally: -
 
 Run in CI: See workflow file.
 
-# Setup npm publishing
+## Setup npm publishing
 
 - Sign up in npm and integrate it with your project.
 - Set the following environment secret.
@@ -169,7 +196,7 @@ Run locally: -
 
 Run in CI: See workflow file.
 
-# Setup Expo
+## Setup Expo
 
 Run locally:
 
