@@ -1,9 +1,12 @@
 /* eslint-disable no-magic-numbers */
 /// <reference types="cypress" />
+const rc = require('rc');
+
+const { env: { STAGE_URL } } = rc('config');
 
 context('Viewport', () => {
   beforeEach(() => {
-    cy.visit('https://jsdrome.com')
+    cy.visit(STAGE_URL)
   })
 
   it('cy.viewport() - set the viewport size and dimension', () => {

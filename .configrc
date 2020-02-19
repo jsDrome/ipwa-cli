@@ -6,5 +6,8 @@
     "server": {
       "port": 5001
     }
+  },
+  "env": {
+    "STAGE_URL": "https://jsdrome.herokuapp.com"
   }
 }
