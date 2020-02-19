@@ -8,21 +8,21 @@
 npm i -g jsdrome
 ```
 
-2. Create a new jsdrome app.
+2. Spawn a new jsdrome app.
 
 ```shell
 jsdrome my-app
-cd my-app
-npm i
 ```
 
 # Run locally
+
+Make sure npm dependencies are installed.
 
 `npm run dev` in one shell,
 
 `npm run nodemon` in another.
 
-### Build scripts
+### Other build scripts
 
 ```shell
   build:client:dev
@@ -43,7 +43,18 @@ npm i
   - `DOCKER_IMAGE_NAME`
 
 ```shell
-`npm run build-docker`
+npm run build-docker
+```
+
+# Run as Helm app
+
+Make sure minikube and helm are installed.
+
+Run locally:
+
+```shell
+  build:helm
+  build:helm:uninstall
 ```
 
 # Setup Jest
@@ -52,15 +63,23 @@ npm i
 npm run test
 ```
 
+# Setup Github actions
+
+Set up the secrets given in the sections below and you're good to go.
+
 # Setup Codecov
 
 - Sign up in Codecov and integrate it with your project.
 - Set the following environment variables locally.
   - `CODECOV_TOKEN`
 
+Run locally:
+
 ```shell
 npm run test:codecov
 ```
+
+Run in CI: See workflow file.
 
 # Setup Cypress
 
@@ -68,9 +87,12 @@ npm run test:codecov
 - Set the following environment variables locally.
   - `CYPRESS_TOKEN`
 
+Run locally:
+
 ```shell
 npm run test:cypress:run
 ```
+Run in CI: See workflow file.
 
 # Setup Percy
 
@@ -78,38 +100,23 @@ npm run test:cypress:run
 - Set the following environment variables locally.
   - `PERCY_TOKEN`
 
+Run locally:
+
 ```shell
 npm run test:percy
 ```
+Run in CI: See workflow file.
 
 # Setup Puppeteer
+
+Run locally:
 
 ```shell
 npm run test:puppeteer
 ```
 
-# Setup Expo
+Run in CI: See workflow file.
 
-```shell
-  expo:start
-  expo:android
-  expo:ios
-  expo:web
-  expo:eject
-```
-
-# Setup Helm
-
-Make sure minikube and helm are installed.
-
-```shell
-  build:helm
-  build:helm:uninstall
-```
-
-# Setup Github actions
-
-Set up the secrets given in the sections below and you're good to go.
 
 # Setup Heroku Deployment
 
@@ -120,13 +127,12 @@ Set up the secrets given in the sections below and you're good to go.
   - `HEROKU_APP_NAME`
   - `HEROKU_API_KEY`
 
-Deploy locally:
+Run locally:
 
 ```shell
 npm run deploy:heroku
 ```
-
-Deploy in CI: See workflow file.
+Run in CI: See workflow file.
 
 # Setup Firebase deployment
 
@@ -134,37 +140,43 @@ Deploy in CI: See workflow file.
 - Set the following environment variables locally.
   - `FIREBASE_TOKEN`
 
-Deploy locally:
+Run locally:
 
 ```shell
 npm run deploy:firebase
 ```
-
-Deploy in CI: See workflow file.
-
-### Firebase scripts
-
-```shell
-  firebase:serve
-  firebase:shell
-  firebase:start
-  firebase:logs
-  firebase:deploy
-```
+Run in CI: See workflow file.
 
 # Setup Github Container Registry release
 
-Deploy in CI: See workflow file.
+Run locally: -
+
+Run in CI: See workflow file.
 
 # Setup Dockerhub Container Registry release
 
-Deploy in CI: See workflow file.
+Run locally: -
 
-# Setup Npm publishing
+Run in CI: See workflow file.
+
+# Setup npm publishing
 
 - Sign up in npm and integrate it with your project.
 - Set the following environment secret.
   - `NPM_TOKEN`
 
-Deploy in CI: See workflow file.
+Run locally: -
 
+Run in CI: See workflow file.
+
+# Setup Expo
+
+Run locally:
+
+```shell
+  expo:start
+  expo:android
+  expo:ios
+  expo:web
+  expo:eject
+```
