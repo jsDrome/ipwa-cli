@@ -1,4 +1,4 @@
-![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
+![Pipeline](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
 
 ⭐️ Star us on GitHub — it helps!
 
@@ -157,7 +157,7 @@ Run in CI: See workflow file.
 Run locally:
 
 ```shell
-npm run deploy:heroku
+npm run release:heroku
 ```
 Run in CI: See workflow file.
 
@@ -170,7 +170,7 @@ Run in CI: See workflow file.
 Run locally:
 
 ```shell
-npm run deploy:firebase
+npm run release:firebase
 ```
 Run in CI: See workflow file.
 

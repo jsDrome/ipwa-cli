@@ -1,3 +1,8 @@
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+printf "${GREEN}Heroku Stage${NC}\n"
+
 echo ${HEROKU_API_KEY} | docker login --username=_ --password-stdin registry.heroku.com
 docker-compose -f infra/docker/docker-compose.yml build
 docker tag ${DOCKER_IMAGE_NAME} registry.heroku.com/${HEROKU_APP_NAME}/web

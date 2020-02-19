@@ -6,7 +6,6 @@ on:
       - master
 
 env:
-
   PROJECT_NAME: jsdrome
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
@@ -21,114 +20,84 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-
-  production_build:
+  sanity_check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x]
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i
-    - run: npm run lint
-    - run: npm test
-    - run: npm run test:codecov
-    - run: npm run build:client:prod
-    - run: npm run build:server:prod
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm i
+      - name: Sanity Checks
+        run: sh ./scripts/sanity_check.sh
 
-  stage_in_heroku:
+  release_heroku:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    needs: [sanity_check]
     steps:
       - uses: actions/checkout@v2
-      - name: Heroku docker push
-        run: |
-          sh ./scripts/deploy-heroku.sh
+      - name: Heroku Staging
+        run: sh ./scripts/release_heroku.sh
 
   regression_tests:
-    needs: [ production_build, stage_in_heroku ]
+    needs: [sanity_check, release_heroku]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
-      - name: cypress, puppeteer, percy
+      - name: Regression Tests
         run: |
-          npm i --optional
-          npm run test:cypress:run
-          npm run test:puppeteer
-          npm run test:percy
+          npm i
+          sh ./scripts/regression_tests.sh
 
   release_github:
-    needs: [ production_build, stage_in_heroku, regression_tests ]
+    needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: Build docker image
         run: docker-compose -f infra/docker/docker-compose.yml build
-      - name: Log into github registry
+      - name: Log into Github registry
         run: echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: Github docker push
+      - name: Push to Github Container Registry
         run: |
           REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           IMAGE_ID=docker.pkg.github.com/$REPO/$PROJECT_NAME
-
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
-
-          echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-
           docker tag $DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
   release_dockerhub:
-    needs: [ production_build, stage_in_heroku, regression_tests ]
+    needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker-compose -f infra/docker/docker-compose.yml build
-      - name: Log into github registry
-        run: echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: Dockerhub docker push
-        run: |
-          sh ./scripts/deploy-docker.sh
+      - name: Push to Dockerhub Container Registry
+        run: sh ./scripts/release_dockerhub.sh
 
   release_firebase:
-    needs: [ production_build, stage_in_heroku, regression_tests ]
+    needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: Cloud functions
         run: |
           npm i
-          sh ./scripts/deploy-firebase.sh
+          sh ./scripts/release_firebase.sh
 
-  publish-npm:
-    needs: [ production_build, stage_in_heroku, regression_tests ]
+  release_npm:
+    needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          git config user.email "hi@jsdrome.com"
-          git config user.name "jsDromeBot"
-          npm i
-          npm run release -- --ci minor
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm publish --access public
-
-        # echo "//npm.pkg.github.com/@jsdrome:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-        # npm publish
+      - name: Publish package to npm
+        run: sh ./scripts/release_npm.sh

@@ -1,11 +1,11 @@
 const fs = require('fs');
 
-const { name, dependencies, engines } = require('../package.json');
+const { name, devDependencies, engines } = require('../package.json');
 
 const newPackage = {
   name,
   main: "index.js",
-  dependencies,
+  dependencies: devDependencies,
   engines,
 };
 
