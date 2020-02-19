@@ -25,7 +25,7 @@ Create Web/Native Apps with:
 
 ## How this works
 
-All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is magic.
+All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is all magic. When you push code, it will just be deployed everywhere in 10 minutes after a series of checks.
 
 ## Setup Project
 
@@ -41,7 +41,13 @@ npm i -g jsdrome
 jsdrome my-app
 ```
 
-## Run locally
+3. You need to sign up for: Codecov, Cypress, Percy, Dockerhub, Heroku, Firebase and npm and get the respective tokens.
+
+4. Set the environment secrets in Github.
+
+5. Push
+
+## Run locally normally
 
 Make sure npm dependencies are installed.
 
@@ -49,22 +55,7 @@ Make sure npm dependencies are installed.
 
 `npm run nodemon` in another.
 
-### Other build scripts
-
-```shell
-  build:client:dev
-  build:client:dev:watch
-  build:client:devserver
-  build:client:prod
-  build:client:prod:watch
-  build:server:dev
-  build:server:dev:watch
-  build:server:prod
-  build:server:prod:watch
-  build:server:firebase
-```
-
-## Run as docker container
+## Run locally as a docker container
 
 - Set the following environment variables locally.
   - `DOCKER_IMAGE_NAME`
@@ -73,18 +64,18 @@ Make sure npm dependencies are installed.
 npm run build-docker
 ```
 
-## Run as Helm app
+## Run locally as a helm app
 
 Make sure minikube and helm are installed.
 
 Run locally:
 
 ```shell
-  build:helm
-  build:helm:uninstall
+npm run build:helm
+npm run build:helm:uninstall
 ```
 
-## Setup Jest
+## Run unit tests locally
 
 ```shell
 npm run test
@@ -92,12 +83,12 @@ npm run test
 
 ## Setup Github actions
 
-Set up the secrets given in the sections below and you're good to go.
+Set up the secrets given in the sections below.
 
 ## Setup Codecov
 
 - Sign up in Codecov and integrate it with your project.
-- Set the following environment variables locally.
+- Set the following environment secrets.
   - `CODECOV_TOKEN`
 
 Run locally:
@@ -111,7 +102,7 @@ Run in CI: See workflow file.
 ## Setup Cypress
 
 - Sign up in Cypress and integrate it with your project.
-- Set the following environment variables locally.
+- Set the following environment secrets.
   - `CYPRESS_TOKEN`
 
 Run locally:
@@ -124,7 +115,7 @@ Run in CI: See workflow file.
 ## Setup Percy
 
 - Sign up in Percy and integrate it with your project.
-- Set the following environment variables locally.
+- Set the following environment secrets.
   - `PERCY_TOKEN`
 
 Run locally:
@@ -144,11 +135,10 @@ npm run test:puppeteer
 
 Run in CI: See workflow file.
 
-
 ## Setup Heroku Deployment
 
 - Sign up in Heroku and create a new app.
-- Set the following environment variables locally as well as as a Github secret.
+- Set the following environment secrets.
 
   - `DOCKER_IMAGE_NAME`
   - `HEROKU_APP_NAME`
@@ -201,9 +191,9 @@ Run in CI: See workflow file.
 Run locally:
 
 ```shell
-  expo:start
-  expo:android
-  expo:ios
-  expo:web
-  expo:eject
+expo:start
+expo:android
+expo:ios
+expo:web
+expo:eject
 ```
