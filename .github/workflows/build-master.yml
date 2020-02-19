@@ -102,7 +102,7 @@ jobs:
         run: docker-compose -f infra/docker/docker-compose.yml build
       - name: Log into github registry
         run: echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: Github docker push
+      - name: Dockerhub docker push
         run: |
           sh ./scripts/deploy-docker.sh
 

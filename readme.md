@@ -1,30 +1,28 @@
 ![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
 
-# Setup
+# Setup Project
+
+1. Install jsDrome
 
 ```shell
 npm i -g jsdrome
 ```
 
-# Configuration
+2. Create a new jsdrome app.
 
-Set the following secrets in Github and you are good to go.
+```shell
+jsdrome my-app
+cd my-app
+npm i
+```
 
-  - `PROJECT_NAME`
-  - `DOCKER_USER`
-  - `DOCKER_PASS`
-  - `DOCKER_IMAGE_NAME`
-  - `HEROKU_APP_NAME`
-  - `HEROKU_API_KEY`
-  - `CODECOV_TOKEN`
-  - `CYPRESS_TOKEN`
-  - `PERCY_TOKEN`
-  - `FIREBASE_TOKEN`
-  - `NPM_TOKEN`
+# Run locally
 
-# Npm scripts
+`npm run dev` in one shell,
 
-## Build scripts
+`npm run nodemon` in another.
+
+### Build scripts
 
 ```shell
   build:client:dev
@@ -37,35 +35,60 @@ Set the following secrets in Github and you are good to go.
   build:server:prod
   build:server:prod:watch
   build:server:firebase
-  build:docker
-  build:helm
-  build:helm:uninstall
 ```
 
-## Test scripts
+# Run as docker container
+
+- Set the following environment variables locally.
+  - `DOCKER_IMAGE_NAME`
 
 ```shell
-  test
-  test:watch
-  test:codecov
-  test:cypress:open
-  test:cypress:run
-  test:puppeteer
-  test:percy
-  test:scripts
+`npm run build-docker`
 ```
 
-## Firebase scripts
+# Setup Jest
 
 ```shell
-  firebase:serve
-  firebase:shell
-  firebase:start
-  firebase:logs
-  firebase:deploy
+npm run test
 ```
 
-## Expo scripts
+# Setup Codecov
+
+- Sign up in Codecov and integrate it with your project.
+- Set the following environment variables locally.
+  - `CODECOV_TOKEN`
+
+```shell
+npm run test:codecov
+```
+
+# Setup Cypress
+
+- Sign up in Cypress and integrate it with your project.
+- Set the following environment variables locally.
+  - `CYPRESS_TOKEN`
+
+```shell
+npm run test:cypress:run
+```
+
+# Setup Percy
+
+- Sign up in Percy and integrate it with your project.
+- Set the following environment variables locally.
+  - `PERCY_TOKEN`
+
+```shell
+npm run test:percy
+```
+
+# Setup Puppeteer
+
+```shell
+npm run test:puppeteer
+```
+
+# Setup Expo
 
 ```shell
   expo:start
@@ -75,13 +98,73 @@ Set the following secrets in Github and you are good to go.
   expo:eject
 ```
 
-## Other scripts
+# Setup Helm
+
+Make sure minikube and helm are installed.
 
 ```shell
-  start
-  dev
-  nodemon
-  lint
-  clean
-  release
+  build:helm
+  build:helm:uninstall
 ```
+
+# Setup Github actions
+
+Set up the secrets given in the sections below and you're good to go.
+
+# Setup Heroku Deployment
+
+- Sign up in Heroku and create a new app.
+- Set the following environment variables locally as well as as a Github secret.
+
+  - `DOCKER_IMAGE_NAME`
+  - `HEROKU_APP_NAME`
+  - `HEROKU_API_KEY`
+
+Deploy locally:
+
+```shell
+npm run deploy:heroku
+```
+
+Deploy in CI: See workflow file.
+
+# Setup Firebase deployment
+
+- Sign up in Firebase and integrate it with your project.
+- Set the following environment variables locally.
+  - `FIREBASE_TOKEN`
+
+Deploy locally:
+
+```shell
+npm run deploy:firebase
+```
+
+Deploy in CI: See workflow file.
+
+### Firebase scripts
+
+```shell
+  firebase:serve
+  firebase:shell
+  firebase:start
+  firebase:logs
+  firebase:deploy
+```
+
+# Setup Github Container Registry release
+
+Deploy in CI: See workflow file.
+
+# Setup Dockerhub Container Registry release
+
+Deploy in CI: See workflow file.
+
+# Setup Npm publishing
+
+- Sign up in npm and integrate it with your project.
+- Set the following environment secret.
+  - `NPM_TOKEN`
+
+Deploy in CI: See workflow file.
+
