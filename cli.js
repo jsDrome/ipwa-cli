@@ -8,17 +8,17 @@ const fs = require('fs');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const spinner = ora('Initialising jsDrome').start();
+const spinner = ora('Initializing jsDrome').start();
 const folderName = process.argv.slice(2)[0] || 'jsdrome';
 
 const overWritePackage = () => {
-  const packageJson = require(`./${folderName}/package.json`);
+  const packageJson = require(`./jsDrome-master/package.json`);
 
   packageJson.name = folderName;
   packageJson.version = '1.0.0';
   packageJson.homepage = 'https://jsdrome.com';
 
-  fs.writeFileSync(`${folderName}/package.json`, JSON.stringify(packageJson, null, "  "));
+  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(packageJson, null, "  "));
 };
 
 const showLoader = msg => {
@@ -34,9 +34,9 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output js
   showLoader('Extracting contents');
   exec(`tar xf jsdrome.tar.gz`, () => {
     showLoader('Creating Project folder');
+    overWritePackage();
     exec(`mv jsDrome-master ${folderName}`, () => {
       showLoader('Installing dependencies');
-      overWritePackage();
       exec(`npm ci --prefix ${folderName}`, () => {
         showLoader('Cleaning up');
         exec(`rm jsdrome.tar.gz`, () => {
