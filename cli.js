@@ -25,23 +25,25 @@ const showLoader = msg => {
   const colors = [ 'green', 'yellow', 'blue', 'magenta', 'cyan' ];
   setTimeout(() => {
     spinner.color = colors[Math.floor(Math.random() * colors.length)];
-    spinner.text = msg;
+    spinner.text = chalk.blue(msg);
   }, 1000);
 };
 
-showLoader('Initializing jsDrome');
+showLoader(`Creating ${folderName}`);
 exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output jsdrome.tar.gz`, () => {
   showLoader('Extracting contents');
-  exec(`tar xf jsdrome.tar.gz`, () => {
+  exec(`tar xf jsdrome.tar.gz --same-owner`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
     exec(`mv jsDrome-master ${folderName}`, () => {
-      showLoader('Installing dependencies');
+      showLoader(`Installing dependencies for ${folderName}`);
       exec(`npm ci --prefix ${folderName}`, () => {
         showLoader('Cleaning up');
         exec(`rm jsdrome.tar.gz`, () => {
-          spinner.stop();
-          console.log(chalk.green(`Successfully created project ${folderName}!`));
+          exec(`rmdir temp`, () => {
+            spinner.stop();
+            console.log(chalk.green(`Successfully created project ${folderName}!`));
+          });
         });
       });
     });
