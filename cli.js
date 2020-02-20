@@ -12,13 +12,15 @@ const spinner = ora('Initializing jsDrome').start();
 const folderName = process.argv.slice(2)[0] || 'jsdrome';
 
 const overWritePackage = () => {
-  const packageJson = require(`./jsDrome-master/package.json`);
 
-  packageJson.name = folderName;
-  packageJson.version = '1.0.0';
-  packageJson.homepage = 'https://jsdrome.com';
+  const newPackageJson = {
+    ...getPackageJson(),
+    name: folderName,
+    version: '0.1.0',
+    homepage: 'https://jsdrome.com',
+  };
 
-  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(packageJson, null, "  "));
+  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
 const showLoader = msg => {
@@ -32,7 +34,7 @@ const showLoader = msg => {
 showLoader(`Creating ${folderName}`);
 exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output jsdrome.tar.gz`, () => {
   showLoader('Extracting contents');
-  exec(`tar xf jsdrome.tar.gz --same-owner`, () => {
+  exec(`tar xvfp jsdrome.tar.gz`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
     exec(`mv jsDrome-master ${folderName}`, () => {
@@ -49,3 +51,7 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output js
     });
   });
 });
+
+const getPackageJson = () => {
+  return JSON.parse(fs.readFileSync('./jsDrome-master/package.json'));
+};
