@@ -19,13 +19,13 @@ Create Web/Native Apps with:
 11. Fully automated pipeline using Github actions
 12. Deployable in Dockerhub and Github Container Registry
 13. Deployable in Google Container Registry using Terraform(WIP)
-14. Publishable as an npm package
+14. Deployable in npm and Github Package Register as npm package.
 15. Integrated with Google Analytics
 16. Integrated with Sentry
 
 ## How this works
 
-All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is all magic. When you push code, it will just be deployed everywhere in 10 minutes after a series of checks.
+All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is all magic. When you push code to master, it will just be deployed everywhere in 10 minutes after a series of checks.
 
 ## Setup Project
 
