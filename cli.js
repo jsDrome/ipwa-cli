@@ -8,8 +8,8 @@ const fs = require('fs');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const spinner = ora('Initializing jsDrome').start();
-const folderName = process.argv.slice(2)[0] || 'jsdrome';
+const spinner = ora('Initializing ipwa').start();
+const folderName = process.argv.slice(2)[0] || 'ipwa';
 
 const overWritePackage = () => {
 
@@ -17,10 +17,9 @@ const overWritePackage = () => {
     ...getPackageJson(),
     name: folderName,
     version: '0.1.0',
-    homepage: 'https://jsdrome.com',
   };
 
-  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
+  fs.writeFileSync(`./ipwa-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
 const showLoader = msg => {
@@ -32,16 +31,16 @@ const showLoader = msg => {
 };
 
 showLoader(`Creating ${folderName}`);
-exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output jsdrome.tar.gz`, () => {
+exec(`curl https://codeload.github.com/jsDrome/ipwa/tar.gz/master --output ipwa.tar.gz`, () => {
   showLoader('Extracting contents');
-  exec(`tar xvfp jsdrome.tar.gz`, () => {
+  exec(`tar xvfp ipwa.tar.gz`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
-    exec(`mv jsDrome-master ${folderName}`, () => {
+    exec(`mv ipwa-master ${folderName}`, () => {
       showLoader(`Installing dependencies for ${folderName}`);
       exec(`npm ci --prefix ${folderName}`, () => {
         showLoader('Cleaning up');
-        exec(`rm jsdrome.tar.gz`, () => {
+        exec(`rm ipwa.tar.gz`, () => {
           exec(`rmdir temp`, () => {
             spinner.stop();
             console.log(chalk.green(`Successfully created project ${folderName}!`));
@@ -53,5 +52,5 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output js
 });
 
 const getPackageJson = () => {
-  return JSON.parse(fs.readFileSync('./jsDrome-master/package.json'));
+  return JSON.parse(fs.readFileSync('./ipwa-master/package.json'));
 };

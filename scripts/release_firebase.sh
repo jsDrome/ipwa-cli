@@ -10,5 +10,6 @@ node ./scripts/package-copier.js
 cd _dist
 npm i
 cd ..
+npx firebase use $FIREBASE_APP
 npm run firebase:deploy
 npm run clean

@@ -1,8 +1,11 @@
-![Pipeline](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
+![Pipeline](https://github.com/jsDrome/ipwa/workflows/Build/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/jsDrome/ipwa/branch/master/graph/badge.svg)](https://codecov.io/gh/jsDrome/ipwa)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/jsDrome/ipwa)
+[![cypress](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/projects/nuaag3/)
 
 ⭐️ Star us on GitHub — it helps!
 
-# jsDrome
+# ipwa
 
 Create Web/Native Apps with:
 
@@ -29,16 +32,16 @@ All you need to do is spin up a new project, sign up to a few providers, set the
 
 ## Setup Project
 
-1. Install jsDrome
+1. Install ipwa
 
 ```shell
-npm i -g jsdrome
+npm i -g ipwa
 ```
 
-2. Spawn a new jsdrome app.
+2. Spawn a new ipwa app.
 
 ```shell
-jsdrome my-app
+ipwa my-app
 ```
 
 3. You need to sign up for: Codecov, Cypress, Percy, Dockerhub, Heroku, Firebase and npm and get the respective tokens.

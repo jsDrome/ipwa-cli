@@ -1,10 +1,10 @@
 {
-  "name": "jsdrome",
-  "version": "1.29.0",
+  "name": "ipwa",
+  "version": "1.0.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
-  "description": "The mother of all boilerplates",
-  "homepage": "https://github.com/jsDrome/jsdrome#readme",
+  "description": "isomorphic progressive web app generator",
+  "homepage": "https://github.com/jsDrome/ipwa#readme",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "build:client:dev": "webpack --env=client.dev --config=build",
@@ -103,7 +103,7 @@
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsDrome/jsdrome.git"
+    "url": "git+https://github.com/jsDrome/ipwa.git"
   },
   "keywords": [
     "mentor",
@@ -113,7 +113,7 @@
     "transformation"
   ],
   "bugs": {
-    "url": "https://github.com/jsDrome/jsdrome/issues"
+    "url": "https://github.com/jsDrome/ipwa/issues"
   },
   "babel": {
     "presets": [
@@ -277,7 +277,7 @@
     }
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "release-it": {
     "git": {
@@ -302,10 +302,10 @@
     }
   },
   "bin": {
-    "jsdrome": "./cli.js"
+    "ipwa": "./cli.js"
   },
   "files": [
     "cli.js",
-    "jsdrome.tar.gz"
+    "ipwa.tar.gz"
   ]
 }
