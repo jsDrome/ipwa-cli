@@ -103,6 +103,7 @@ Run in CI: See workflow file.
 
 - Sign up in Cypress and integrate it with your project.
 - Set the following environment secrets.
+  - `CYPRESS_PROJECT_ID`
   - `CYPRESS_TOKEN`
 
 Run locally:
