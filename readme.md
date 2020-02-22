@@ -7,7 +7,7 @@
 
 # iPWA
 
-Create isomorphic progressive web/native app monorepos which you can deploy in the cloud with ease.
+🚀 Spin up an isomorphic progressive web app or native app deployable in the cloud, publishable as npm package or docker container with a fully automated supercharged pipeline, all in under an hour!
 
 ## Salient Features
 
