@@ -1,6 +1,6 @@
 {
   "name": "ipwa",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "description": "isomorphic progressive web app generator",
