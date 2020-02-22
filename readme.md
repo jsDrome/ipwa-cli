@@ -207,7 +207,7 @@ Run locally: -
 
 Run in CI: See workflow file.
 
-## Setup Expo
+## Setup Expo (native app)
 
 Run locally:
 
