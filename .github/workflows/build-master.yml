@@ -6,7 +6,6 @@ on:
       - master
 
 env:
-  GITHUB_DOCKER_IMAGE_NAME: ipwa
   DOCKERHUB_DOCKER_IMAGE_NAME: jsdrome/ipwa
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -68,14 +67,14 @@ jobs:
       - name: Push to Github Container Registry
         run: |
           REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_ID=docker.pkg.github.com/$REPO/$GITHUB_DOCKER_IMAGE_NAME
+          IMAGE_ID=docker.pkg.github.com/$REPO/$DOCKERHUB_DOCKER_IMAGE_NAME
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
-          docker tag $GITHUB_DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag $DOCKERHUB_DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
   release_dockerhub:
