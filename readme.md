@@ -5,9 +5,11 @@
 
 ⭐️ Star us on GitHub — it helps!
 
-# ipwa
+# iPWA
 
-Create Web/Native Apps with:
+Create isomorphic progressive web/native app monorepos which you can deploy in the cloud with ease.
+
+## Salient Features
 
 1. Frontend in React
 2. Backend in Node
