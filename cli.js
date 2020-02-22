@@ -10,6 +10,7 @@ const chalk = require('chalk');
 
 const spinner = ora('Initializing ipwa').start();
 const folderName = process.argv.slice(2)[0] || 'ipwa';
+const install = process.argv.slice(2)[1] || false;
 
 const overWritePackage = () => {
 
@@ -43,15 +44,25 @@ exec(`curl https://codeload.github.com/jsDrome/ipwa/tar.gz/master --output ipwa.
     removeReadme();
     exec(`mv ipwa-master ${folderName}`, () => {
       showLoader(`Installing dependencies for ${folderName}`);
-      exec(`npm ci --prefix ${folderName}`, () => {
+      if (install) {
+        exec(`npm ci --prefix ${folderName}`, () => {
+          showLoader('Cleaning up');
+          exec(`rm ipwa.tar.gz`, () => {
+            exec(`rmdir temp`, () => {
+              spinner.stop();
+              console.log(chalk.green(`Successfully created project ${folderName}!`));
+            });
+          });
+        });
+      } else {
         showLoader('Cleaning up');
         exec(`rm ipwa.tar.gz`, () => {
           exec(`rmdir temp`, () => {
             spinner.stop();
-            console.log(chalk.green(`Successfully created project ${folderName}!`));
+            console.log(chalk.green(`Successfully created project ${folderName}! You'll need to install the dependencies yourself.`));
           });
         });
-      });
+      }
     });
   });
 });
