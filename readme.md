@@ -39,7 +39,7 @@ All you need to do is spin up a new project, sign up to a few providers, set the
 3. Create new firebase project and set `FIREBASE_APP_NAME` and `FIREBASE_TOKEN` secrets
 4. Create new heroku app and set `HEROKU_APP_NAME` and `HEROKU_API_KEY` secrets
 5. Integrate project with Codecov and set `CODECOV_TOKEN` secret
-6. Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets, also set `DOCKER_IMAGE_NAME` value in `./.github/workflows/build-master.yml`
+6. Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets, also set `DOCKERHUB_DOCKER_IMAGE_NAME` and `GITHUB_DOCKER_IMAGE_NAME`
 7. Run npm run test:cypress:open, create a new project and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets
 9. Set your stage url in .configrc
 10. Set your
@@ -162,8 +162,6 @@ Run in CI: See workflow file.
 
   - `HEROKU_APP_NAME`
   - `HEROKU_API_KEY`
-
-- Set `DOCKER_IMAGE_NAME` value in `./.github/workflows/build-master.yml`
 
 Run locally:
 

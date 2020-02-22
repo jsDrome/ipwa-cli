@@ -4,7 +4,7 @@ services:
     build:
       context: ../..
       dockerfile: infra/docker/Dockerfile
-    image: ${DOCKER_IMAGE_NAME}
+    image: ${DOCKERHUB_DOCKER_IMAGE_NAME}
     ports:
     - 5002:1234
     environment:
