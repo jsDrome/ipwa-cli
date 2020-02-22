@@ -61,22 +61,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker-compose -f infra/docker/docker-compose.yml build
-      - name: Log into Github registry
-        run: echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Push to Github Container Registry
-        run: |
-          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_ID=docker.pkg.github.com/$REPO/$GITHUB_DOCKER_IMAGE_NAME
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-          docker tag $DOCKERHUB_DOCKER_IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+        run: sh ./scripts/release_github.sh
 
   release_dockerhub:
     needs: [sanity_check, release_heroku, regression_tests]
