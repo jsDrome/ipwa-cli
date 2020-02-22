@@ -22,6 +22,10 @@ const overWritePackage = () => {
   fs.writeFileSync(`./ipwa-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
+const removeReadme = () => {
+  fs.unlinkSync(`./ipwa-master/readme.md`);
+}
+
 const showLoader = msg => {
   const colors = [ 'green', 'yellow', 'blue', 'magenta', 'cyan' ];
   setTimeout(() => {
@@ -36,6 +40,7 @@ exec(`curl https://codeload.github.com/jsDrome/ipwa/tar.gz/master --output ipwa.
   exec(`tar xvfp ipwa.tar.gz`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
+    removeReadme();
     exec(`mv ipwa-master ${folderName}`, () => {
       showLoader(`Installing dependencies for ${folderName}`);
       exec(`npm ci --prefix ${folderName}`, () => {

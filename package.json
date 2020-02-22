@@ -265,7 +265,8 @@
           "release",
           "revert",
           "style",
-          "test"
+          "test",
+          "cli"
         ]
       ]
     }
@@ -305,7 +306,6 @@
     "ipwa": "./cli.js"
   },
   "files": [
-    "cli.js",
-    "ipwa.tar.gz"
+    "cli.js"
   ]
 }
