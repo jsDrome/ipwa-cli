@@ -1,8 +1,3 @@
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-
-printf "${GREEN}Sanity check${NC}\n"
-
 npm run clean
 npm run lint
 npm run test
