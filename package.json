@@ -30,7 +30,7 @@
     "test:scripts": "sh ./scripts/test-scripts.sh",
     "release:heroku": "sh ./scripts/release_heroku.sh",
     "release:firebase": "sh ./scripts/release_firebase.sh",
-    "release:docker": "sh ./scripts/release_docker.sh",
+    "release:dockerhub": "sh ./scripts/release_dockerhub.sh",
     "release:npm": "sh ./scripts/release_npm.sh",
     "release:helm": "sh ./scripts/release_helm.sh",
     "firebase:serve": "firebase serve",
