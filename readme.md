@@ -46,14 +46,18 @@ npm i -g ipwa
 ipwa my-app
 ```
 
-3. Create new firebase project and set FIREBASE_APP and FIREBASE_TOKEN secrets
-4. Create new heroku app and set HEROKU_APP_NAME and HEROKU_API_KEY secrets
-5. Integrate project with Codecov and set CODECOV_TOKEN secret
-6. Sign up to Docker and set DOCKER_USER, DOCKER_IMAGE_NAME and DOCKER_PASS secrets
-7. Run npm run test:cypress:open, create a new project and set CYPRESS_PROJECT_ID and CYPRESS_TOKEN secrets
-8. Integrate project with Percy and set PERCY_TOKEN env variable
-9. Sign up to npm and set NPM_TOKEN
+3. Create new firebase project and set `FIREBASE_APP_NAME` and `FIREBASE_TOKEN` secrets
+4. Create new heroku app and set `HEROKU_APP_NAME` and `HEROKU_API_KEY` secrets
+5. Integrate project with Codecov and set `CODECOV_TOKEN` secret
+6. Sign up to Docker and set `DOCKER_USER`, `DOCKER_IMAGE_NAME` and `DOCKER_PASS` secrets
+7. Run npm run test:cypress:open, create a new project and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets
+8. Integrate project with Percy and set `PERCY_TOKEN` env variable
+9. Sign up to npm and set `NPM_TOKEN`
 10. create new Github project and push
+
+
+# Detailed Instructions
+
 
 ## Run locally normally
 
@@ -75,6 +79,8 @@ npm run build-docker
 ## Run locally as a helm app
 
 Make sure minikube and helm are installed.
+
+Set `HELM_APP_NAME` environment variable.
 
 Run locally:
 
