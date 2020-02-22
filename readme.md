@@ -41,11 +41,10 @@ All you need to do is spin up a new project, sign up to a few providers, set the
 5. Integrate project with Codecov and set `CODECOV_TOKEN` secret
 6. Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets, also set `DOCKERHUB_DOCKER_IMAGE_NAME` and `GITHUB_DOCKER_IMAGE_NAME`
 7. Run npm run test:cypress:open, create a new project and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets
-9. Set your stage url in .configrc
-10. Set your
-8. Integrate project with Percy and set `PERCY_TOKEN` env variable
-9. Sign up to npm and set `NPM_TOKEN`
-10. Create new Github project and push
+8. Set your stage url in .configrc
+9. Integrate project with Percy and set `PERCY_TOKEN` env variable
+10. Sign up to npm and set `NPM_TOKEN`
+11. Create new Github project, make sure Github actions are enabled, initiate, add, commit, push.
 
 
 # Detailed Instructions

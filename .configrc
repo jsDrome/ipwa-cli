@@ -8,6 +8,6 @@
     }
   },
   "env": {
-    "STAGE_URL": "https://jsdrome-ipwa.herokuapp.com"
+    "STAGE_URL": "https://ipwa.herokuapp.com"
   }
 }
