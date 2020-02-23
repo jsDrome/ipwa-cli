@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`App -> render 1`] = `
-<h1>
-  Hello, from client!
-</h1>
-`;

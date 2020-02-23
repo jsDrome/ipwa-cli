@@ -246,7 +246,8 @@
     "modulePathIgnorePatterns": [
       "cypress",
       "puppeteer"
-    ]
+    ],
+    "preset": "react-native"
   },
   "commitlint": {
     "extends": [
