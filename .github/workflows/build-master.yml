@@ -92,4 +92,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish to expo
-        run: sh ./scripts/release_expo.sh
+        run: |
+          npm i
+          sh ./scripts/release_expo.sh
