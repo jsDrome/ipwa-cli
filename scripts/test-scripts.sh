@@ -34,5 +34,8 @@ sh ./scripts/release_npm.sh
 log "Releasing to Helm"
 sh ./scripts/release_helm.sh
 
+log "Releasing to Expo"
+sh ./scripts/release_expo.sh
+
 log "Cleaning up"
 npm run clean

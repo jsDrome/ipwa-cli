@@ -44,7 +44,7 @@ All you need to do is spin up a new project, sign up to a few providers, set the
 8. Set your stage url in .configrc
 9. Integrate project with Percy and set `PERCY_TOKEN` env variable
 10. Sign up to npm and set `NPM_TOKEN`
-11. Sign up to expo and set `EXPO_USERNAME` and `EXPO_PASS`
+11. Sign up to expo and set `EXPO_USER` and `EXPO_PASS`
 11. Create new Github project, make sure Github actions are enabled, initiate, add, commit, push.
 
 
