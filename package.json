@@ -239,7 +239,8 @@
   },
   "eslintIgnore": [
     "_dist",
-    "coverage"
+    "coverage",
+    "web-build"
   ],
   "jest": {
     "coverageDirectory": "coverage",
