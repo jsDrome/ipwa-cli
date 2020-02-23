@@ -3,7 +3,7 @@
   "version": "2.27.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
-  "description": "🚀 Isomorphic Progressive Web Apps supercharged!",
+  "description": "🚀 Isomorphic progressive web native cloud app generator. Enough said!",
   "homepage": "https://github.com/jsDrome/ipwa#readme",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {

@@ -7,7 +7,7 @@
 
 # iPWA
 
-🚀 Spin up an isomorphic progressive web app or native app deployable in the cloud, publishable as npm package or docker container with a fully automated supercharged pipeline, all in under an hour!
+🚀 Spin up an isomorphic progressive web app or native app deployable in the cloud, publishable as AN npm package or docker container with a fully automated supercharged pipeline, all in under an hour!
 
 ## Salient Features
 
