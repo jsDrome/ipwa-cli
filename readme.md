@@ -11,61 +11,78 @@
 
 ## Salient Features
 
-1. Frontend in React
+1. Frontend in React, Redux
 2. Backend in Node
-3. Native in Expo
-4. Isomorphic Web Apps
-5. Progressive Web Apps
+3. Native in React Native (Expo)
+4. Isomorphic/Progressive Web Apps
 6. Unit testing using Jest
 7. Code coverage reports using Codecov
 8. Regression testing using Cypress, Puppeteer & Percy
-9. Docker containers
-10. Helm charts deployable in a Kubernetes Cluster
-11. Fully automated pipeline using Github actions
-12. Deployable in Dockerhub and Github Container Registry
+9. Fully automated pipeline using Github actions
+10. Deployable in Dockerhub, Github Container Registry as Docker image
+11. Publishable in npm, Github package registry as npm package
+12. Publishable in Expo as OTA updates.
 13. Deployable in Google Container Registry using Terraform (WIP)
-14. Deployable in npm and Github Package Register as npm package.
-15. Integrated with Google Analytics
-16. Integrated with Sentry
+14. Helm charts deployable in a Kubernetes Cluster (WIP)
 
 ## How this works
 
-All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is all magic. When you push code to master, it will just be deployed everywhere in 10 minutes after a series of checks.
+This package was created with automated pipeline in mind. All you need to do is spin up a new project, sign up to a few providers, set the tokens and secrets correctly and the rest is all magic. When you push code to master, it will just be deployed everywhere after a series of checks.
 
 ## Setup Project
 
-- Create a new project in Github. Do not push anything yet.
-- Create new Codecov app and set `CODECOV_TOKEN` secret in Github. This is where our unit test reports are stored.
-- Create new Heroku app and set `HEROKU_APP_NAME` and `HEROKU_API_KEY` secrets in Github. This is where our app will be staged.
-- Set your stage url in .configrc
-- Run `npm run test:cypress:open`, create a new project in Cypress and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets in Github.
-- Create new Percy app and set `PERCY_TOKEN` secrets in Github. This is where our visual regression test reports are stored.
-- Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets in Github. This is where our docker image is pushed.
-- Set `GITHUB_DOCKER_IMAGE_NAME` & `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`. The docker image above will be pushed to Github package registry as well.
-- Sign up to npm and set `NPM_TOKEN` secret in Github.
-- Sign up to expo and set `EXPO_USER` and `EXPO_PASS` secrets in Github. This is where our expo app will be published.
-- Create new firebase app and set `FIREBASE_APP_NAME` and `FIREBASE_TOKEN` secrets in Github. This will be our production environment.
-- Install ipwa globally - `npm i -g ipwa`
-- Spawn a new ipwa app - `ipwa my-app`
-- Push the new project you just created to Github.
+Install ipwa globally
 
-# Detailed Instructions
+```shell
+`npm i -g ipwa`
+```
 
-## Setup Project
+Spawn a new ipwa app
 
-1. Install ipwa
+```shell
+`ipwa my-app install`
+```
+This will create a new project called my-app in the current directory and install npm dependencies.
+
+Create a new project in Github. Do not push anything yet.
+
+Create new Codecov app and set `CODECOV_TOKEN` secret in Github. This is where our unit test reports are stored.
+
+Create new Heroku app and set `HEROKU_APP_NAME` in `./.github/workflows/build-master.yml` and `HEROKU_API_KEY` secret in Github. This is where our app will be staged.
+
+Set your stage url in .configrc
+
+Run `npm run test:cypress:open`, create a new project in Cypress and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets in Github.
+
+Create new Percy app and set `PERCY_TOKEN` secrets in Github. This is where our visual regression test reports are stored.
+
+Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets in Github. This is where our docker image is pushed.
+
+Set `GITHUB_DOCKER_IMAGE_NAME` & `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`. The docker image above will be pushed to Github package registry as well.
+
+Sign up to npm and set `NPM_TOKEN` secret in Github.
+
+Sign up to expo and set `EXPO_USER` and `EXPO_PASS` secrets in Github. This is where our expo app will be published.
+
+Create new firebase app and set `FIREBASE_APP_NAME` in `./.github/workflows/build-master.yml` and `FIREBASE_TOKEN` secrets in Github. This will be our production environment.
+
+Push the new project you just created to Github.
+
+# Local setup
+
+## Install ipwa
 
 ```shell
 npm i -g ipwa
 ```
 
-2. Spawn a new ipwa app.
+## Spawn a new ipwa app.
 
 ```shell
-ipwa my-app
+ipwa my-app install
 ```
 
-## Run locally normally
+## Run app locally
 
 Make sure npm dependencies are installed.
 
@@ -73,149 +90,123 @@ Make sure npm dependencies are installed.
 
 `npm run nodemon` in another.
 
-## Run locally as a docker container
+## Run app as docker container
 
-- Set the following environment variables locally.
-  - `DOCKER_IMAGE_NAME`
+- Set the following environment variables.
+  - `DOCKERHUB_DOCKER_IMAGE_NAME`
 
 ```shell
-npm run build-docker
+npm run build:docker
 ```
 
-## Run locally as a helm app
+## Run as a helm app
 
 Make sure minikube and helm are installed.
 
 Set `HELM_APP_NAME` environment variable.
 
-Run locally:
-
 ```shell
 npm run build:helm
-npm run build:helm:uninstall
 ```
 
-## Run unit tests locally
+## Unit tests
 
 ```shell
 npm run test
 ```
 
-## Setup Github actions
+## Run Codecov
 
-Set up the secrets given in the sections below.
-
-## Setup Codecov
-
-- Sign up in Codecov and integrate it with your project.
-- Set the following environment secrets.
+- Set the following environment variables.
   - `CODECOV_TOKEN`
-
-Run locally:
 
 ```shell
 npm run test:codecov
 ```
 
-Run in CI: See workflow file.
+## Run Cypress tests
 
-## Setup Cypress
-
-- Sign up in Cypress and integrate it with your project.
-- Set the following environment secrets.
+- Set the following environment variables.
   - `CYPRESS_PROJECT_ID`
   - `CYPRESS_TOKEN`
 
-Run locally:
-
 ```shell
-npm run test:cypress:run
+npm run test:cypress:open
 ```
-Run in CI: See workflow file.
 
-## Setup Percy
+## Run Percy
 
-- Sign up in Percy and integrate it with your project.
-- Set the following environment secrets.
+- Set the following environment variables.
   - `PERCY_TOKEN`
-
-Run locally:
 
 ```shell
 npm run test:percy
 ```
-Run in CI: See workflow file.
 
-## Setup Puppeteer
-
-Run locally:
+## Run Puppeteer
 
 ```shell
 npm run test:puppeteer
 ```
 
-Run in CI: See workflow file.
+## Deploy on Heroku
 
-## Setup Heroku Deployment
-
-- Sign up in Heroku and create a new app.
-- Set the following environment secrets.
+- Set the following environment variables.
 
   - `HEROKU_APP_NAME`
   - `HEROKU_API_KEY`
 
-Run locally:
-
 ```shell
 npm run release:heroku
 ```
-Run in CI: See workflow file.
 
-## Setup Firebase deployment
+## Deploy on Firebase
 
-- Sign up in Firebase and integrate it with your project.
-- Set the following environment variables locally.
+- Set the following environment variables.
   - `FIREBASE_TOKEN`
-
-Run locally:
 
 ```shell
 npm run release:firebase
 ```
-Run in CI: See workflow file.
 
-## Setup Github Container Registry release
+## Release image on Dockerhub Container Registry
 
-Run locally: -
+Set the following environment variables:
+ - `DOCKER_USER`
+ - `DOCKER_PASS`
+ - `DOCKERHUB_DOCKER_IMAGE_NAME`
 
-Run in CI:
+```shell
+npm run release:dockerhub
+```
 
-Set `GITHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`.
+## Release image on Github Container Registry
 
-## Setup Dockerhub Container Registry release
+Set the following environment variables:
+ - `GITHUB_REPO`
+ - `GITHUB_DOCKER_IMAGE_NAME`
+ - `GITHUB_USER`
+ - `GITHUB_TOKEN`
 
-Run locally: -
+```shell
+npm run release:github
+```
 
-Run in CI:
+## Release npm package to npm registry
 
-Set `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`.
-
-## Setup npm publishing
-
-- Sign up in npm and integrate it with your project.
-- Set the following environment secret.
+- Set the following environment variables:
   - `NPM_TOKEN`
 
-Run locally: -
+```shell
+npm run release:npm
+```
 
-Run in CI: See workflow file.
+## Publish app on Expo
 
-## Setup Expo publishing
-
-Run locally:
+- Set the following environment variables.
+  - `EXPO_USER`
+  - `EXPO_PASS`
 
 ```shell
 npm run release:expo
 ```
-
-Run in CI: See workflow file.

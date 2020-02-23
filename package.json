@@ -31,6 +31,7 @@
     "release:heroku": "sh ./scripts/release_heroku.sh",
     "release:firebase": "sh ./scripts/release_firebase.sh",
     "release:dockerhub": "sh ./scripts/release_dockerhub.sh",
+    "release:github": "sh ./scripts/release_github.sh",
     "release:npm": "sh ./scripts/release_npm.sh",
     "release:expo": "sh ./scripts/release_expo.sh",
     "release:helm": "sh ./scripts/release_helm.sh",
