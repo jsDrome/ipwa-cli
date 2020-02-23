@@ -22,6 +22,8 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_REPO: ${{ github.repository }}
   GITHUB_USER: ${{ github.actor }}
+  EXPO_USER: ${{ secrets.EXPO_USER }}
+  EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
 
 jobs:
   sanity_check:
@@ -87,7 +89,7 @@ jobs:
         run: sh ./scripts/release_npm.sh
 
   release_expo:
-    needs: [sanity_check, release_heroku, regression_tests]
+    # needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
