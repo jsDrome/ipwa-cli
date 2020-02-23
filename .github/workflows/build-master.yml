@@ -22,7 +22,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_REPO: ${{ github.repository }}
   GITHUB_USER: ${{ github.actor }}
-  EXPO_USER: ${{ secrets.EXPO_USER }}
+  EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
   EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
 
 jobs:
@@ -92,8 +92,14 @@ jobs:
     # needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish to expo
-        run: |
-          npm i
-          sh ./scripts/release_expo.sh
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: npm i
+      - run: expo publish

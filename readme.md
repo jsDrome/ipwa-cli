@@ -62,7 +62,7 @@ Set `GITHUB_DOCKER_IMAGE_NAME` & `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/wor
 
 Sign up to npm and set `NPM_TOKEN` secret in Github.
 
-Sign up to expo and set `EXPO_USER` and `EXPO_CLI_PASSWORD` secrets in Github. This is where our expo app will be published.
+Sign up to expo and set `EXPO_CLI_USERNAME` and `EXPO_CLI_PASSWORD` secrets in Github. This is where our expo app will be published.
 
 Create new firebase app and set `FIREBASE_APP_NAME` in `./.github/workflows/build-master.yml` and `FIREBASE_TOKEN` secrets in Github. This will be our production environment.
 
@@ -204,7 +204,7 @@ npm run release:npm
 ## Publish app on Expo
 
 - Set the following environment variables.
-  - `EXPO_USER`
+  - `EXPO_CLI_USERNAME`
   - `EXPO_CLI_PASSWORD`
 
 ```shell
