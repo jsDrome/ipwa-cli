@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 function App() {
   return (
     <View style={styles.app}>
+      <Text>Hello, World</Text>
     </View>
   );
 }
@@ -11,7 +12,6 @@ function App() {
 const styles = StyleSheet.create({
   app: {
     height: '100vh',
-    backgroundColor: '#000',
   },
 });
 
