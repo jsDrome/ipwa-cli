@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "entryPoint": "./src/client/index.js",
-    "slug": "my-new-project",
+    "name": "ipwa",
+    "entryPoint": "./src/client/native.js",
+    "slug": "ipwa",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -16,7 +16,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1a73e8"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

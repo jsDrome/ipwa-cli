@@ -3,7 +3,7 @@
   "version": "2.21.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
-  "description": "isomorphic progressive web app generator",
+  "description": "🚀 Isomorphic Progressive Web Apps supercharged!",
   "homepage": "https://github.com/jsDrome/ipwa#readme",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "release:firebase": "sh ./scripts/release_firebase.sh",
     "release:dockerhub": "sh ./scripts/release_dockerhub.sh",
     "release:npm": "sh ./scripts/release_npm.sh",
+    "release:expo": "sh ./scripts/release_expo.sh",
     "release:helm": "sh ./scripts/release_helm.sh",
     "firebase:serve": "firebase serve",
     "firebase:shell": "firebase functions:shell",
@@ -307,5 +308,51 @@
   },
   "files": [
     "cli.js"
-  ]
+  ],
+  "firebase": {
+    "hosting": {
+      "public": "_dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|css|jpg|jpeg|gif|png)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            }
+          ]
+        },
+        {
+          "source": "/service-worker.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
+        }
+      ],
+      "redirects": [
+        {
+          "source": "index.js",
+          "destination": "404.html",
+          "type": 301
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "myExpressApp"
+        }
+      ]
+    },
+    "functions": {
+      "source": "_dist"
+    }
+  }
 }

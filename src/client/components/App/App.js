@@ -11,7 +11,7 @@ function App() {
 const styles = StyleSheet.create({
   app: {
     height: '100vh',
-    backgroundColor: '#1a73e8',
+    backgroundColor: '#000',
   },
 });
 
