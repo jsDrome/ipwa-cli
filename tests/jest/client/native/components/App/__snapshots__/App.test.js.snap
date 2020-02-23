@@ -4,9 +4,12 @@ exports[`App -> render 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#000",
       "height": "100vh",
     }
   }
-/>
+>
+  <Text>
+    Hello, World
+  </Text>
+</View>
 `;

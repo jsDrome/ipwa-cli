@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ipwa",
-    "entryPoint": "./src/client/native.js",
+    "entryPoint": "./src/client/native/native.js",
     "slug": "ipwa",
     "privacy": "public",
     "sdkVersion": "36.0.0",

@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../../../../../src/client/components/App/App';
+import App from '@src/client/native/components/App/App';
 import renderer from 'react-test-renderer';
 
 test('App -> render', () => {
