@@ -89,7 +89,7 @@ jobs:
         run: sh ./scripts/release_npm.sh
 
   release_expo:
-    # needs: [sanity_check, release_heroku, regression_tests]
+    needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
