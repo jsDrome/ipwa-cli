@@ -23,7 +23,7 @@
 10. Helm charts deployable in a Kubernetes Cluster
 11. Fully automated pipeline using Github actions
 12. Deployable in Dockerhub and Github Container Registry
-13. Deployable in Google Container Registry using Terraform(WIP)
+13. Deployable in Google Container Registry using Terraform (WIP)
 14. Deployable in npm and Github Package Register as npm package.
 15. Integrated with Google Analytics
 16. Integrated with Sentry
@@ -34,19 +34,20 @@ All you need to do is spin up a new project, sign up to a few providers, set the
 
 ## Setup Project
 
-1. Install ipwa - `npm i -g ipwa`
-2. Spawn a new ipwa app - `ipwa my-app`
-3. Create new firebase project and set `FIREBASE_APP_NAME` and `FIREBASE_TOKEN` secrets
-4. Create new heroku app and set `HEROKU_APP_NAME` and `HEROKU_API_KEY` secrets
-5. Integrate project with Codecov and set `CODECOV_TOKEN` secret
-6. Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets, also set `GITHUB_DOCKER_IMAGE_NAME` & `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`.
-7. Run npm run test:cypress:open, create a new project and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets
-8. Set your stage url in .configrc
-9. Integrate project with Percy and set `PERCY_TOKEN` env variable
-10. Sign up to npm and set `NPM_TOKEN`
-11. Sign up to expo and set `EXPO_USER` and `EXPO_PASS`
-11. Create new Github project, make sure Github actions are enabled, initiate, add, commit, push.
-
+- Create a new project in Github. Do not push anything yet.
+- Create new Codecov app and set `CODECOV_TOKEN` secret in Github. This is where our unit test reports are stored.
+- Create new Heroku app and set `HEROKU_APP_NAME` and `HEROKU_API_KEY` secrets in Github. This is where our app will be staged.
+- Set your stage url in .configrc
+- Run `npm run test:cypress:open`, create a new project in Cypress and set `CYPRESS_PROJECT_ID` and `CYPRESS_TOKEN` secrets in Github.
+- Create new Percy app and set `PERCY_TOKEN` secrets in Github. This is where our visual regression test reports are stored.
+- Sign up to Docker and set `DOCKER_USER` and `DOCKER_PASS` secrets in Github. This is where our docker image is pushed.
+- Set `GITHUB_DOCKER_IMAGE_NAME` & `DOCKERHUB_DOCKER_IMAGE_NAME` in `./.github/workflows/build-master.yml`. The docker image above will be pushed to Github package registry as well.
+- Sign up to npm and set `NPM_TOKEN` secret in Github.
+- Sign up to expo and set `EXPO_USER` and `EXPO_PASS` secrets in Github. This is where our expo app will be published.
+- Create new firebase app and set `FIREBASE_APP_NAME` and `FIREBASE_TOKEN` secrets in Github. This will be our production environment.
+- Install ipwa globally - `npm i -g ipwa`
+- Spawn a new ipwa app - `ipwa my-app`
+- Push the new project you just created to Github.
 
 # Detailed Instructions
 
