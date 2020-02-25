@@ -1,9 +1,8 @@
 import React from "react";
 
-function App() {
-  return (
-    <h1>Hello, World</h1>
-  );
-}
+const App = ({ children }) => <React.Fragment>
+  <h1>App</h1>
+  {children}
+</React.Fragment>;
 
 export default App;
