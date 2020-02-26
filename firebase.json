@@ -17,20 +17,13 @@
         ]
       },
       {
-        "source": "/service-worker.js",
+        "source": "**/*.@(js|css)",
         "headers": [
           {
             "key": "Cache-Control",
             "value": "no-cache, no-store, must-revalidate"
           }
         ]
-      }
-    ],
-    "redirects": [
-      {
-        "source": "index.js",
-        "destination": "404.html",
-        "type": 301
       }
     ],
     "rewrites": [

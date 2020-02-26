@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
-const commonConfig = require('./common');
 const path = require('path');
 const rc = require('rc');
+const commonConfig = require('./common');
 
 const config = rc('config');
 
@@ -14,4 +14,5 @@ module.exports = merge(commonConfig, {
     writeToDisk: true,
     quiet: true,
   },
+  devtool: 'inline-source-map',
 });

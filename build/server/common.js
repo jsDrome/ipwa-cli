@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     new CopyPlugin([
       { from: 'build/templates/404.html' },
+      { from: '.configrc' },
     ]),
   ],
   target: 'node',
