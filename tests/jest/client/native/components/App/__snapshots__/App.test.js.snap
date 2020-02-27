@@ -4,12 +4,12 @@ exports[`App -> render 1`] = `
 <View
   style={
     Object {
-      "height": "100vh",
+      "flex": 1,
     }
   }
 >
   <Text>
-    Hello, World
+    Hello, World!
   </Text>
 </View>
 `;
