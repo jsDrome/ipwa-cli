@@ -31,6 +31,13 @@
         "source": "**",
         "function": "myExpressApp"
       }
+    ],
+    "redirects": [
+      {
+        "source": "index.js",
+        "destination": "404.html",
+        "type": 301
+      }
     ]
   },
   "functions": {

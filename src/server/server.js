@@ -23,13 +23,7 @@ app.get('/', (req, res) => {
   res.send(template(helmet, app));
 });
 
-app.get('/index.js', (req, res) => {
-  // eslint-disable-next-line no-magic-numbers
-  res.redirect(301, "404.html");
-});
-
-// eslint-disable-next-line no-undef
-if (DEVELOPMENT) app.use(express.static('../_dist'));
+app.use(express.static('.'));
 
 app.listen(port, () => console.log(`SERVER: Listening on port ${port}`));
 
