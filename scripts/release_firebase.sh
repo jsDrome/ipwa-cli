@@ -1,3 +1,4 @@
+set -e
 npm run build:client:prod
 npm run build:server:firebase
 node ./scripts/package-copier.js

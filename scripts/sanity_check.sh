@@ -1,3 +1,4 @@
+set -e
 npm run clean
 npm run lint
 npm run test

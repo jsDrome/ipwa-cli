@@ -1,3 +1,4 @@
+set -e
 REPO=$(echo $GITHUB_REPO | tr '[:upper:]' '[:lower:]')
 IMAGE_ID=docker.pkg.github.com/$REPO/$GITHUB_DOCKER_IMAGE_NAME
 docker tag $DOCKERHUB_DOCKER_IMAGE_NAME $IMAGE_ID:latest

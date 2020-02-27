@@ -1,3 +1,4 @@
+set -e
 git config user.email "hi@jsdrome.com"
 git config user.name "ipwa-bot"
 npm i
