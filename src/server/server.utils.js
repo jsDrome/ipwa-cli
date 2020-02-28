@@ -1,15 +1,15 @@
-export const template = (helmet, app) => `<!doctype html>
+export const template = (helmet, html, css) => `<!doctype html>
 <html ${helmet.htmlAttributes.toString()}>
   <head>
     ${helmet.title.toString()}
     ${helmet.meta.toString()}
     ${helmet.link.toString()}
-  </head>
-  <body ${helmet.bodyAttributes.toString()}>
-    <div id="root">
-      ${app}
-    </div>
+    ${helmet.style.toString()}
     ${helmet.script.toString()}
-    <script src="./app.bundle.js"></script>
+    <style id="jss-server-side">${css}</style>
+  </head>
+  <body>
+    <div id="root">${html}</div>
+    <script type="text/javascript" src="app.bundle.js"></script>
   </body>
 </html>`;

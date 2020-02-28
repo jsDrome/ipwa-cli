@@ -1,10 +1,11 @@
 import React from "react";
+import { Typography } from '@material-ui/core';
 
-import Meta from '../Meta/Meta';
+import Meta from './Meta';
 
 const App = ({ children }) => <React.Fragment>
   <Meta />
-  <h1>App!</h1>
+  <Typography>App!</Typography>
   {children}
 </React.Fragment>;
 
