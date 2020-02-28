@@ -25,6 +25,15 @@ const MetaTags = () => <Helmet>
   <link rel="icon" href="/img/favicon.ico" />
   <link rel="apple-touch-icon" href="/img/logo-192.png" />
   <link rel="manifest" href="/manifest.json" />
+  {process.env.NODE_ENV === 'production' && <script>
+    {`if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then(registration => { console.log('SW registered: ', registration); })
+          .catch(registrationError => { console.log('SW registration failed: ', registrationError); });
+      });
+    }`}</script>}
 </Helmet>;
 
 export default MetaTags;

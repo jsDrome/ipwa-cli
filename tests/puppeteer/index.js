@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const rc = require('rc');
 
-const { env: { STAGE_URL } } = rc('config');
+const { environment: { STAGE_URL } } = rc('config');
 
 (async () => {
   const browser = await puppeteer.launch();

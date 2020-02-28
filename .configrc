@@ -7,7 +7,25 @@
       "port": 5001
     }
   },
-  "env": {
-    "STAGE_URL": "https://ipwa.herokuapp.com"
+  "environment": {
+    "STAGE_URL": "https://ipwa.herokuapp.com",
+    "PROD_URL": "https://ipwa-app.firebaseapp.com"
+  },
+  "seed": {
+    "short_name":"SHORT_NAME",
+    "name":"TITLE",
+    "start_url":"/",
+    "background_color":"#000000",
+    "display":"standalone",
+    "theme_color":"#000000",
+    "icons":[{
+      "src":"/img/logo-192.png",
+      "type":"image/png",
+      "sizes":"192x192"
+    }, {
+      "src":"/img/logo-512.png",
+      "type":"image/png",
+      "sizes":"512x512"
+    }]
   }
 }

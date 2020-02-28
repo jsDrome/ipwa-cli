@@ -11,5 +11,6 @@ export const template = (helmet, html, css) => `<!doctype html>
   <body>
     <div id="root">${html}</div>
     <script type="text/javascript" src="app.bundle.js"></script>
+    <script type="text/javascript" src="npm.bundle.js"></script>
   </body>
 </html>`;
