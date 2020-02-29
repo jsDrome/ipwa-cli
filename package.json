@@ -46,6 +46,7 @@
     "expo:eject": "expo eject",
     "clean": "rimraf ./*.log _dist coverage .firebase .expo web-build",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
+    "prod": "concurrently --kill-others \"npm run build:client:prod:watch\" \"npm run build:server:prod:watch\" -n client,server -c blue,yellow",
     "lint": "eslint .",
     "nodemon": "cd _dist && nodemon index.js --watch _dist/index.js",
     "release": "release-it --no-npm.publish",

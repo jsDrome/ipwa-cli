@@ -25,6 +25,7 @@ module.exports = {
     new CopyPlugin([
       { from: 'build/templates/404.html' },
       { from: '.configrc' },
+      { from: 'assets', to: 'img' },
     ]),
   ],
   target: 'node',
