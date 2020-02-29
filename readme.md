@@ -34,13 +34,13 @@ This package was created with automated pipeline in mind. All you need to do is 
 Install ipwa globally
 
 ```shell
-`npm i -g ipwa`
+npm i -g ipwa
 ```
 
 Spawn a new ipwa app
 
 ```shell
-`ipwa my-app install`
+ipwa my-app install
 ```
 This will create a new project called my-app in the current directory and install npm dependencies.
 
