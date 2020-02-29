@@ -8,8 +8,7 @@
     }
   },
   "environment": {
-    "STAGE_URL": "https://ipwa.herokuapp.com",
-    "PROD_URL": "https://ipwa-app.firebaseapp.com"
+    "STAGE_URL": "https://ipwa.herokuapp.com"
   },
   "seed": {
     "short_name":"SHORT_NAME",

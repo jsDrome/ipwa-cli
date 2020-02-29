@@ -80,14 +80,6 @@ jobs:
           npm i
           sh ./scripts/release_firebase.sh
 
-  release_npm:
-    needs: [sanity_check, release_heroku, regression_tests]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Publish package to npm
-        run: sh ./scripts/release_npm.sh
-
   release_expo:
     needs: [sanity_check, release_heroku, regression_tests]
     runs-on: ubuntu-latest
@@ -103,3 +95,11 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: npm i
       - run: expo publish
+
+  release_npm:
+    needs: [sanity_check, release_heroku, regression_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish package to npm
+        run: sh ./scripts/release_npm.sh
