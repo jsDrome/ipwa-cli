@@ -191,6 +191,8 @@ npm run release:npm
   - `EXPO_CLI_USERNAME`
   - `EXPO_CLI_PASSWORD`
 
+Configure your expo app in `app.json`
+
 ```shell
 npm run release:expo
 ```
