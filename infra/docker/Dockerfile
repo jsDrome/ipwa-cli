@@ -2,11 +2,11 @@ FROM node:10
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
-ADD src /opt/app/src
+ADD assets /opt/app/assets
 ADD build /opt/app/build
+ADD src /opt/app/src
 ADD .configrc /opt/app/.configrc
 ADD app.json /opt/app/app.json
-ADD babel.config.js /opt/app/babel.config.js
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
