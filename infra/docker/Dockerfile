@@ -6,7 +6,6 @@ ADD assets /opt/app/assets
 ADD build /opt/app/build
 ADD src /opt/app/src
 ADD .configrc /opt/app/.configrc
-ADD app.json /opt/app/app.json
 ADD package.json /opt/app/package.json
 ADD package-lock.json /opt/app/package-lock.json
 
