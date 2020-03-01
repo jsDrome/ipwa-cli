@@ -44,7 +44,7 @@
     "expo:ios": "npm run expo:start -- --ios",
     "expo:web": "EXPO=true npm run expo:start -- --web",
     "expo:eject": "expo eject --config expo.json",
-    "expo:build:android": "expo build:android --config expo.json -t abb",
+    "expo:build:android": "expo build:android --config expo.json -t app-bundle",
     "clean": "rimraf ./*.log _dist coverage .firebase .expo web-build",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
     "prod": "concurrently --kill-others \"npm run build:client:prod:watch\" \"npm run build:server:prod:watch\" -n client,server -c blue,yellow",
