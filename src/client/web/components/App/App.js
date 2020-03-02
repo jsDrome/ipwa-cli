@@ -1,12 +1,19 @@
-import React from "react";
-import { Typography } from '@material-ui/core';
+import React, { Fragment } from "react";
+import PropTypes from 'prop-types';
 
 import Meta from './Meta';
 
-const App = ({ children }) => <React.Fragment>
+const App = ({ children }) => <Fragment>
   <Meta />
-  <Typography>App!</Typography>
   {children}
-</React.Fragment>;
+</Fragment>;
+
+App.propTypes = {
+  children: PropTypes.node,
+};
+
+App.defaultProps = {
+  children: null,
+};
 
 export default App;

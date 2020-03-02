@@ -21,7 +21,7 @@ const MetaTags = () => <Helmet>
   <meta name="robots" content="index,follow" />
   <script>{`window.dataLayer = [{ event: "gtm.js", "gtm.start": ${time} }]`}</script>
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-N4PT7MP"></script>
-  <style type="text/css">{``}</style>
+  <link rel="stylesheet" type="text/css" href="/css/app.css" />
   <link rel="icon" href="/img/favicon.ico" />
   <link rel="apple-touch-icon" href="/img/logo-192.png" />
   <link rel="manifest" href="/manifest.json" />
@@ -34,6 +34,15 @@ const MetaTags = () => <Helmet>
           .catch(registrationError => { console.log('SW registration failed: ', registrationError); });
       });
     }`}</script>}
+  <style>{`
+  body {
+    margin: 0;
+  }
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  `}
+  </style>
 </Helmet>;
 
 export default MetaTags;

@@ -3,9 +3,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const Visualizer = require('webpack-visualizer-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const rc = require('rc');
 
 const optimization = require('./optimization');
+const moduleRules = require('../moduleRules');
 
 const { seed } = rc('config');
 
@@ -18,17 +20,13 @@ module.exports = {
     filename: '[name].bundle.js',
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
+    rules: moduleRules,
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/app.css",
+      chunkFilename: "css/[id].css",
+    }),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       analyzerMode: 'static',

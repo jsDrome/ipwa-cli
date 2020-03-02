@@ -1,8 +1,10 @@
 import React from 'react';
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 
-const FullpageLoader = () => <div className="page-center">
-  <LoadingIndicator/>
+import './FullpageLoader.less';
+
+const FullpageLoader = () => <div className="FullpageLoader">
+  <LoadingIndicator />
 </div>;
 
 export default FullpageLoader;

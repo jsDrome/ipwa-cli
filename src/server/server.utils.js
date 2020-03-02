@@ -1,4 +1,4 @@
-export const template = (helmet, html, css) => `<!doctype html>
+export const template = (helmet, html, css) => `<!DOCTYPE html>
 <html ${helmet.htmlAttributes.toString()}>
   <head>
     ${helmet.title.toString()}
