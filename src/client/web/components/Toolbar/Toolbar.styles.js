@@ -1,7 +1,7 @@
 export default () => ({
   toolBar: {
     minHeight: 50,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });

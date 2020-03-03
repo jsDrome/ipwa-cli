@@ -70,3 +70,5 @@ Navbar.defaultProps = {
 };
 
 export default withStyles(styles, { withTheme: true })(Navbar);
+
+export const Logo = withStyles(styles)(LogoButton);

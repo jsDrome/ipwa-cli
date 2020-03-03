@@ -5,9 +5,6 @@ export default theme => ({
   },
   "Navbar_menu-btn": {
     padding: 6,
-    [theme.breakpoints.up('lg')]: {
-      display: 'none',
-    },
   },
   "Navbar_menu-icon": {
     height: 30,
