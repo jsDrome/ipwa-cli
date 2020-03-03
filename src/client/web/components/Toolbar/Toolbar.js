@@ -2,7 +2,7 @@ import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import { withStyles } from '@material-ui/core/styles';
 
-import styles from './styles';
+import styles from './Toolbar.styles';
 
 const _Toolbar = ({ classes, children }) => <Toolbar className={classes.toolBar} disableGutters>{children}</Toolbar>;
 

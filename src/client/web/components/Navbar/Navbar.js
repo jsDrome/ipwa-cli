@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '../Toolbar/Toolbar';
 import BlinkingCursor from '../BlinkingCursor/BlinkingCursor';
 
-import styles from './styles';
+import styles from './Navbar.styles';
 
 const MenuButton = ({ classes, onMenuButtonClick }) => <IconButton aria-label="Open drawer" className={classes["Navbar_menu-btn"]} onClick={onMenuButtonClick}>
   <MenuIcon className={classes["Navbar_menu-icon"]} />
