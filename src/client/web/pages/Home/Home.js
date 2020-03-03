@@ -1,10 +1,10 @@
 import React from "react";
 
 import HomeLayout from '../../components/Layout/HomeLayout';
-import { Typography } from "@material-ui/core";
+import Content from "../../components/Content/Content";
 
 const Home = () => <HomeLayout>
-  <Typography>Home</Typography>
+  <Content />
 </HomeLayout>;
 
 export default Home;

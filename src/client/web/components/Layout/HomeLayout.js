@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { withStyles } from '@material-ui/core/styles';
 
 import Navbar from '../Navbar/Navbar';
 import Toolbar from '../Toolbar/Toolbar';
 import Modal from '../Modal/Modal';
 import Sidebar from '../Sidebar/Sidebar';
 
-import './HomeLayout.less';
+import styles from './HomeLayout.styles';
 
-const HomeLayout = ({ children }) => {
+const HomeLayout = ({ classes, children }) => {
   const [ isSidebarOpen, setIsSidebarOpen ] = useState();
   const [ isModalOpen, setModalOpen ] = useState(false);
 
@@ -15,7 +16,7 @@ const HomeLayout = ({ children }) => {
     elevation: 0,
   };
 
-  return <div className="HomeLayout">
+  return <div className={classes.homeLayout}>
     <Modal
       isModalOpen={isModalOpen}
       handleModalClose={() => setModalOpen(false)} />
@@ -31,4 +32,4 @@ const HomeLayout = ({ children }) => {
   </div>;
 }
 
-export default HomeLayout;
+export default withStyles(styles)(HomeLayout);
