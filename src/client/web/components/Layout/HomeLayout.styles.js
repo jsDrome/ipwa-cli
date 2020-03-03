@@ -3,4 +3,6 @@ export default theme => ({
     background: theme.background.primary,
     height: '100vh',
   },
+  homeLayoutContents: {
+  },
 });

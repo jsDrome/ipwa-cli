@@ -26,7 +26,7 @@ const HomeLayout = ({ classes, children }) => {
       onRegisterClick={() => setModalOpen('register')} />
     <Toolbar />
     <Sidebar isDrawerOpen={isSidebarOpen} handleDrawerToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-    <div className="HomeLayout_contents">
+    <div className={classes.homeLayoutContents}>
       {children}
     </div>
   </div>;
