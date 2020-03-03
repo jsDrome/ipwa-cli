@@ -1,14 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
+
+import HomeLayout from '../../components/Layout/HomeLayout';
 import { Typography } from "@material-ui/core";
 
-import Layout from '../../components/Layout/Layout';
-import FullpageLoader from '../../components/FullpageLoader/FullpageLoader';
-
-const Home = () => <Fragment>
-  <Layout>
-    <Typography>Home</Typography>
-    <FullpageLoader />
-  </Layout>
-</Fragment>;
+const Home = () => <HomeLayout>
+  <Typography>Home</Typography>
+</HomeLayout>;
 
 export default Home;

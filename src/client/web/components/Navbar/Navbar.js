@@ -36,7 +36,7 @@ const RightSideButtons = ({ isUserLoggedIn, onLoginClick, onRegisterClick }) => 
 
 const LogoButton = ({ classes }) => <img alt="logo" className={classes["Navbar_menu-logo"]} src="/img/icon-56.png" />;
 
-const Navbar = props => <AppBar className={props.classes.Navbar}>
+const Navbar = ({ appBarProps, ...props }) => <AppBar className={props.classes.Navbar} {...appBarProps}>
   <Toolbar>
     <MenuButton {...props} />
     <LogoButton {...props} />
@@ -46,6 +46,7 @@ const Navbar = props => <AppBar className={props.classes.Navbar}>
 </AppBar>;
 
 Navbar.propTypes = {
+  appBarProps: PropTypes.object,
   classes: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
@@ -57,6 +58,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
+  appBarProps: null,
   classes: null,
   title: 'Title',
   description: 'Description',
