@@ -36,14 +36,19 @@ const RightSideButtons = ({ isUserLoggedIn, onLoginClick, onRegisterClick }) => 
 
 const LogoButton = ({ classes }) => <img alt="logo" className={classes["Navbar_menu-logo"]} src="/img/icon-56.png" />;
 
-const Navbar = ({ appBarProps, ...props }) => <AppBar className={props.classes.Navbar} {...appBarProps}>
-  <Toolbar>
-    <MenuButton {...props} />
-    <LogoButton {...props} />
-    <TitleBar {...props} />
-    <RightSideButtons {...props} />
-  </Toolbar>
-</AppBar>;
+const LogoButtonWhite = ({ classes }) => <img alt="logo" className={classes["Navbar_menu-logo"]} src="/img/icon-96-white.png" />;
+
+const Navbar = ({ appBarProps, ...props }) => {
+  const { classes } = props;
+  return <AppBar className={classes.Navbar} {...appBarProps}>
+    <Toolbar>
+      <MenuButton {...props} />
+      <LogoButtonWhite {...props} />
+      <TitleBar {...props} />
+      <RightSideButtons {...props} />
+    </Toolbar>
+  </AppBar>
+};
 
 Navbar.propTypes = {
   appBarProps: PropTypes.object,
@@ -70,5 +75,4 @@ Navbar.defaultProps = {
 };
 
 export default withStyles(styles, { withTheme: true })(Navbar);
-
 export const Logo = withStyles(styles)(LogoButton);

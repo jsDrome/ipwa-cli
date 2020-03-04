@@ -26,6 +26,12 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "notification": {
+      "icon": "./assets/icon-96-white.png",
+      "color": "#000000",
+      "androidMode": "collapse",
+      "androidCollapsedTitle": "ipwa digest"
     }
   }
 }
