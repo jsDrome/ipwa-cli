@@ -1,3 +1,5 @@
+const domain = "https://ipwa-app.web.app";
+
 module.exports = {
   showBannerAd: false,
   showInterstitialAd: false,
@@ -13,6 +15,7 @@ module.exports = {
   },
   webview: {
     userAgent: "Mozilla/5.0 (Linux; Android 7.0; SM-G930V Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36",
-    uri: "https://ipwa-app.web.app?app=true",
+    uri: `${domain}?app=true`,
   },
+  splashUri: `${domain}/img/splash.png`,
 };

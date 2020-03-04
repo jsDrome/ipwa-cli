@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, StatusBar, ActivityIndicator } from 'react-native';
+import { View, StatusBar, ImageBackground } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { AdMobBanner } from 'expo-ads-admob';
 
 import styles from './styles';
 
-const { showBannerAd, ad, webview: { uri, userAgent } } = require('./config');
+const { showBannerAd, ad, webview: { uri, userAgent }, spashUri } = require('./config');
 
 // eslint-disable-next-line no-undef
 const env = __DEV__ ? "test" : "production"
@@ -35,6 +35,6 @@ const BannerAd = () => AdMobBanner && <AdMobBanner
   servePersonalizedAds
   onDidFailToReceiveAdWithError={() => console.log('error from ad')} />;
 
-const Loader = () => <ActivityIndicator style={styles.loader} hidesWhenStopped={false} />;
+const Loader = () => <ImageBackground source={{ uri: spashUri }} style={{ width: '100%', height: '100%' }} />;
 
 export default App;
