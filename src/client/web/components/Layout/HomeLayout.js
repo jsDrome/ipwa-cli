@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-import Navbar from '../Navbar/Navbar';
-import Toolbar from '../Toolbar/Toolbar';
-import Modal from '../Modal/Modal';
-import Sidebar from '../Sidebar/Sidebar';
+import Navbar from 'Components/Navbar/Navbar';
+import Toolbar from 'Components/Toolbar/Toolbar';
+import Modal from 'Components/Modal/Modal';
+import Sidebar from 'Components/Sidebar/Sidebar';
 
 import styles from './HomeLayout.styles';
 

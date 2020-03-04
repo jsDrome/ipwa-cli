@@ -3,9 +3,8 @@ import { hydrate } from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import App from './components/App/App';
+import App from 'Components/App/App';
 import Routes from './routes';
-
 import store from '../store/store';
 import theme from './theme';
 

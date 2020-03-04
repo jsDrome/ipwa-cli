@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 
-import Toolbar from '../Toolbar/Toolbar';
-import BlinkingCursor from '../BlinkingCursor/BlinkingCursor';
+import Toolbar from 'Components/Toolbar/Toolbar';
+import BlinkingCursor from 'Components/BlinkingCursor/BlinkingCursor';
 
 import styles from './Navbar.styles';
 

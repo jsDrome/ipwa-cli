@@ -1,7 +1,7 @@
 import React from "react";
 
-import HomeLayout from '../../components/Layout/HomeLayout';
-import Content from "../../components/Content/Content";
+import HomeLayout from 'Components/Layout/HomeLayout';
+import Content from "Components/Content/Content";
 
 const Home = () => <HomeLayout>
   <Content />

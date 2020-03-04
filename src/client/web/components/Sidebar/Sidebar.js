@@ -4,9 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 
-import Toolbar from '../Toolbar/Toolbar';
+import Toolbar from 'Components/Toolbar/Toolbar';
+import { Logo } from 'Components/Navbar/Navbar';
 import styles from './Sidebar.styles';
-import { Logo } from '../Navbar/Navbar';
 
 const Sidebar = ({ classes, children, isDrawerOpen, handleDrawerToggle, title }) => {
   return <nav>

@@ -22,6 +22,12 @@ module.exports = {
   module: {
     rules: moduleRules,
   },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, '../../src/client/web/components'),
+      Pages: path.resolve(__dirname, '../../src/client/web/pages'),
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/app.css",
