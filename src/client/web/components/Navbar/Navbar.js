@@ -13,7 +13,7 @@ import BlinkingCursor from 'Components/BlinkingCursor/BlinkingCursor';
 
 import styles from './Navbar.styles';
 
-const MenuButton = ({ classes, onMenuButtonClick }) => <IconButton aria-label="Open drawer" className={classes["Navbar_menu-btn"]} onClick={onMenuButtonClick}>
+const MenuButton = ({ classes, onMenuButtonClick }) => onMenuButtonClick && <IconButton aria-label="Open drawer" className={classes["Navbar_menu-btn"]} onClick={onMenuButtonClick}>
   <MenuIcon className={classes["Navbar_menu-icon"]} />
 </IconButton>;
 
@@ -26,10 +26,9 @@ const TitleBar = ({ classes, onNavbarTitleClick, title, description }) => <div c
   </Hidden>
 </div>;
 
-const RightSideButtons = ({ isUserLoggedIn, onLoginClick, onRegisterClick }) => <Fragment>
+const RightSideButtons = ({ isUserLoggedIn, onRegisterClick }) => <Fragment>
   {!isUserLoggedIn && <Fragment>
-    <Button onClick={onLoginClick}>Login</Button>
-    <Button onClick={onRegisterClick}>Register</Button>
+    <Button onClick={onRegisterClick}>Login / Register</Button>
   </Fragment>}
   {isUserLoggedIn && <Button href="/logout">Logout</Button>}
 </Fragment>;
@@ -57,7 +56,6 @@ Navbar.propTypes = {
   description: PropTypes.string,
   onMenuButtonClick: PropTypes.func,
   onNavbarTitleClick: PropTypes.func,
-  onLoginClick: PropTypes.func,
   onRegisterClick: PropTypes.func,
   isUserLoggedIn: PropTypes.bool,
 };
@@ -67,10 +65,9 @@ Navbar.defaultProps = {
   classes: null,
   title: 'Title',
   description: 'Description',
-  onMenuButtonClick: () => false,
-  onNavbarTitleClick: () => false,
-  onLoginClick: () => false,
-  onRegisterClick: () => false,
+  onMenuButtonClick: null,
+  onNavbarTitleClick: null,
+  onRegisterClick: null,
   isUserLoggedIn: false,
 };
 

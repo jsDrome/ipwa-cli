@@ -4,12 +4,24 @@ import { withStyles } from '@material-ui/core/styles';
 import Navbar from 'Components/Navbar/Navbar';
 import Toolbar from 'Components/Toolbar/Toolbar';
 import Modal from 'Components/Modal/Modal';
-import Sidebar from 'Components/Sidebar/Sidebar';
+import Register from 'Pages/Register/Register';
 
 import styles from './HomeLayout.styles';
 
+const MODAL_TYPES = {
+  REGISTER: 'Login / Register',
+};
+
+const modalContent = type => {
+  switch (type) {
+  case MODAL_TYPES.REGISTER:
+    return <Register />;
+  default:
+    return null;
+  }
+};
+
 const HomeLayout = ({ classes, children }) => {
-  const [ isSidebarOpen, setIsSidebarOpen ] = useState();
   const [ isModalOpen, setModalOpen ] = useState(false);
 
   const appBarProps = {
@@ -19,13 +31,14 @@ const HomeLayout = ({ classes, children }) => {
   return <div className={classes.homeLayout}>
     <Modal
       isModalOpen={isModalOpen}
-      handleModalClose={() => setModalOpen(false)} />
+      title={isModalOpen}
+      handleModalClose={() => setModalOpen(false)}>
+      {modalContent(isModalOpen)}
+    </Modal>
     <Navbar
       appBarProps={appBarProps}
-      onMenuButtonClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      onRegisterClick={() => setModalOpen('register')} />
+      onRegisterClick={() => setModalOpen(MODAL_TYPES.REGISTER)} />
     <Toolbar />
-    <Sidebar isDrawerOpen={isSidebarOpen} handleDrawerToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
     <div className={classes.homeLayoutContents}>
       {children}
     </div>
