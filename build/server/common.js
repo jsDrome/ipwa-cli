@@ -32,8 +32,6 @@ const {
   },
 } = config;
 
-console.log(config);
-
 const moduleRules = require('../moduleRules');
 
 module.exports = {
