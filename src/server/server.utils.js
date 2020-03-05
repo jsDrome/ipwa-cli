@@ -3,7 +3,12 @@ import firebase from 'firebase-admin';
 import md5 from 'md5';
 
 const config = rc('config');
-const { environment: { DEV_URL, PROD_URL }, login: { linkedin: { authUrl: linkedinLoginUrl, clientId: linkedinClientId } } } = config;
+const {
+  environment: {
+    DEV_URL,
+    PROD_URL,
+  },
+} = config;
 
 export const template = (helmet, html, css, cookies) => `<!DOCTYPE html>
 <html ${helmet.htmlAttributes.toString()}>
@@ -24,23 +29,41 @@ export const template = (helmet, html, css, cookies) => `<!DOCTYPE html>
 </html>`;
 
 export const getLinkedinLoginUrl = originalUrl => {
-  let _linkedinLoginUrl = linkedinLoginUrl.replace('<redirectUrl>', getLinkedInRedirectUrl(originalUrl));
-  _linkedinLoginUrl = _linkedinLoginUrl.replace('<clientId>', linkedinClientId);
+  // eslint-disable-next-line no-undef
+  let _linkedinLoginUrl = BUILD_LINKEDIN_AUTH_URL.replace('<redirectUrl>', getLinkedInRedirectUrl(originalUrl));
+  // eslint-disable-next-line no-undef
+  _linkedinLoginUrl = _linkedinLoginUrl.replace('<clientId>', BUILD_LINKEDIN_CLIENT_ID);
   return _linkedinLoginUrl;
 };
 
 export const getLinkedInRedirectUrl = originalUrl => {
-  const URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+  // eslint-disable-next-line no-undef
+  const URL = BUILD_NODE_ENV === 'production' ? PROD_URL : DEV_URL;
   return `${URL}/login/linkedin/process?originalUrl=${originalUrl}`;
 };
 
 export const currentTimeStamp = new Date().getTime();
 
 export const setEmailInDb = email => {
-  if(process.env.NODE_ENV === 'development') return;
+  // eslint-disable-next-line no-undef
+  if (BUILD_NODE_ENV === 'development') return;
   firebase.database().ref('users/' + md5(email)).set({
     email,
   });
+};
+
+export const getGithubLoginUrl = originalUrl => {
+  // eslint-disable-next-line no-undef
+  let _githubLoginUrl = BUILD_GITHUB_AUTH_URL.replace('<redirectUrl>', getGithubRedirectUrl(originalUrl));
+  // eslint-disable-next-line no-undef
+  _githubLoginUrl = _githubLoginUrl.replace('<clientId>', BUILD_GITHUB_CLIENT_ID);
+  _githubLoginUrl = _githubLoginUrl.replace('<state>', currentTimeStamp);
+  return _githubLoginUrl;
+};
+
+export const getGithubRedirectUrl = originalUrl => {
+  const URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+  return `${URL}/login/github/process?originalUrl=${originalUrl}`;
 };
 
 export const isUserLoggedIn = cookies => !!cookies.__session;

@@ -5,7 +5,12 @@ import axios from 'axios';
 import querystring from 'querystring';
 import cookieParser from 'cookie-parser';
 
-import { getLinkedinLoginUrl, getLinkedInRedirectUrl, currentTimeStamp, setEmailInDb } from './server.utils';
+import {
+  getGithubLoginUrl,
+  getGithubRedirectUrl,
+  currentTimeStamp,
+  setEmailInDb,
+} from './server.utils';
 
 const router = express.Router();
 
@@ -13,7 +18,7 @@ router.use(cookieParser());
 
 router.get('/', (req, res) => {
   const { originalUrl = '/' } = req.query;
-  const url = getLinkedinLoginUrl(originalUrl);
+  const url = getGithubLoginUrl(originalUrl);
   res.redirect(url);
 });
 
@@ -21,46 +26,42 @@ router.get('/process', (req, res) => {
   const { code, originalUrl } = req.query;
   return axios
     // eslint-disable-next-line no-undef
-    .post(BUILD_LINKEDIN_ACCESS_TOKEN_URL, querystring.stringify({
-      "grant_type": "authorization_code",
+    .post(BUILD_GITHUB_ACCESS_TOKEN_URL, querystring.stringify({
       "code": code,
-      "redirect_uri": getLinkedInRedirectUrl(originalUrl),
+      "redirect_uri": getGithubRedirectUrl(originalUrl),
       // eslint-disable-next-line no-undef
-      "client_id": BUILD_LINKEDIN_CLIENT_ID,
+      "client_id": BUILD_GITHUB_CLIENT_ID,
       // eslint-disable-next-line no-undef
-      "client_secret": BUILD_LINKEDIN_CLIENT_SECRET,
+      "client_secret": BUILD_GITHUB_CLIENT_SECRET,
+      "state": currentTimeStamp,
     }))
     .then(data => {
-      const { access_token, expires_in } = data.data;
-
       res.cookie('__session', JSON.stringify({
-        linkedin_access_token: access_token,
-        linkedin_access_time: currentTimeStamp,
-        linkedin_expiry: expires_in,
+        github_access_token: data.data.split('&')[0].split('=')[1],
       }));
 
-      return res.redirect(`/login/linkedin/userData?originalUrl=${originalUrl}`);
+      return res.redirect(`/login/github/userData?originalUrl=${originalUrl}`);
     })
     // eslint-disable-next-line handle-callback-err
     .catch(err => {
-      console.error(err);
+      console.log(err);
       return res.redirect('/?login=false');
     });
 });
 
 router.get('/userData', (req, res) => {
   const { originalUrl = '/' } = req.query;
-  const { linkedin_access_token } = JSON.parse(req.cookies.__session);
+  const { github_access_token } = JSON.parse(req.cookies.__session);
 
-  if (!linkedin_access_token) throw new Error();
+  if (!github_access_token) throw new Error();
 
   // eslint-disable-next-line no-undef
-  return axios.get(BUILD_LINKEDIN_API_URL, {
+  return axios.get(BUILD_GITHUB_AUTH_URL, {
     headers: {
-      Authorization: `Bearer ${linkedin_access_token}`,
+      Authorization: `token ${github_access_token}`,
     },
   }).then(data => {
-    const email = data.data.elements[0]['handle~'].emailAddress;
+    const email = data.data.email;
     setEmailInDb(email);
     res.redirect(originalUrl);
   })

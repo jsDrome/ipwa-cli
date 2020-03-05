@@ -1,6 +1,6 @@
 import express from 'express';
-import rc from 'rc';
 import cookieParser from 'cookie-parser';
+import morgan from 'morgan';
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -16,12 +16,13 @@ import App from '../client/web/components/App/App';
 
 import { template } from './server.utils';
 
-const config = rc('config');
-const { build: { server: { port } } } = config;
-const PORT = process.env.PORT || port;
+// eslint-disable-next-line no-undef
+const PORT = process.env.PORT || BUILD_SERVER_PORT;
 const app = express();
 
 app.use(cookieParser());
+
+app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
   const sheets = new ServerStyleSheets();
@@ -44,6 +45,6 @@ app.use('/logout', logout);
 
 app.use(express.static('.'));
 
-app.listen(port, () => console.log(`SERVER: Listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`SERVER: Listening on port ${PORT}`));
 
 export default app;

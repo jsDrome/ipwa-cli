@@ -4,8 +4,14 @@ services:
     build:
       context: ../..
       dockerfile: infra/docker/Dockerfile
+      args:
+        config_login__linkedin__clientId: ${config_login__linkedin__clientId}
+        config_login__linkedin__clientSecret: ${config_login__linkedin__clientSecret}
+        config_login__github__clientId: ${config_login__github__clientId}
+        config_login__github__clientSecret: ${config_login__github__clientSecret}
     image: ${DOCKERHUB_DOCKER_IMAGE_NAME}
     ports:
-    - 5002:1234
+      - 5001:1234
+
     environment:
       - PORT=1234
