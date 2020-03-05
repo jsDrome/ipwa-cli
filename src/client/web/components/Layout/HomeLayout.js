@@ -31,7 +31,7 @@ const HomeLayout = ({ classes, children }) => {
   return <div className={classes.homeLayout}>
     <Modal
       isModalOpen={isModalOpen}
-      title={isModalOpen}
+      title={isModalOpen || ''}
       handleModalClose={() => setModalOpen(false)}>
       {modalContent(isModalOpen)}
     </Modal>

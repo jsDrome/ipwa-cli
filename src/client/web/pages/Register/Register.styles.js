@@ -1,5 +1,8 @@
 export default () => ({
   registerButton: {
-    margin: 20,
+    marginLeft: 20,
+    '&:first-child': {
+      marginLeft: 0,
+    },
   },
 });

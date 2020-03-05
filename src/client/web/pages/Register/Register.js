@@ -14,7 +14,6 @@ const Register = ({ classes }) => <Fragment>
     startIcon={<LinkedInIcon />}>
     LinkedIn
   </Button>
-
   <Button
     className={classes.registerButton}
     variant="contained"
