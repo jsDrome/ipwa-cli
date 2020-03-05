@@ -5,7 +5,8 @@ import Toolbar from 'Components/Toolbar/Toolbar';
 import Sidebar from 'Components/Sidebar/Sidebar';
 
 const App = ({ children }) => <React.Fragment>
-  <Navbar />
+  <Navbar
+    isUserLoggedIn={window.isUserLoggedIn} />
   <Toolbar />
   {children}
   <Sidebar />

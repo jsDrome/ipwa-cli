@@ -36,6 +36,7 @@ const HomeLayout = ({ classes, children }) => {
       {modalContent(isModalOpen)}
     </Modal>
     <Navbar
+      isUserLoggedIn={window.isUserLoggedIn}
       appBarProps={appBarProps}
       onRegisterClick={() => setModalOpen(MODAL_TYPES.REGISTER)} />
     <Toolbar />

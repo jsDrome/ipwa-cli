@@ -5,7 +5,7 @@ import md5 from 'md5';
 const config = rc('config');
 const { environment: { DEV_URL, PROD_URL }, login: { linkedin: { authUrl: linkedinLoginUrl, clientId: linkedinClientId } } } = config;
 
-export const template = (helmet, html, css) => `<!DOCTYPE html>
+export const template = (helmet, html, css, cookies) => `<!DOCTYPE html>
 <html ${helmet.htmlAttributes.toString()}>
   <head>
     ${helmet.title.toString()}
@@ -15,6 +15,7 @@ export const template = (helmet, html, css) => `<!DOCTYPE html>
     ${helmet.script.toString()}
     <style id="jss-server-side">${css}</style>
   </head>
+  <script>window.isUserLoggedIn=${isUserLoggedIn(cookies)};</script>
   <body>
     <div id="root">${html}</div>
     <script type="text/javascript" src="app.bundle.js"></script>
@@ -41,3 +42,5 @@ export const setEmailInDb = email => {
     email,
   });
 };
+
+export const isUserLoggedIn = cookies => !!cookies.__session;
