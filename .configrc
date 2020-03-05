@@ -8,7 +8,9 @@
     }
   },
   "environment": {
-    "STAGE_URL": "https://ipwa.herokuapp.com"
+    "DEV_URL": "http://localhost:5001",
+    "STAGE_URL": "https://ipwa.herokuapp.com",
+    "PROD_URL": "https://ipwa-app.web.app"
   },
   "seed": {
     "short_name":"SHORT_NAME",
@@ -26,5 +28,14 @@
       "type":"image/png",
       "sizes":"512x512"
     }]
+  },
+  "login": {
+    "linkedin": {
+      "clientId": "12345",
+      "clientSecret": "abcde",
+      "authUrl": "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=<clientId>&redirect_uri=<redirectUrl>&scope=r_liteprofile%20r_emailaddress%20w_member_social",
+      "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+      "apiUrl": "https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))"
+    }
   }
 }

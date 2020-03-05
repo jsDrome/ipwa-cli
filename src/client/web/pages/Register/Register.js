@@ -8,6 +8,7 @@ import styles from './Register.styles';
 
 const Register = ({ classes }) => <Fragment>
   <Button
+    href={"/login/linkedin"}
     className={classes.registerButton}
     variant="contained"
     color="primary"
@@ -15,6 +16,7 @@ const Register = ({ classes }) => <Fragment>
     LinkedIn
   </Button>
   <Button
+    href={"/login/github"}
     className={classes.registerButton}
     variant="contained"
     color="primary"
