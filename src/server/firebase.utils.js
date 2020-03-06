@@ -1,12 +1,23 @@
 import firebase from 'firebase-admin';
 import md5 from 'md5';
+import rc from 'rc';
+
+const config = rc('config');
+
+const {
+  firebase: {
+    authDomain: firebaseAuthDomain,
+    databaseUrl: firebaseDataUrl,
+    storageBucket: firebaseStorageBucket,
+  },
+} = config;
 
 const firebaseConfig = {
   // eslint-disable-next-line no-undef
   apiKey: BUILD_FIREBASE_API_KEY,
-  authDomain: "jsdrome.firebaseapp.com",
-  databaseURL: "https://jsdrome.firebaseio.com",
-  storageBucket: "jsdrome.appspot.com",
+  authDomain: firebaseAuthDomain,
+  databaseURL: firebaseDataUrl,
+  storageBucket: firebaseStorageBucket,
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -5,7 +5,7 @@ import axios from 'axios';
 import querystring from 'querystring';
 import cookieParser from 'cookie-parser';
 
-import { getLinkedinLoginUrl, getLinkedInRedirectUrl, currentTimeStamp, setEmailInDb } from './server.utils';
+import { getLinkedinLoginUrl, getLinkedInRedirectUrl, currentTimeStamp, doSomethingWithEmail } from './server.utils';
 
 const router = express.Router();
 
@@ -61,7 +61,7 @@ router.get('/userData', (req, res) => {
     },
   }).then(data => {
     const email = data.data.elements[0]['handle~'].emailAddress;
-    setEmailInDb(email);
+    doSomethingWithEmail(email);
     res.redirect(originalUrl);
   })
     .catch(err => {

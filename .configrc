@@ -46,6 +46,9 @@
     }
   },
   "firebase": {
-    "apiKey": "abcde"
+    "apiKey": "abcde",
+    "authDomain": "ipwa-app.firebaseapp.com",
+    "databaseURL": "https://ipwa-app.firebaseio.com",
+    "storageBucket": "ipwa-app.appspot.com"
   }
 }
