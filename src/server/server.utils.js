@@ -1,6 +1,6 @@
 import rc from 'rc';
-import firebase from 'firebase-admin';
-import md5 from 'md5';
+
+import { setEmailInFirebaseDB } from './firebase.utils';
 
 const config = rc('config');
 const {
@@ -44,12 +44,10 @@ export const getLinkedInRedirectUrl = originalUrl => {
 
 export const currentTimeStamp = new Date().getTime();
 
-export const setEmailInDb = email => {
+export const doSomethingWithEmail = email => {
   // eslint-disable-next-line no-undef
   if (BUILD_NODE_ENV === 'development') return;
-  firebase.database().ref('users/' + md5(email)).set({
-    email,
-  });
+  setEmailInFirebaseDB(email);
 };
 
 export const getGithubLoginUrl = originalUrl => {

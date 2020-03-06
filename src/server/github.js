@@ -9,7 +9,7 @@ import {
   getGithubLoginUrl,
   getGithubRedirectUrl,
   currentTimeStamp,
-  setEmailInDb,
+  doSomethingWithEmail,
 } from './server.utils';
 
 const router = express.Router();
@@ -62,7 +62,7 @@ router.get('/userData', (req, res) => {
     },
   }).then(data => {
     const email = data.data.email;
-    setEmailInDb(email);
+    doSomethingWithEmail(email);
     res.redirect(originalUrl);
   })
     .catch(err => {

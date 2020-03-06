@@ -30,6 +30,9 @@ const {
       apiUrl: linkedinApiUrl,
     },
   },
+  firebase: {
+    apiKey: firebaseApiKey,
+  },
 } = config;
 
 const moduleRules = require('../moduleRules');
@@ -67,6 +70,7 @@ module.exports = {
       BUILD_LINKEDIN_ACCESS_TOKEN_URL: JSON.stringify(linkedinAccessTokenUrl),
       BUILD_LINKEDIN_AUTH_URL: JSON.stringify(linkedinLoginUrl),
       BUILD_LINKEDIN_API_URL: JSON.stringify(linkedinApiUrl),
+      BUILD_FIREBASE_API_KEY: JSON.stringify(firebaseApiKey),
     }),
   ],
   target: 'node',

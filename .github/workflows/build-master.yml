@@ -28,6 +28,7 @@ env:
   config_login__linkedin__clientSecret: ${{ secrets.config_login__linkedin__clientSecret }}
   config_login__github__clientId: ${{ secrets.config_login__github__clientId }}
   config_login__github__clientSecret: ${{ secrets.config_login__github__clientSecret }}
+  config_firebase__apiKey: ${{ secrets.config_firebase__apiKey }}
 jobs:
   sanity_check:
     runs-on: ubuntu-latest

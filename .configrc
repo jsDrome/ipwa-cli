@@ -44,5 +44,8 @@
       "accessTokenUrl": "https://github.com/login/oauth/access_token",
       "apiUrl": "https://api.github.com/user"
     }
+  },
+  "firebase": {
+    "apiKey": "abcde"
   }
 }
