@@ -8,6 +8,7 @@ const {
     DEV_URL,
     PROD_URL,
   },
+  alerts,
 } = config;
 
 export const template = (helmet, html, css, cookies) => `<!DOCTYPE html>
@@ -66,3 +67,11 @@ export const getGithubRedirectUrl = originalUrl => {
 };
 
 export const isUserLoggedIn = cookies => !!cookies.__session;
+
+export const getFinalRedirectUrl = (key, provider, type) => {
+  return `?message=${alerts[key][provider][type].message}&type=${key}&duration=${alerts[key][provider][type].duration}`;
+};
+
+export const getRedirectUrlForError = (provider, type) => getFinalRedirectUrl('error', provider, type);
+
+export const getRedirectUrlForSuccess = (provider, type) => getFinalRedirectUrl('success', provider, type);

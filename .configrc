@@ -50,5 +50,49 @@
     "authDomain": "ipwa-app.firebaseapp.com",
     "databaseURL": "https://ipwa-app.firebaseio.com",
     "storageBucket": "ipwa-app.appspot.com"
+  },
+  "alerts": {
+    "error": {
+      "github": {
+        "access_token": {
+          "message": "Error while connecting to Github!",
+          "duration": "5000"
+        },
+        "data_error": {
+          "message": "Error while fetching from Github!",
+          "duration": "5000"
+        }
+      },
+      "linkedin": {
+        "access_token": {
+          "message": "Error while connecting to Linkedin!",
+          "duration": "5000"
+        },
+        "data": {
+          "message": "Error while fetching from Linkedin!",
+          "duration": "5000"
+        }
+      }
+    },
+    "success": {
+      "github": {
+        "login_success": {
+          "message": "Logged in with Github!",
+          "duration": "5000"
+        }
+      },
+      "linkedin": {
+        "login_success": {
+          "message": "Logged in with Linkedin!",
+          "duration": "5000"
+        }
+      },
+      "logout": {
+        "success": {
+          "message": "Successfully logged out!",
+          "duration": "5000"
+        }
+      }
+    }
   }
 }

@@ -64,4 +64,11 @@ const Alert = ({ handleErrorClose, type, children, duration }) => {
   </Snackbar>;
 }
 
+Alert.defaultProps = {
+  handleErrorClose: null,
+  type: 'info',
+  children: null,
+  duration: 2000,
+};
+
 export default Alert;

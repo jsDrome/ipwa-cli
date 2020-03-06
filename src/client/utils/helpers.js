@@ -23,3 +23,5 @@ export const getParameterByName = (name, url) => {
     return '';
   }
 };
+
+export const removeQueryParamsFromUrl = () => window.history.replaceState(null, null, window.location.pathname);

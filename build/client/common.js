@@ -26,6 +26,7 @@ module.exports = {
     alias: {
       Components: path.resolve(__dirname, '../../src/client/web/components'),
       Pages: path.resolve(__dirname, '../../src/client/web/pages'),
+      Store: path.resolve(__dirname, '../../src/client/store'),
     },
   },
   plugins: [

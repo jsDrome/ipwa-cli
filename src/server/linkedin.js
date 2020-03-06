@@ -5,7 +5,14 @@ import axios from 'axios';
 import querystring from 'querystring';
 import cookieParser from 'cookie-parser';
 
-import { getLinkedinLoginUrl, getLinkedInRedirectUrl, currentTimeStamp, doSomethingWithEmail } from './server.utils';
+import {
+  getLinkedinLoginUrl,
+  getLinkedInRedirectUrl,
+  currentTimeStamp,
+  doSomethingWithEmail,
+  getRedirectUrlForSuccess,
+  getRedirectUrlForError,
+} from './server.utils';
 
 const router = express.Router();
 
@@ -44,7 +51,7 @@ router.get('/process', (req, res) => {
     // eslint-disable-next-line handle-callback-err
     .catch(err => {
       console.error(err);
-      return res.redirect('/?login=false');
+      return res.redirect(getRedirectUrlForError('linkedin', 'access_token'));
     });
 });
 
@@ -62,11 +69,11 @@ router.get('/userData', (req, res) => {
   }).then(data => {
     const email = data.data.elements[0]['handle~'].emailAddress;
     doSomethingWithEmail(email);
-    res.redirect(originalUrl);
+    res.redirect(originalUrl + getRedirectUrlForSuccess('linkedin', 'login_success'));
   })
     .catch(err => {
       console.log(err);
-      return res.redirect('/?login=false');
+      return res.redirect(getRedirectUrlForError('linkedin', 'data'));
     });
 });
 

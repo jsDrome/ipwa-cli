@@ -10,6 +10,8 @@ import {
   getGithubRedirectUrl,
   currentTimeStamp,
   doSomethingWithEmail,
+  getRedirectUrlForSuccess,
+  getRedirectUrlForError,
 } from './server.utils';
 
 const router = express.Router();
@@ -45,7 +47,7 @@ router.get('/process', (req, res) => {
     // eslint-disable-next-line handle-callback-err
     .catch(err => {
       console.log(err);
-      return res.redirect('/?login=false');
+      return res.redirect(getRedirectUrlForError('github', 'access_token'));
     });
 });
 
@@ -63,11 +65,11 @@ router.get('/userData', (req, res) => {
   }).then(data => {
     const email = data.data.email;
     doSomethingWithEmail(email);
-    res.redirect(originalUrl);
+    res.redirect(originalUrl + getRedirectUrlForSuccess('github', 'login_success'));
   })
     .catch(err => {
       console.log(err);
-      return res.redirect('/?login=false');
+      return res.redirect(getRedirectUrlForError('github', 'data'));
     });
 });
 
