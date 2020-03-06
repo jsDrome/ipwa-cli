@@ -62,7 +62,8 @@ export const getGithubLoginUrl = originalUrl => {
 };
 
 export const getGithubRedirectUrl = originalUrl => {
-  const URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+  // eslint-disable-next-line no-undef
+  const URL = BUILD_NODE_ENV === 'production' ? PROD_URL : DEV_URL;
   return `${URL}/login/github/process?originalUrl=${originalUrl}`;
 };
 
