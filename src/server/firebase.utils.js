@@ -20,9 +20,8 @@ const firebaseConfig = {
   storageBucket: firebaseStorageBucket,
 };
 
-firebase.initializeApp(firebaseConfig);
-
 export const setEmailInFirebaseDB = email => {
+  firebase.initializeApp(firebaseConfig);
   firebase.database().ref('users/' + md5(email)).set({
     email,
   });
