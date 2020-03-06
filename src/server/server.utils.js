@@ -1,8 +1,9 @@
+import firebase from 'firebase-admin';
+import md5 from 'md5';
 import rc from 'rc';
 
-import { setEmailInFirebaseDB } from './firebase.utils';
-
 const config = rc('config');
+
 const {
   environment: {
     DEV_URL,
@@ -11,23 +12,25 @@ const {
   alerts,
 } = config;
 
-export const template = (helmet, html, css, cookies) => `<!DOCTYPE html>
-<html ${helmet.htmlAttributes.toString()}>
-  <head>
-    ${helmet.title.toString()}
-    ${helmet.meta.toString()}
-    ${helmet.link.toString()}
-    ${helmet.style.toString()}
-    ${helmet.script.toString()}
-    <style id="jss-server-side">${css}</style>
-  </head>
-  <script>window.isUserLoggedIn=${isUserLoggedIn(cookies)};</script>
-  <body>
-    <div id="root">${html}</div>
-    <script type="text/javascript" src="app.bundle.js"></script>
-    <script type="text/javascript" src="npm.bundle.js"></script>
-  </body>
-</html>`;
+export const template = (helmet, html, css, cookies) => {
+  return `<!DOCTYPE html>
+    <html ${helmet.htmlAttributes.toString()}>
+      <head>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+        ${helmet.link.toString()}
+        ${helmet.style.toString()}
+        ${helmet.script.toString()}
+        <style id="jss-server-side">${css}</style>
+      </head>
+      <script>window.isUserLoggedIn=${isUserLoggedIn(cookies)};</script>
+      <body>
+        <div id="root">${html}</div>
+        <script type="text/javascript" src="app.bundle.js"></script>
+        <script type="text/javascript" src="npm.bundle.js"></script>
+      </body>
+    </html>`;
+}
 
 export const getLinkedinLoginUrl = originalUrl => {
   // eslint-disable-next-line no-undef
@@ -47,7 +50,7 @@ export const currentTimeStamp = new Date().getTime();
 
 export const doSomethingWithEmail = email => {
   // eslint-disable-next-line no-undef
-  if (BUILD_NODE_ENV === 'development') return;
+  if (BUILD_NODE_ENV === 'development' || !email) return;
   setEmailInFirebaseDB(email);
 };
 
@@ -69,9 +72,17 @@ export const getGithubRedirectUrl = originalUrl => {
 export const isUserLoggedIn = cookies => !!cookies.__session;
 
 export const getFinalRedirectUrl = (key, provider, type) => {
-  return `?message=${alerts[key][provider][type].message}&type=${key}&duration=${alerts[key][provider][type].duration}`;
+  return `?message=${encodeURIComponent(alerts[key][provider][type].message)}&type=${key}&duration=${alerts[key][provider][type].duration}`;
 };
 
 export const getRedirectUrlForError = (provider, type) => getFinalRedirectUrl('error', provider, type);
 
 export const getRedirectUrlForSuccess = (provider, type) => getFinalRedirectUrl('success', provider, type);
+
+export const getRedirectUrlForInfo = (provider, type) => getFinalRedirectUrl('info', provider, type);
+
+export const setEmailInFirebaseDB = email => {
+  firebase.database().ref('users/' + md5(email)).set({
+    email,
+  });
+};

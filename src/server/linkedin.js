@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/process', (req, res) => {
-  const { code, originalUrl } = req.query;
+  const { code, originalUrl = '/' } = req.query;
   return axios
     // eslint-disable-next-line no-undef
     .post(BUILD_LINKEDIN_ACCESS_TOKEN_URL, querystring.stringify({
@@ -51,7 +51,7 @@ router.get('/process', (req, res) => {
     // eslint-disable-next-line handle-callback-err
     .catch(err => {
       console.error(err);
-      return res.redirect(getRedirectUrlForError('linkedin', 'access_token'));
+      return res.redirect(originalUrl + getRedirectUrlForError('linkedin', 'access_token'));
     });
 });
 
@@ -66,14 +66,15 @@ router.get('/userData', (req, res) => {
     headers: {
       Authorization: `Bearer ${linkedin_access_token}`,
     },
-  }).then(data => {
-    const email = data.data.elements[0]['handle~'].emailAddress;
-    doSomethingWithEmail(email);
-    res.redirect(originalUrl + getRedirectUrlForSuccess('linkedin', 'login_success'));
   })
+    .then(data => {
+      const email = data.data.elements[0]['handle~'].emailAddress;
+      doSomethingWithEmail(email);
+      res.redirect(originalUrl + getRedirectUrlForSuccess('linkedin', 'login_success'));
+    })
     .catch(err => {
       console.log(err);
-      return res.redirect(getRedirectUrlForError('linkedin', 'data'));
+      return res.redirect(originalUrl + getRedirectUrlForError('linkedin', 'data'));
     });
 });
 

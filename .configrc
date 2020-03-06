@@ -48,7 +48,7 @@
   "firebase": {
     "apiKey": "abcde",
     "authDomain": "ipwa-app.firebaseapp.com",
-    "databaseURL": "https://ipwa-app.firebaseio.com",
+    "databaseUrl": "https://ipwa-app.firebaseio.com",
     "storageBucket": "ipwa-app.appspot.com"
   },
   "alerts": {
@@ -58,7 +58,7 @@
           "message": "Error while connecting to Github!",
           "duration": "5000"
         },
-        "data_error": {
+        "data": {
           "message": "Error while fetching from Github!",
           "duration": "5000"
         }
