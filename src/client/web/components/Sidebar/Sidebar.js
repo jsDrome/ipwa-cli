@@ -8,14 +8,14 @@ import Toolbar from 'Components/Toolbar/Toolbar';
 import { Logo } from 'Components/Navbar/Navbar';
 import styles from './Sidebar.styles';
 
-const Sidebar = ({ classes, children, isDrawerOpen, handleDrawerToggle, title }) => {
+const Sidebar = ({ classes, children, isOpen, onClose, title }) => {
   return <nav>
     <Drawer
       classes={{ paper: classes.drawer }}
       variant="temporary"
       anchor="left"
-      open={isDrawerOpen}
-      onClose={handleDrawerToggle}>
+      open={isOpen}
+      onClose={onClose}>
       <Toolbar>
         <Logo />
         <Typography variant="h6" color="textSecondary" className={classes.flex} noWrap>{title}</Typography>
@@ -28,16 +28,16 @@ const Sidebar = ({ classes, children, isDrawerOpen, handleDrawerToggle, title })
 Sidebar.propTypes = {
   classes: PropTypes.object,
   children: PropTypes.object,
-  isDrawerOpen: PropTypes.bool,
-  handleDrawerToggle: PropTypes.func,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
   title: PropTypes.string,
 };
 
 Sidebar.defaultProps = {
   classes: null,
   children: null,
-  isDrawerOpen: false,
-  handleDrawerToggle: () => false,
+  isOpen: false,
+  onClose: () => false,
   title: 'Title',
 };
 

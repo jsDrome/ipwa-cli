@@ -51,6 +51,7 @@ module.exports = {
   resolve: {
     alias: {
       Components: path.resolve(__dirname, '../../src/client/web/components'),
+      Layouts: path.resolve(__dirname, '../../src/client/web/layouts'),
       Pages: path.resolve(__dirname, '../../src/client/web/pages'),
       Store: path.resolve(__dirname, '../../src/client/store'),
     },
