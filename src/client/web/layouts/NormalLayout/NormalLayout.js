@@ -7,7 +7,7 @@ import Sidebar from 'Components/Sidebar/Sidebar';
 
 import styles from './NormalLayout.styles';
 
-const NormalLayout = ({ classes, children }) => {
+const NormalLayout = ({ classes, children, sidebarContent }) => {
   const [ isSidebarOpen, setSidebarOpen ] = useState(false);
 
   return <div className={classes.normalLayout}>
@@ -18,7 +18,9 @@ const NormalLayout = ({ classes, children }) => {
     <div className={classes.normalLayoutContents}>
       {children}
     </div>
-    <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
+      {sidebarContent}
+    </Sidebar>
   </div>;
 }
 
