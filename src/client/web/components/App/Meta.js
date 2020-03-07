@@ -35,7 +35,9 @@ const MetaTags = () => <Helmet>
       });
     }`}</script>}
   <style>{`
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500&display=swap');
   body {
+    font-family: 'Ubuntu', sans-serif, Verdana, 'Trebuchet MS', 'Tahoma';
     margin: 0;
   }
   *, *:before, *:after {

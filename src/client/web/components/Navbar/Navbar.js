@@ -22,8 +22,8 @@ const TitleBar = ({ classes, onNavbarTitleClick, title, description }) => <div c
   <Hidden xsDown>
     <span className={classes["Navbar_greater-than"]}>&gt;</span>
     <Typography className={classes["Navbar_description"]} noWrap variant="body2">{description}</Typography>
-    <BlinkingCursor className={classes["Navbar_cursor"]} />
   </Hidden>
+  <BlinkingCursor className={classes["Navbar_cursor"]} />
 </div>;
 
 const RightSideButtons = ({ isUserLoggedIn, onRegisterClick }) => <Fragment>
