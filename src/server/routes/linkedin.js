@@ -12,7 +12,7 @@ import {
   doSomethingWithEmail,
   getRedirectUrlForSuccess,
   getRedirectUrlForError,
-} from './server.utils';
+} from '../server.utils';
 
 const router = express.Router();
 

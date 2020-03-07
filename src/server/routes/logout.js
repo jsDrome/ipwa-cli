@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getRedirectUrlForSuccess } from './server.utils';
+import { getRedirectUrlForSuccess } from '../server.utils';
 
 const router = express.Router();
 

@@ -8,18 +8,18 @@ const config = rc('config');
 
 const {
   firebase: {
-    authDomain: firebaseAuthDomain,
-    databaseUrl: firebaseDataUrl,
-    storageBucket: firebaseStorageBucket,
+    authDomain,
+    databaseURL,
+    storageBucket,
   },
 } = config;
 
 const firebaseConfig = {
   // eslint-disable-next-line no-undef
   apiKey: BUILD_FIREBASE_API_KEY,
-  authDomain: firebaseAuthDomain,
-  databaseURL: firebaseDataUrl,
-  storageBucket: firebaseStorageBucket,
+  authDomain,
+  databaseURL,
+  storageBucket,
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -29,4 +29,4 @@ const runtimeOpts = {
   memory: '2GB',
 };
 
-export let myExpressApp = runWith(runtimeOpts).https.onRequest(server);
+export const myExpressApp = runWith(runtimeOpts).https.onRequest(server);
