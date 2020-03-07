@@ -73,7 +73,7 @@ exports[`App -> render 1`] = `
       <Image
         source={
           Object {
-            "uri": undefined,
+            "uri": "https://ipwa-app.web.app/img/splash.png",
           }
         }
         style={
