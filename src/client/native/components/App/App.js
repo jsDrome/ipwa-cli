@@ -35,6 +35,6 @@ const BannerAd = () => AdMobBanner && <AdMobBanner
   servePersonalizedAds
   onDidFailToReceiveAdWithError={() => console.log('error from ad')} />;
 
-const Loader = () => <ImageBackground source={{ uri: splashUri }} style={{ width: '100%', height: '100%' }} />;
+const Loader = () => <ImageBackground source={{ uri: splashUri }} style={styles.loader} />;
 
 export default App;

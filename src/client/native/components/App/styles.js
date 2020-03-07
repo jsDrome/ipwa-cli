@@ -9,8 +9,10 @@ export default {
     backgroundColor: '#000000',
   },
   loader: {
-    height: '100%',
     backgroundColor: '#000000',
+    marginTop: -30,
+    width: '100%',
+    height: '100%',
   },
   bannerAd: {
     position: "absolute",
