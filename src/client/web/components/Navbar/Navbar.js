@@ -66,7 +66,7 @@ Navbar.defaultProps = {
   title: 'Title',
   description: 'Description',
   onMenuButtonClick: null,
-  onNavbarTitleClick: null,
+  onNavbarTitleClick: () => window.location = '/',
   onRegisterClick: null,
   isUserLoggedIn: false,
 };
