@@ -14,4 +14,9 @@ export default () => ({
     height: 35,
     width: 35,
   },
+  githubIcon: {
+    height: 32,
+    width: 32,
+    paddingTop: 2,
+  },
 });
