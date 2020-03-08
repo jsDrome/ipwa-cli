@@ -6,8 +6,10 @@ import { Typography, Link } from '@material-ui/core';
 
 const CopyrightInfo = ({ classes }) => <div className={classes.copyRightInfo}>
   <Typography variant="caption">
-    <span>&copy; </span>
-    <Link color={"secondary"} href="https://jsdrome.com">jsDrome</Link>
+    <span>&copy;</span>
+    <span>&nbsp;</span>
+    <Link href="https://jsdrome.com">jsDrome</Link>
+    <span>&nbsp;</span>
     <span>{new Date().getFullYear()} | All rights reserved</span>
   </Typography>
 </div>
