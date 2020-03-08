@@ -14,7 +14,7 @@ import BlinkingCursor from 'Components/BlinkingCursor/BlinkingCursor';
 import styles from './Navbar.styles';
 
 const MenuButton = ({ classes, onMenuButtonClick }) => onMenuButtonClick && <IconButton aria-label="Open drawer" className={classes["Navbar_menu-btn"]} onClick={onMenuButtonClick}>
-  <MenuIcon className={classes["Navbar_menu-icon"]} />
+  <MenuIcon color="secondary" className={classes["Navbar_menu-icon"]} />
 </IconButton>;
 
 const TitleBar = ({ classes, onNavbarTitleClick, title, description }) => <div className={classes["Navbar_title-bar"]} onClick={onNavbarTitleClick}>
@@ -28,9 +28,9 @@ const TitleBar = ({ classes, onNavbarTitleClick, title, description }) => <div c
 
 const RightSideButtons = ({ isUserLoggedIn, onRegisterClick }) => <Fragment>
   {!isUserLoggedIn && <Fragment>
-    <Button onClick={onRegisterClick}>Login / Register</Button>
+    <Button color="secondary" onClick={onRegisterClick}>Login / Register</Button>
   </Fragment>}
-  {isUserLoggedIn && <Button href="/logout">Logout</Button>}
+  {isUserLoggedIn && <Button color="secondary" href="/logout">Logout</Button>}
 </Fragment>;
 
 const LogoButton = ({ classes }) => <img alt="logo" className={classes["Navbar_menu-logo"]} src="/img/icon-56.png" />;

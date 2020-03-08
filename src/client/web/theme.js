@@ -1,15 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
-import blue from '@material-ui/core/colors/blue';
+import { indigo } from '@material-ui/core/colors';
 
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
     primary: indigo,
-    secondary: blue,
+    secondary: {
+      main: '#eceff1',
+    },
   },
   background: {
     primary: '#eceff1',
+    secondary: indigo,
   },
   typography: {
     fontSize: 13,
@@ -18,18 +20,6 @@ const theme = createMuiTheme({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     useNextVariants: true,
-  },
-  overrides: {
-    MuiSvgIcon: {
-      root: {
-        color: '#ffffff',
-      },
-    },
-    MuiButton: {
-      root: {
-        color: '#ffffff',
-      },
-    },
   },
 });
 

@@ -15,22 +15,22 @@ class SocialLinks extends Component {
     const { classes } = this.props;
     return <div className={classes.social}>
       <Link className={classes.socialLink} href="" target="_blank">
-        <InstagramIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = '#'} />
+        <InstagramIcon className={classes.socialIcon} onClick={() => window.location = '#'} />
       </Link>
       <Link className={classes.socialLink} href="" target="_blank">
-        <FacebookIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = '#'} />
+        <FacebookIcon className={classes.socialIcon} onClick={() => window.location = '#'} />
       </Link>
       <Link className={classes.socialLink} href="" target="_blank">
-        <LinkedInIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = '#'} />
+        <LinkedInIcon className={classes.socialIcon} onClick={() => window.location = '#'} />
       </Link>
       <Link className={classes.socialLink} href="" target="_blank">
-        <YouTubeIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = '#'} />
+        <YouTubeIcon className={classes.socialIcon} onClick={() => window.location = '#'} />
       </Link>
       <Link className={classes.socialLink} href="" target="_blank">
-        <TwitterIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = '#'} />
+        <TwitterIcon className={classes.socialIcon} onClick={() => window.location = '#'} />
       </Link>
       <Link className={classes.socialLink} href="" target="_blank">
-        <EmailIcon color={'secondary'} className={classes.socialIcon} onClick={() => window.location = `mailto:${'#'}`} />
+        <EmailIcon className={classes.socialIcon} onClick={() => window.location = `mailto:${'#'}`} />
       </Link>
     </div>;
   }
