@@ -5,6 +5,8 @@ import Navbar from 'Components/Navbar/Navbar';
 import Toolbar from 'Components/Toolbar/Toolbar';
 import Modal from 'Components/Modal/Modal';
 import Register from 'Pages/Register/Register';
+import SocialLinks from 'Components/SocialLinks/SocialLinks';
+import CopyrightInfo from 'Components/CopyrightInfo/CopyrightInfo';
 
 import styles from './HomeLayout.styles';
 
@@ -43,6 +45,8 @@ const HomeLayout = ({ classes, children }) => {
     <div className={classes.homeLayoutContents}>
       {children}
     </div>
+    <SocialLinks />
+    <CopyrightInfo />
   </div>;
 }
 

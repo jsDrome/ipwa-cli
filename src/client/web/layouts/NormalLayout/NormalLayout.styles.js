@@ -5,4 +5,7 @@ export default theme => ({
   },
   normalLayoutContents: {
   },
+  copyRightInfo: {
+    textAlign: 'center',
+  },
 });

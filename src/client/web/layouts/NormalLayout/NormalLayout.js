@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Navbar from 'Components/Navbar/Navbar';
 import Toolbar from 'Components/Toolbar/Toolbar';
 import Sidebar from 'Components/Sidebar/Sidebar';
+import SocialLinks from 'Components/SocialLinks/SocialLinks';
+import CopyrightInfo from 'Components/CopyrightInfo/CopyrightInfo';
 
 import styles from './NormalLayout.styles';
 
@@ -21,6 +23,8 @@ const NormalLayout = ({ classes, children, sidebarContent }) => {
     <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
       {sidebarContent}
     </Sidebar>
+    <SocialLinks />
+    <CopyrightInfo />
   </div>;
 }
 

@@ -25,3 +25,11 @@ export const getParameterByName = (name, url) => {
 };
 
 export const removeQueryParamsFromUrl = () => window.history.replaceState(null, null, window.location.pathname);
+
+export const insertTag = (src, d, s, id) => {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = src;
+  fjs.parentNode.insertBefore(js, fjs);
+};

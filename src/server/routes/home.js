@@ -8,8 +8,10 @@ import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../client/web/theme';
 import store from 'Store/store';
 import App from 'Components/App/App';
+import Home from 'Pages/Home/Home';
+import Post from 'Pages/Post/Post';
 
-import { template } from '../server.utils';
+import { isUserLoggedIn, template } from '../server.utils';
 
 const router = express.Router();
 
@@ -19,7 +21,9 @@ router.get('/', (req, res) => {
     sheets.collect(
       <ReduxProvider store={store}>
         <ThemeProvider theme={theme}>
-          <App />
+          <App>
+            {isUserLoggedIn(req.cookies) ? <Post /> : <Home />}
+          </App>
         </ThemeProvider>
       </ReduxProvider>
     )
