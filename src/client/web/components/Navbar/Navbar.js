@@ -7,6 +7,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import Toolbar from 'Components/Toolbar/Toolbar';
 import BlinkingCursor from 'Components/BlinkingCursor/BlinkingCursor';
@@ -28,9 +30,13 @@ const TitleBar = ({ classes, onNavbarTitleClick, title, description }) => <div c
 
 const RightSideButtons = ({ isUserLoggedIn, onRegisterClick }) => <Fragment>
   {!isUserLoggedIn && <Fragment>
-    <Button color="secondary" onClick={onRegisterClick}>Login / Register</Button>
+    <Button color="secondary" onClick={onRegisterClick}>
+      <AccountCircleIcon />
+    </Button>
   </Fragment>}
-  {isUserLoggedIn && <Button color="secondary" href="/logout">Logout</Button>}
+  {isUserLoggedIn && <Button color="secondary" href="/logout">
+    <ExitToAppIcon />
+  </Button>}
 </Fragment>;
 
 const LogoButton = ({ classes }) => <img alt="logo" className={classes["Navbar_menu-logo"]} src="/img/icon-56.png" />;

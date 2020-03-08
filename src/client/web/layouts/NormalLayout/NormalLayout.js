@@ -19,12 +19,12 @@ const NormalLayout = ({ classes, children, sidebarContent }) => {
     <Toolbar />
     <div className={classes.normalLayoutContents}>
       {children}
+      <SocialLinks />
+      <CopyrightInfo />
     </div>
     <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
       {sidebarContent}
     </Sidebar>
-    <SocialLinks />
-    <CopyrightInfo />
   </div>;
 }
 

@@ -44,9 +44,9 @@ const HomeLayout = ({ classes, children }) => {
     <Toolbar />
     <div className={classes.homeLayoutContents}>
       {children}
+      <SocialLinks />
+      <CopyrightInfo />
     </div>
-    <SocialLinks />
-    <CopyrightInfo />
   </div>;
 }
 
