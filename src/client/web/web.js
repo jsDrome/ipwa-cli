@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { hydrate } from 'react-dom';
+import { render } from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -26,4 +26,4 @@ const Main = () => {
   );
 }
 
-hydrate(<Main />, document.getElementById('root'));
+render(<Main />, document.getElementById('root'));
