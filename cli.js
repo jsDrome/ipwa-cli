@@ -20,11 +20,11 @@ const overWritePackage = () => {
     version: '0.1.0',
   };
 
-  fs.writeFileSync(`./ipwa-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
+  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
 const removeReadme = () => {
-  fs.unlinkSync(`./ipwa-master/readme.md`);
+  fs.unlinkSync(`./jsDrome-master/readme.md`);
 }
 
 const showLoader = msg => {
@@ -42,7 +42,7 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ip
     showLoader('Creating Project folder');
     overWritePackage();
     removeReadme();
-    exec(`mv ipwa-master ${folderName}`, () => {
+    exec(`mv jsDrome-master ${folderName}`, () => {
       showLoader(`Installing dependencies for ${folderName}`);
       if (install) {
         exec(`npm ci --prefix ${folderName}`, () => {
@@ -68,5 +68,5 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ip
 });
 
 const getPackageJson = () => {
-  return JSON.parse(fs.readFileSync('./ipwa-master/package.json'));
+  return JSON.parse(fs.readFileSync('./jsDrome-master/package.json'));
 };
