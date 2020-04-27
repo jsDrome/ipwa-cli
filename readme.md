@@ -16,7 +16,7 @@ This package was created with automated pipeline in mind. One codebase for web a
 Install ipwa globally
 
 ```shell
-npm i -g ipwa
+npm i -g @jsdrome/ipwa
 ```
 
 Create a new ipwa app
