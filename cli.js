@@ -36,7 +36,7 @@ const showLoader = msg => {
 };
 
 showLoader(`Creating ${folderName}`);
-exec(`curl https://codeload.github.com/jsDrome/ipwa/tar.gz/master --output ipwa.tar.gz`, () => {
+exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ipwa.tar.gz`, () => {
   showLoader('Extracting contents');
   exec(`tar xvfp ipwa.tar.gz`, () => {
     showLoader('Creating Project folder');

@@ -1,3 +1,0 @@
-replicaCount: 1
-containerName: ${DOCKERHUB_DOCKER_IMAGE_NAME}
-containerPort: 5001
