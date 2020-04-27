@@ -9,7 +9,7 @@ const ora = require('ora');
 const chalk = require('chalk');
 
 const spinner = ora('Initializing ipwa').start();
-const folderName = process.argv.slice(2)[0] || 'ipwa';
+const folderName = process.argv.slice(2)[0] || 'jsdrome';
 const install = process.argv.slice(2)[1] || false;
 
 const overWritePackage = () => {
