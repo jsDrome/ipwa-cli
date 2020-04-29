@@ -1,5 +1,7 @@
 ![Pipeline](https://github.com/jsDrome/ipwa/workflows/Build/badge.svg?branch=master)
 
+⭐️ Star us on GitHub — it helps!
+
 # iPWA
 
 🔥 Isomorphic progressive web native cloud monorepo generator.
@@ -37,7 +39,9 @@ ipwa my-app install
 This will create a new project called my-app in the current directory and install npm dependencies.
 
 
-## Set these runtime env vars in `./.env/env.sh`.
+## Setup
+
+### Set these runtime env vars in `.env`.
 
 ```shell
 config_secrets__linkedin__clientId
@@ -50,7 +54,7 @@ config_secrets_jsdrome_encryptKey
 config_props__gtmId
 ```
 
-## Set these build time env vars in `./.env/env.sh` and in Github secrets
+### Set these build time env vars in Github secrets
 
 ```
 CODECOV_TOKEN
@@ -65,39 +69,39 @@ FIREBASE_TOKEN
 config_props__url
 ```
 
-## Change defaults in `.configrc` as necessary.
+### Change defaults in `.configrc` as necessary.
 
 
-# Development
+## Development
 
-## Run app locally
+### Run app locally
 
 ```shell
 npm run dev
 npm run nodemon
 ```
 
-## Run app as docker container
+### Run app as docker container
 
-Make appropriate changes to `./infra/docker/docker-compose.yml` and `./infra/docker/Dockerfile`.
+Set `IMAGE_NAME` env variable in .env
 
 ```shell
 npm run build:docker
 ```
 
-## Run unit tests
+### Run unit tests
 
 ```shell
 npm run test
 ```
 
-## Run cypress tests
+### Run cypress tests
 
 ```shell
 npm run test:cypress
 ```
 
-## Run puppeteer tests
+### Run puppeteer tests
 
 ```shell
 npm run test:puppeteer
@@ -123,5 +127,3 @@ npm run test:puppeteer
      </tr>
   </tbody>
 </table>
-
-⭐️ Star us on GitHub — it helps!
