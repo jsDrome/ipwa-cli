@@ -77,8 +77,8 @@ config_props__url
 ### Run app locally
 
 ```shell
-npm run dev
-npm run nodemon
+npm run build:dev
+npm run start:dev
 ```
 
 ### Run app as docker container
