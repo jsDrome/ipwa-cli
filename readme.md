@@ -6,7 +6,20 @@
 
 ## How this works
 
-This package was created with automated pipeline in mind. One codebase for web and native apps where when something gets merged to master, it gets to production. All you need to do is spin up a new project, set the tokens and secrets correctly and the rest is all magic. When you push code to master, it will just be deployed everywhere after a series of checks. What happens behind the scene is once you push code to Github, it triggers Github actions. If its the master branch, it runs a basic Sanity Check where it builds the client and server code base, runs lint and unittests and reports to Codecov. This sanity check is followed by staging in Heroku. The application is dockerized and deployed as a docker container on Heroku. Once done, regression tests are performed on this staging environment. Unit tests, Cypress tests, Puppeteer and Percy visual regression tests are performed on this environment. Once passed, the docker image is pushed to Dockerhub and Github Container Registry, deployed into Firebase and published to Expo as over-the-air update. 
+Usually, when a product grows, it becomes inevitable that there are 2 apps - for web and for native. You will then need a web frontend team, native frontend team, a design team, a backend team, a devops team and QA. This repository aims to automate and abstract most of those things so that you can focus on only one thing - create stuff. 
+
+iPWA's purpose is to spin up a new project with everything setup. All you need to do is configure it and everything else is magic.
+
+## How we use it
+
+When code is merged to master, we perform the following:
+
+ - `Sanity Check` - Builing, linting, unit tests
+ - `Staging in Heroku` - Build a docker image and deploy it in Heroku
+ - `Regression tests` - Run unit tests, Cypress tests, Puppeteer tests and Percy tests.
+ - `Release docker image` - Deploy the docker image to Dockerhub or GCR.
+ - `Release Firebase` - Deploy the isomorphic progressive web app to Firebase.
+ - `Expo publish` - Deploy the native app as OTA update.
 
 ## Install
 
