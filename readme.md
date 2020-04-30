@@ -16,11 +16,11 @@ iPWA's purpose is to spin up a new project with everything setup. All you need t
 
 When code is merged to master, we perform the following:
 
- - `Sanity Check` - Builing, linting, unit tests
- - `Staging in Heroku` - Build a docker image and deploy it in Heroku
- - `Regression tests` - Run unit tests, Cypress tests, Puppeteer tests and Percy tests.
- - `Release docker image` - Deploy the docker image to Dockerhub or GCR.
- - `Release Firebase` - Deploy the isomorphic progressive web app to Firebase.
+ - `Sanity Check` - Builing, linting, unit tests. Reports at CodeCov.
+ - `Staging in Heroku` - Build a docker image and deploy it in Heroku.
+ - `Regression tests` - Run unit tests, Cypress tests, Puppeteer tests and Percy tests and upload the reports.
+ - `Release docker image` - Build and publish docker image to Dockerhub or GCR.
+ - `Release Firebase` - Deploy the isomorphic progressive web app into Firebase.
  - `Expo publish` - Deploy the native app as OTA update.
 
 ## Install
