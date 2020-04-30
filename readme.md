@@ -4,7 +4,7 @@
 
 # iPWA
 
-🔥 Isomorphic progressive web native cloud monorepo generator.
+🔥 Isomorphic progressive web native cloud monorepo generator with a codebase with only code.
 
 ## How this works
 
