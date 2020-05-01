@@ -57,7 +57,6 @@ config_props__gtmId
 ### Set these build time env vars in Github secrets
 
 ```
-CODECOV_TOKEN
 IMAGE_NAME
 HEROKU_APP_NAME
 HEROKU_API_KEY
