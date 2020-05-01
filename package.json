@@ -1,6 +1,6 @@
 {
   "name": "@jsdrome/ipwa",
-  "version": "2.85.0",
+  "version": "3.0.0",
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "description": "🔥 Isomorphic progressive web native cloud monorepo generator.",
