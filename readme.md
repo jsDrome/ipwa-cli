@@ -1,4 +1,4 @@
-![Pipeline](https://github.com/jsDrome/ipwa/workflows/Build/badge.svg?branch=master)
+![Pipeline](https://github.com/jsDrome/ipwa-cli/workflows/Build/badge.svg?branch=master)
 
 ⭐️ Star us on GitHub — it helps!
 
@@ -50,7 +50,7 @@ config_secrets__github__clientId
 config_secrets__github__clientSecret
 const config_secrets__sendInBlue__user
 const config_secrets__sendInBlue__pass
-config_secrets_jsdrome_encryptKey
+config_secrets_ipwa_encryptKey
 config_props__gtmId
 ```
 
