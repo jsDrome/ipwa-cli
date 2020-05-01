@@ -1,31 +1,16 @@
 #!/usr/bin/env node
-/* eslint-disable no-magic-numbers */
-
-/* eslint-disable global-require */
+/* eslint-disable no-magic-numbers, global-require */
 
 const { exec } = require('child_process');
 const fs = require('fs');
 const ora = require('ora');
 const chalk = require('chalk');
 
+const repo = "https://codeload.github.com/jsDrome/jsDrome/tar.gz/master";
+const repoFolder = "jsDrome-master";
 const spinner = ora('Initializing ipwa').start();
-const folderName = process.argv.slice(2)[0] || 'jsdrome';
+const folderName = process.argv.slice(2)[0] || 'ipwa';
 const install = process.argv.slice(2)[1] || false;
-
-const overWritePackage = () => {
-
-  const newPackageJson = {
-    ...getPackageJson(),
-    name: folderName,
-    version: '0.1.0',
-  };
-
-  fs.writeFileSync(`./jsDrome-master/package.json`, JSON.stringify(newPackageJson, null, "  "));
-};
-
-const removeReadme = () => {
-  fs.unlinkSync(`./jsDrome-master/readme.md`);
-}
 
 const showLoader = msg => {
   const colors = [ 'green', 'yellow', 'blue', 'magenta', 'cyan' ];
@@ -36,18 +21,18 @@ const showLoader = msg => {
 };
 
 showLoader(`Creating ${folderName}`);
-exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ipwa.tar.gz`, () => {
+
+exec(`curl ${repo} --output ${folderName}.tar.gz`, () => {
   showLoader('Extracting contents');
-  exec(`tar xvfp ipwa.tar.gz`, () => {
+  exec(`tar xvfp ${folderName}.tar.gz`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
-    removeReadme();
-    exec(`mv jsDrome-master ${folderName}`, () => {
-      showLoader(`Installing dependencies for ${folderName}`);
+    exec(`mv ${repoFolder} ${folderName}`, () => {
       if (install) {
+        showLoader(`Installing dependencies for ${folderName}`);
         exec(`npm ci --prefix ${folderName}`, () => {
           showLoader('Cleaning up');
-          exec(`rm ipwa.tar.gz`, () => {
+          exec(`rm ${folderName}.tar.gz`, () => {
             exec(`rmdir temp`, () => {
               spinner.stop();
               console.log(chalk.green(`Successfully created project ${folderName}!`));
@@ -56,7 +41,7 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ip
         });
       } else {
         showLoader('Cleaning up');
-        exec(`rm ipwa.tar.gz`, () => {
+        exec(`rm ${folderName}.tar.gz`, () => {
           exec(`rmdir temp`, () => {
             spinner.stop();
             console.log(chalk.green(`Successfully created project ${folderName}! You'll need to install the dependencies yourself.`));
@@ -67,6 +52,23 @@ exec(`curl https://codeload.github.com/jsDrome/jsDrome/tar.gz/master --output ip
   });
 });
 
+const overWritePackage = () => {
+
+  const newPackageJson = {
+    ...getPackageJson(),
+    name: folderName,
+    version: '0.1.0',
+    expo: {
+      ...getPackageJson().expo,
+      name: folderName,
+      slug: folderName,
+    },
+  };
+
+  fs.writeFileSync(`./${repoFolder}/package.json`, JSON.stringify(newPackageJson, null, "  "));
+};
+
+
 const getPackageJson = () => {
-  return JSON.parse(fs.readFileSync('./jsDrome-master/package.json'));
+  return JSON.parse(fs.readFileSync(`./${repoFolder}/package.json`));
 };
