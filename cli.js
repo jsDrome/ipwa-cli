@@ -6,8 +6,11 @@ const fs = require('fs');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const repo = "https://codeload.github.com/jsDrome/jsDrome/tar.gz/master";
-const repoFolder = "jsDrome-master";
+const org = 'jsDrome';
+const repoName="ipwa-core";
+const repoUrl = `https://codeload.github.com/${org}/${repoName}/tar.gz/master`;
+const extractedFolder = "ipwa-core-master";
+
 const spinner = ora('Initializing ipwa').start();
 const folderName = process.argv.slice(2)[0] || 'ipwa';
 const install = process.argv.slice(2)[1] || false;
@@ -22,12 +25,12 @@ const showLoader = msg => {
 
 showLoader(`Creating ${folderName}`);
 
-exec(`curl ${repo} --output ${folderName}.tar.gz`, () => {
+exec(`curl ${repoUrl} --output ${folderName}.tar.gz`, () => {
   showLoader('Extracting contents');
   exec(`tar xvfp ${folderName}.tar.gz`, () => {
     showLoader('Creating Project folder');
     overWritePackage();
-    exec(`mv ${repoFolder} ${folderName}`, () => {
+    exec(`mv ${extractedFolder} ${folderName}`, () => {
       if (install) {
         showLoader(`Installing dependencies for ${folderName}`);
         exec(`npm ci --prefix ${folderName}`, () => {
@@ -65,10 +68,10 @@ const overWritePackage = () => {
     },
   };
 
-  fs.writeFileSync(`./${repoFolder}/package.json`, JSON.stringify(newPackageJson, null, "  "));
+  fs.writeFileSync(`./${extractedFolder}/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
 
 const getPackageJson = () => {
-  return JSON.parse(fs.readFileSync(`./${repoFolder}/package.json`));
+  return JSON.parse(fs.readFileSync(`./${extractedFolder}/package.json`));
 };
