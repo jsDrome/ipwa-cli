@@ -8,12 +8,12 @@
 
 ## Features
 
-- React, Redux
-- React-native, expo
-- Node JS, Express
-- Docker
-- Heroku, Firebase
-- Jest, Cypress, Puppeteer, Percy
+- React, Redux (Web)
+- React-native, expo (Native)
+- Node JS, Express (Backend)
+- Docker, GCP, Terraform, Helm (Infra)
+- Heroku, Firebase (Deployment)
+- Jest, Cypress, Puppeteer, Percy (Tests)
 
 ## How this works
 
