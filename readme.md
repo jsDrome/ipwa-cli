@@ -74,6 +74,11 @@ config_props__url
 
 ### Change defaults in `.configrc` as necessary.
 
+## Demo
+
+- Dockerised iPWA - https://ipwa-core.herokuapp.com
+- Regular iPWA - https://ipwa-core.firebaseapp.com
+- Native iPWA - https://expo.io/@sreeram/ipwa-core
 
 ## Development
 
