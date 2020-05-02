@@ -6,6 +6,15 @@
 
 🔥 Isomorphic progressive web native cloud monorepo generator with a codebase with only code.
 
+## Features
+
+- React, Redux
+- React-native, expo
+- Node JS, Express
+- Docker
+- Heroku, Firebase
+- Jest, Cypress, Puppeteer, Percy
+
 ## How this works
 
 Usually, when a product grows, it becomes inevitable that there are 2 apps - for web and for native. You will then need a web frontend team, native frontend team, a design team, a backend team, a devops team and QA. This repository aims to automate and abstract most of those things so that you can focus on only one thing - create stuff. 
