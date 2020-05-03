@@ -6,26 +6,32 @@
 
 🔥 Isomorphic progressive web native cloud monorepo generator with a codebase with only code.
 
+## How this works
+
+Usually, when a product grows, it becomes inevitable that there are 2 apps - for web and for native. You will then need a web frontend team, native frontend team, a design team, a backend team, a devops team and QA. This repository aims to abstract most of those things so that you can focus on only one thing - creating stuff. 
+
+iPWA's purpose is to spin up a new project with everything setup. All you need to do is set the configurations and the rest is magic.
+
 ## Features
 
 - React, Redux (Web)
-- React-native, expo (Native)
+- React-native, Expo (Native)
 - Node JS, Express (Backend)
-- Docker, GCP, Terraform, Helm (Infra)
+- Docker, Helm, Terraform (Infra)
 - Heroku, Firebase (Deployment)
 - Jest, Cypress, Puppeteer, Percy (Tests)
 
-## How this works
+## Demo
 
-Usually, when a product grows, it becomes inevitable that there are 2 apps - for web and for native. You will then need a web frontend team, native frontend team, a design team, a backend team, a devops team and QA. This repository aims to automate and abstract most of those things so that you can focus on only one thing - create stuff. 
-
-iPWA's purpose is to spin up a new project with everything setup. All you need to do is configure it and everything else is magic.
+- Dockerised iPWA - https://ipwa-core.herokuapp.com
+- Regular iPWA - https://ipwa-core.firebaseapp.com
+- Native iPWA - https://expo.io/@sreeram/ipwa-core
 
 ## How we use it
 
 When code is merged to master, we perform the following:
 
- - `Sanity Check` - Builing, linting, unit tests. Reports at CodeCov.
+ - `Sanity Check` - Builing, linting, unit tests.
  - `Staging in Heroku` - Build a docker image and deploy it in Heroku.
  - `Regression tests` - Run unit tests, Cypress tests, Puppeteer tests and Percy tests and upload the reports.
  - `Release docker image` - Build and publish docker image to Dockerhub or GCR.
@@ -47,7 +53,6 @@ ipwa my-app install
 ```
 This will create a new project called my-app in the current directory and install npm dependencies.
 
-
 ## Setup
 
 ### Set these runtime env vars in `.env`.
@@ -63,7 +68,7 @@ config_secrets_ipwa_encryptKey
 config_props__gtmId
 ```
 
-### Set these build time env vars in Github secrets
+### Set these build time env vars (also in Github secrets)
 
 ```
 IMAGE_NAME
@@ -82,12 +87,6 @@ config_props__url
 ```
 
 ### Change defaults in `.configrc` as necessary.
-
-## Demo
-
-- Dockerised iPWA - https://ipwa-core.herokuapp.com
-- Regular iPWA - https://ipwa-core.firebaseapp.com
-- Native iPWA - https://expo.io/@sreeram/ipwa-core
 
 ## Development
 
