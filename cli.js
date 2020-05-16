@@ -29,7 +29,8 @@ exec(`curl ${repoUrl} --output ${folderName}.tar.gz`, () => {
   showLoader('Extracting contents');
   exec(`tar xvfp ${folderName}.tar.gz`, () => {
     showLoader('Creating Project folder');
-    overWritePackage();
+    removePackageLock();
+    overwritePackage();
     exec(`mv ${extractedFolder} ${folderName}`, () => {
       if (install) {
         showLoader(`Installing dependencies for ${folderName}`);
@@ -55,8 +56,11 @@ exec(`curl ${repoUrl} --output ${folderName}.tar.gz`, () => {
   });
 });
 
-const overWritePackage = () => {
+const removePackageLock = () => {
+  fs.unlinkSync(`./${extractedFolder}/package-lock.json`);
+};
 
+const overwritePackage = () => {
   const newPackageJson = {
     ...getPackageJson(),
     name: folderName,
@@ -67,7 +71,6 @@ const overWritePackage = () => {
       slug: folderName,
     },
   };
-
   fs.writeFileSync(`./${extractedFolder}/package.json`, JSON.stringify(newPackageJson, null, "  "));
 };
 
